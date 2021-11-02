@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hairsaloon/lists.dart';
+
+import 'constants.dart';
 
 class AppointmentScreen extends StatelessWidget {
   const AppointmentScreen({Key? key}) : super(key: key);
@@ -8,12 +11,7 @@ class AppointmentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-          Colors.indigo.withOpacity(0.10),
-          Colors.white.withOpacity(0.05),
-        ], begin: Alignment.bottomRight, end: Alignment.topCenter),
-        ),
+        decoration: kBoxDecoIndigo,
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: SingleChildScrollView(
@@ -26,11 +24,15 @@ class AppointmentScreen extends StatelessWidget {
                 icon: const Icon(Icons.arrow_back),
                 onPressed: () => Navigator.pop(context),
               ),
-              const AppointmentsColumn(),
+              AppointmentsColumn(
+                list: novAppointments,
+              ),
               const SizedBox(
                 height: 20.0,
               ),
-              const AppointmentsColumn(),
+              AppointmentsColumn(
+                list: decAppointments,
+              ),
             ]),
           ),
         ),
@@ -40,22 +42,17 @@ class AppointmentScreen extends StatelessWidget {
 }
 
 class AppointmentsColumn extends StatelessWidget {
+  final List<AppointmentList> list;
   const AppointmentsColumn({
     Key? key,
+    required this.list,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(10.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        border: Border.all(color: Colors.indigo.withOpacity(0.03)),
-        gradient: LinearGradient(colors: [
-          Colors.white.withOpacity(0.6),
-          Colors.white.withOpacity(0.05),
-        ], begin: Alignment.topRight, end: Alignment.bottomLeft),
-      ),
+      decoration: kBoxDecoWhite,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -66,40 +63,20 @@ class AppointmentsColumn extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.5,
             child: ListView(
-              children: const [
-                AppointmentTile(
-                  appointDate: '10',
-                  appointMonth: 'November',
-                  doctorType: 'Heart Surgeon',
-                  appointTime: '09:30 AM',
-                  color: Colors.pink,
-                  textColor: Colors.white,
-                  iconColor: Colors.pink,
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                AppointmentTile(
-                  appointDate: '16',
-                  appointMonth: 'November',
-                  doctorType: 'ECG TEST',
-                  appointTime: '11:30 AM',
-                  color: Colors.blue,
-                  textColor: Colors.white,
-                  iconColor: Colors.blue,
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                AppointmentTile(
-                  appointDate: '25',
-                  appointMonth: 'November',
-                  doctorType: 'Medicine Doctor',
-                  appointTime: '10:30 AM',
-                  color: Colors.amber,
-                  textColor: Colors.white,
-                  iconColor: Colors.amber,
-                )
+              children: [
+                for (var i in list)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 15.0),
+                    child: AppointmentTile(
+                      appointDate: i.appointDate,
+                      appointMonth: i.appointMonth,
+                      textColor: i.textColor,
+                      iconColor: i.iconColor,
+                      appointTime: i.appointTime,
+                      doctorType: i.doctorType,
+                      color: i.color,
+                    ),
+                  )
               ],
             ),
           )
@@ -135,25 +112,15 @@ class AppointmentTile extends StatelessWidget {
         Container(
           height: 90.0,
           width: 90,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10.0),
-            color: color,
-            boxShadow: [
-              BoxShadow(
-                color: color.withOpacity(0.2),
-                spreadRadius: 2,
-                blurRadius: 4,
-                offset: const Offset(0, 2),
-              ),
-            ],
-          ),
+          decoration: kBoxDecoWithBoxShadow
+              .copyWith(color: color, boxShadow: [BoxShadow(color: color)]),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 appointDate,
                 style: TextStyle(
-                  fontSize: 26.0,
+                  fontSize: 24.0,
                   fontWeight: FontWeight.w600,
                   color: textColor,
                 ),

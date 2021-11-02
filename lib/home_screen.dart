@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:hairsaloon/appointment_screen.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import 'constants.dart';
+import 'lists.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -16,24 +19,11 @@ class _HomeScreenState extends State<HomeScreen> {
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
 
-  List<String> bookingTime = [
-    '09:00 AM',
-    '09:30 AM',
-    '10:00 AM',
-    '10:30 AM',
-    '11:00 AM',
-    '11:30 AM',
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-          Colors.indigo.withOpacity(0.10),
-          Colors.white.withOpacity(0.05),
-        ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
+        decoration: kBoxDecoIndigo,
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(10.0),
@@ -41,16 +31,10 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 20.0,),
+                const SizedBox(height: 20.0,),
                 Container(
                   padding: const EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      border: Border.all(color: Colors.white.withOpacity(0.08)),
-                      gradient: LinearGradient(colors: [
-                        Colors.white.withOpacity(0.6),
-                        Colors.white.withOpacity(0.05),
-                      ], begin: Alignment.bottomRight, end: Alignment.topLeft)),
+                  decoration: kBoxDecoWhite,
                   child: buildTableCalendar(),
                 ),
                 const SizedBox(height: 30.0),
@@ -158,14 +142,7 @@ class TimeGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(10.0),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          border: Border.all(color: Colors.white.withOpacity(0.08)),
-          gradient: LinearGradient(colors: [
-            Colors.white.withOpacity(0.6),
-            Colors.white.withOpacity(0.05),
-          ], begin: Alignment.topRight, end: Alignment.bottomLeft),
-      ),
+      decoration: kBoxDecoWhite,
       height: MediaQuery.of(context).size.height * 0.4,
       child: GridView.count(
           crossAxisCount: 2,
