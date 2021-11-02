@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:hairsaloon/appointment_screen.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -26,23 +28,39 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [
+          Colors.indigo.withOpacity(0.10),
+          Colors.white.withOpacity(0.05),
+        ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(10.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                buildTableCalendar(),
-                const SizedBox(height: 40.0),
+                SizedBox(height: 20.0,),
+                Container(
+                  padding: const EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      border: Border.all(color: Colors.white.withOpacity(0.08)),
+                      gradient: LinearGradient(colors: [
+                        Colors.white.withOpacity(0.6),
+                        Colors.white.withOpacity(0.05),
+                      ], begin: Alignment.bottomRight, end: Alignment.topLeft)),
+                  child: buildTableCalendar(),
+                ),
+                const SizedBox(height: 30.0),
                 const Text(
                   'Test',
                   style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w600),
                 ),
                 const SizedBox(height: 20.0),
                 TimeGrid(bookingTime: bookingTime),
-                const SizedBox(height: 40.0),
+                const SizedBox(height: 20.0),
                 const TimeBookingBtn()
               ],
             ),
@@ -83,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       calendarStyle: CalendarStyle(
         selectedDecoration:
-            BoxDecoration(color: Colors.amber, shape: BoxShape.circle),
+            const BoxDecoration(color: Colors.amber, shape: BoxShape.circle),
         todayDecoration:
             BoxDecoration(color: Colors.blue.shade600, shape: BoxShape.circle),
       ),
@@ -117,12 +135,13 @@ class TimeBookingBtn extends StatelessWidget {
             ),
           ),
         ),
-      ), onTap: () => Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const AppointmentScreen(),
       ),
-    ),
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const AppointmentScreen(),
+        ),
+      ),
     );
   }
 }
@@ -137,8 +156,17 @@ class TimeGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.35,
+    return Container(
+      padding: const EdgeInsets.all(10.0),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.0),
+          border: Border.all(color: Colors.white.withOpacity(0.08)),
+          gradient: LinearGradient(colors: [
+            Colors.white.withOpacity(0.6),
+            Colors.white.withOpacity(0.05),
+          ], begin: Alignment.topRight, end: Alignment.bottomLeft),
+      ),
+      height: MediaQuery.of(context).size.height * 0.4,
       child: GridView.count(
           crossAxisCount: 2,
           childAspectRatio: (3 / 1),
@@ -147,23 +175,32 @@ class TimeGrid extends StatelessWidget {
           children: [
             for (var x in bookingTime)
               InkWell(
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    color: Colors.grey.shade200,
-                  ),
-                  child: Center(
-                    child: Text(
-                      x,
-                      style: const TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.w600,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      border: Border.all(
+                        color: Colors.indigo.withOpacity(0.03),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.08),
+                          spreadRadius: 2,
+                          blurRadius: 4,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: Center(
+                      child: Text(
+                        x,
+                        style: const TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                onTap: () => {}
-              )
+                  onTap: () => {})
           ]),
     );
   }

@@ -7,56 +7,30 @@ class AppointmentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
-      appBar: AppBar(
-        title: Text('My Appointment', style: TextStyle(color: Colors.black87),),
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        iconTheme: const IconThemeData(
-          color: Colors.black,
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [
+          Colors.indigo.withOpacity(0.10),
+          Colors.white.withOpacity(0.05),
+        ], begin: Alignment.bottomRight, end: Alignment.topCenter),
         ),
-      ),
-      body: SafeArea(
-          child: Padding(
+        child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: SingleChildScrollView(
-            child: Column(children: [
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              const SizedBox(
+                height: 20.0,
+              ),
+              IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () => Navigator.pop(context),
+              ),
               const AppointmentsColumn(),
-              const SizedBox(height: 20.0,),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    color: Colors.white70
-                ),
-                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  const SizedBox(height: 10.0,),
-                  const Text(
-                    'December',
-                    style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w600),
-                  ),
-                  const SizedBox(
-                    height: 20.0,
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.17,
-                    child: ListView(
-                      children: const [
-                        AppointmentTile(
-                          appointDate: '12',
-                          appointMonth: 'December',
-                          doctorType: 'Dentist',
-                          appointTime: '08:30 AM',
-                          color: Colors.white,
-                          textColor: Colors.black87,
-                          iconColor: Colors.black87,
-                        ),
-                      ],
-                    ),
-                  ),
-                ]),
-              )
+              const SizedBox(
+                height: 20.0,
+              ),
+              const AppointmentsColumn(),
             ]),
           ),
         ),
@@ -73,21 +47,21 @@ class AppointmentsColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 15.0,  vertical: 5.0),
+      padding: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        color: Colors.white70
+        border: Border.all(color: Colors.indigo.withOpacity(0.03)),
+        gradient: LinearGradient(colors: [
+          Colors.white.withOpacity(0.6),
+          Colors.white.withOpacity(0.05),
+        ], begin: Alignment.topRight, end: Alignment.bottomLeft),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 10.0,),
           const Text(
             'November',
             style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w600),
-          ),
-          const SizedBox(
-            height: 20.0,
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.5,
@@ -164,6 +138,14 @@ class AppointmentTile extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.0),
             color: color,
+            boxShadow: [
+              BoxShadow(
+                color: color.withOpacity(0.2),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: const Offset(0, 2),
+              ),
+            ],
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
