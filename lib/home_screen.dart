@@ -5,7 +5,7 @@ import 'package:hairsaloon/appointment_screen.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'constants.dart';
-import 'lists.dart';
+import 'utils/appointment_lists.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

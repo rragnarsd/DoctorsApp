@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hairsaloon/lists.dart';
+import 'package:hairsaloon/utils/appointment_lists.dart';
 
 import 'constants.dart';
+import 'models/appointments.dart';
 
 class AppointmentScreen extends StatelessWidget {
   const AppointmentScreen({Key? key}) : super(key: key);
@@ -20,10 +21,19 @@ class AppointmentScreen extends StatelessWidget {
               const SizedBox(
                 height: 20.0,
               ),
-              IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () => Navigator.pop(context),
-              ),
+                  Row(children: [
+                    IconButton(
+                      icon: const Icon(Icons.arrow_back),
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                    const SizedBox(
+                      width: 10.0,
+                    ),
+                    const Text(
+                      'Appointments',
+                      style: TextStyle(fontSize: 22.0),
+                    )
+                  ]),
               AppointmentsColumn(
                 list: novAppointments,
               ),

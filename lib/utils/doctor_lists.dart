@@ -1,0 +1,12 @@
+import 'package:hairsaloon/models/doctors.dart';
+
+List<Doctors> doctors = [
+  Doctors(doctorName: 'Christian Frazier', doctorType: 'Heart Surgeon', doctorLocation: 'London', doctorExperience: 12, doctorPatients: 230, doctorAbout: 'Lorem', doctorImage: 'https://images.unsplash.com/photo-1618498082410-b4aa22193b38?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80'),
+  Doctors(doctorName: 'Angela Andrews', doctorType: 'Neurologists', doctorLocation: 'Bristol', doctorExperience: 7, doctorPatients: 180, doctorAbout: 'Lorem', doctorImage: 'https://images.unsplash.com/photo-1614608682850-e0d6ed316d47?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=976&q=80'),
+  Doctors(doctorName: 'Angela Yu', doctorType: 'Physiologist', doctorLocation: 'Manchester', doctorExperience: 4, doctorPatients: 130, doctorAbout: 'Lorem', doctorImage: 'https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'),
+  Doctors(doctorName: 'Maxmillan Müller', doctorType: 'Medicine Doctor', doctorLocation: 'London', doctorExperience: 18, doctorPatients: 530, doctorAbout: 'Lorem', doctorImage: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80'),
+  Doctors(doctorName: 'Andrea Bizzotto', doctorType: 'Dentist', doctorLocation: 'Bristol', doctorExperience: 6, doctorPatients: 90, doctorAbout: 'Lorem', doctorImage: 'https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'),
+  Doctors(doctorName: 'Mayme Gomez', doctorType: 'Neurologist', doctorLocation: 'Manchester', doctorExperience: 12, doctorPatients: 250, doctorAbout: 'Lorem', doctorImage: 'https://images.pexels.com/photos/4989131/pexels-photo-4989131.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'),
+  Doctors(doctorName: 'Iva Carpenter', doctorType: 'Radiologist', doctorLocation: 'London', doctorExperience: 2, doctorPatients: 50, doctorAbout: 'Lorem', doctorImage: 'https://images.pexels.com/photos/4225880/pexels-photo-4225880.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'),
+  Doctors(doctorName: 'Martin Smith', doctorType: 'Psychiatrist', doctorLocation: 'London', doctorExperience: 12, doctorPatients: 550, doctorAbout: 'Lorem', doctorImage: 'https://images.pexels.com/photos/4586993/pexels-photo-4586993.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'),
+];
