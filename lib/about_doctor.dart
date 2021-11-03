@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hairsaloon/contact_doctor_screen.dart';
 import 'package:hairsaloon/models/doctors.dart';
-import 'package:hairsaloon/utils/doctor_lists.dart';
 import 'package:hairsaloon/widgets/reusable_appointment_tile.dart';
 import 'package:hairsaloon/widgets/reusable_raw_btn.dart';
 import 'package:hairsaloon/widgets/reusable_time_btn.dart';
 
 import 'constants.dart';
-import 'home_screen.dart';
 
 class AboutDoctor extends StatelessWidget {
   const AboutDoctor({Key? key}) : super(key: key);
@@ -54,20 +52,29 @@ class DoctorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final doctor = ModalRoute.of(context)!.settings.arguments as Doctors;
     return Container(
       padding: const EdgeInsets.all(15.0),
       decoration: kBoxDecoWhite,
       child: Column(children: [
-        AboutTile(),
-        SizedBox(
+        const AboutTile(),
+        const SizedBox(
           height: 20.0,
         ),
-        DoctorPatientCard(),
-        SizedBox(
+        const DoctorPatientCard(),
+       const SizedBox(
           height: 30.0,
         ),
-        ReusableTimeBtn(widget: ContactDoctorScreen(), btnText: 'Book Appointment', btnColor: Colors.amber.shade600, textColor: Colors.white,),
-        SizedBox(
+        ReusableTimeBtn(
+          widget: ContactDoctorScreen(
+            image: doctor.doctorImage,
+            doctorName: doctor.doctorName,
+          ),
+          btnText: 'Book Appointment',
+          btnColor: Colors.amber.shade600,
+          textColor: Colors.white,
+        ),
+       const SizedBox(
           height: 20.0,
         ),
       ]),
@@ -111,11 +118,21 @@ class AboutTile extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.95,
       child: ListTile(
         contentPadding: EdgeInsets.zero,
-        title: Text(doctor.doctorName, style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w600, letterSpacing: 1.0),),
-        subtitle: Text(doctor.doctorType, style: TextStyle(fontSize: 16.0),),
+        title: Text(
+          doctor.doctorName,
+          style: const TextStyle(
+              fontSize: 22.0, fontWeight: FontWeight.w600, letterSpacing: 1.0),
+        ),
+        subtitle: Text(
+          doctor.doctorType,
+          style: const TextStyle(fontSize: 16.0),
+        ),
         trailing: Hero(
-            tag: 'doctorHero',
-            child: CircleAvatar(backgroundImage: NetworkImage(doctor.doctorImage), radius: 25.0,),
+          tag: 'doctorHero',
+          child: CircleAvatar(
+            backgroundImage: NetworkImage(doctor.doctorImage),
+            radius: 25.0,
+          ),
         ),
       ),
     );
@@ -135,7 +152,7 @@ class UpcomingTile extends StatelessWidget {
         Container(
           width: 80,
           height: 100.0,
-          decoration: const BoxDecoration(color: Colors.amber),
+          decoration: BoxDecoration(color: Colors.amber.shade600),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -143,14 +160,14 @@ class UpcomingTile extends StatelessWidget {
                 Text(
                   'Wed'.toUpperCase(),
                   style: const TextStyle(
-                      fontSize: 16.0, fontWeight: FontWeight.w600),
+                      fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.white),
                 ),
                 const SizedBox(
                   height: 5.0,
                 ),
                 const Text(
                   '11',
-                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600),
+                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.white),
                 ),
               ]),
         ),
@@ -159,7 +176,7 @@ class UpcomingTile extends StatelessWidget {
         ),
         const UpcomingTextTile(),
         const Spacer(),
-        const ReusableRawBtn(),
+        const ReusableRawBtn(icon: Icons.phone, iconColor: Colors.pink,),
       ]),
     );
   }
@@ -207,16 +224,20 @@ class DoctorAbout extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-         const Text(
+          const Text(
             'About Doctor',
-            style: TextStyle(fontSize: 20.0, letterSpacing: 1.0, fontWeight: FontWeight.w600),
+            style: TextStyle(
+                fontSize: 20.0,
+                letterSpacing: 1.0,
+                fontWeight: FontWeight.w600),
           ),
           const SizedBox(
             height: 5.0,
           ),
           Text(
             doctor.doctorAbout,
-            style: const TextStyle(fontSize: 16.0, letterSpacing: 1.0, height: 1.5),
+            style: const TextStyle(
+                fontSize: 16.0, letterSpacing: 1.0, height: 1.5),
           ),
         ],
       ),

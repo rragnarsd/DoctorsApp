@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 class ReusableRawBtn extends StatelessWidget {
+  final IconData icon;
+  final Color iconColor;
   const ReusableRawBtn({
     Key? key,
+    required this.icon,
+    required this.iconColor
   }) : super(key: key);
 
   @override
@@ -12,10 +16,10 @@ class ReusableRawBtn extends StatelessWidget {
       shape: const CircleBorder(),
       fillColor: Colors.white,
       elevation: 3.0,
-      child: const Icon(
-        Icons.phone,
+      child: Icon(
+        icon,
         size: 26.0,
-        color: Colors.pink,
+        color: iconColor,
       ),
       onPressed: () {},
     );

@@ -1,13 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hairsaloon/models/doctors.dart';
+import 'package:hairsaloon/booking_screen.dart';
 import 'package:hairsaloon/widgets/reusable_appointment_tile.dart';
 import 'package:hairsaloon/widgets/reusable_time_btn.dart';
 
 import 'constants.dart';
 
 class ContactDoctorScreen extends StatelessWidget {
-  const ContactDoctorScreen({Key? key}) : super(key: key);
+  final String image;
+  final String doctorName;
+  const ContactDoctorScreen({Key? key, required this.image, required this.doctorName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +29,15 @@ class ContactDoctorScreen extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      CircleAvatar(radius: 40.0),
+                      Hero(
+                          tag: 'doctorHero',
+                          child: CircleAvatar(radius: 40.0, backgroundImage: NetworkImage(image),)),
                       const SizedBox(height: 10.0,),
-                      Text('Jane Andrews', style: TextStyle(fontSize: 20.0),),
+                      Text(doctorName, style: const TextStyle(fontSize: 20.0),),
                       const SizedBox(height: 20.0,),
                       ReusableTimeBtn(btnText: 'Start Conversation', btnColor: Colors.white70, textColor: Colors.black87,),
                       const SizedBox(height: 20.0,),
-                      ReusableTimeBtn(btnText: 'Join Live Video Call', btnColor: Colors.blue, textColor: Colors.white,),
+                      ReusableTimeBtn(btnText: 'Book Appointment', btnColor: Colors.blue, textColor: Colors.white, widget: const BookingScreen(),),
                     ],
                   ),
                 ),

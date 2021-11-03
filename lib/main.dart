@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hairsaloon/appointment_screen.dart';
-import 'package:hairsaloon/doctor_screen.dart';
+import 'package:hairsaloon/home_screen.dart';
 
-import 'home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +18,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.indigo,
         ),
-        home: const DoctorScreen(),
+        home: const HomeScreen(),
     );
   }
 }

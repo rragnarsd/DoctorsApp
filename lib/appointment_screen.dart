@@ -157,7 +157,7 @@ class AppointmentTile extends StatelessWidget {
           ],
         ),
         const Spacer(),
-        const ReusableRawBtn(),
+        const ReusableRawBtn(icon: Icons.phone, iconColor: Colors.pink,),
       ],
     );
   }
