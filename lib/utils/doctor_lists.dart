@@ -10,3 +10,5 @@ List<Doctors> doctors = [
   Doctors(doctorName: 'Iva Carpenter', doctorType: 'Radiologist', doctorLocation: 'London', doctorExperience: 2, doctorPatients: 50, doctorAbout: 'Specializes in X-rays or other high-energy radiation, especially a doctor specializing in radiology', doctorImage: 'https://images.pexels.com/photos/4225880/pexels-photo-4225880.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'),
   Doctors(doctorName: 'Martin Smith', doctorType: 'Psychiatrist', doctorLocation: 'London', doctorExperience: 12, doctorPatients: 550, doctorAbout: 'Specializing in the diagnosis and treatment of mental illness', doctorImage: 'https://images.pexels.com/photos/4586993/pexels-photo-4586993.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'),
 ];
+
+

@@ -153,7 +153,8 @@ class AppointmentTile extends StatelessWidget {
             ),
             Text(appointTime,
                 style: kTextStyleNormal.copyWith(
-                    color: Colors.black38, fontWeight: FontWeight.normal)),
+                    color: Colors.black38, fontWeight: FontWeight.normal),
+            ),
           ],
         ),
         const Spacer(),

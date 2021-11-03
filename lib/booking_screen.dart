@@ -23,31 +23,40 @@ class _BookingScreenState extends State<BookingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        height: MediaQuery.of(context).size.height,
         decoration: kBoxDecoIndigo,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 20.0,),
-                Container(
-                  padding: const EdgeInsets.all(10.0),
-                  decoration: kBoxDecoWhite,
-                  child: buildTableCalendar(),
-                ),
-                const SizedBox(height: 30.0),
-                Text(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 20.0,),
+              Container(
+                padding: const EdgeInsets.all(10.0),
+                decoration: kBoxDecoWhite.copyWith(  boxShadow: [
+                  BoxShadow(
+                    color: Colors.indigo.withOpacity(0.02),
+                    spreadRadius: 1,
+                    blurRadius: 4,
+                    offset: const Offset(0, 2),
+                  ),
+                ],),
+                child: buildTableCalendar(),
+              ),
+              const SizedBox(height: 30.0),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Text(
                   'Test',
-                  style: kTextStyleBtnText.copyWith(fontSize: 24.0)
+                  style: kTextStyleBtnText.copyWith(fontSize: 24.0, color: Colors.black87)
                 ),
-                const SizedBox(height: 20.0),
-                TimeGrid(bookingTime: bookingTime),
-                const SizedBox(height: 20.0),
-                ReusableTimeBtn(widget: const DoctorScreen(), btnText: 'Book Appoinment', btnColor: Colors.amber.shade600, textColor: Colors.white,)
-              ],
-            ),
+              ),
+              TimeGrid(bookingTime: bookingTime),
+              const SizedBox(height: 20.0),
+              ReusableTimeBtn(widget: const DoctorScreen(), btnText: 'Book Appoinment', btnColor: Colors.amber.shade600, textColor: Colors.white,),
+              const SizedBox(height: 10.0),
+            ],
           ),
         ),
       ),
@@ -95,7 +104,6 @@ class _BookingScreenState extends State<BookingScreen> {
 }
 
 
-
 class TimeGrid extends StatelessWidget {
   const TimeGrid({
     Key? key,
@@ -108,7 +116,14 @@ class TimeGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(10.0),
-      decoration: kBoxDecoWhite,
+      decoration: kBoxDecoWhite.copyWith(  boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.08),
+          spreadRadius: 2,
+          blurRadius: 4,
+          offset: const Offset(0, 2),
+        ),
+      ],),
       height: MediaQuery.of(context).size.height * 0.4,
       child: GridView.count(
           crossAxisCount: 2,
@@ -120,14 +135,12 @@ class TimeGrid extends StatelessWidget {
               InkWell(
                   child: Container(
                     decoration: BoxDecoration(
+                      color: Colors.grey.shade200,
                       borderRadius: BorderRadius.circular(10.0),
-                      border: Border.all(
-                        color: Colors.indigo.withOpacity(0.03),
-                      ),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey.withOpacity(0.08),
-                          spreadRadius: 2,
+                          color: Colors.grey.withOpacity(0.3),
+                          spreadRadius: 1,
                           blurRadius: 4,
                           offset: const Offset(0, 2),
                         ),

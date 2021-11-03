@@ -9,6 +9,7 @@ class HomeScreen extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,81 +59,17 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(
                       height: 40.0,
                     ),
-                    TextField(
-                      decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.search),
-                        suffixIcon: IconButton(
-                          icon: const Icon(Icons.clear),
-                          onPressed: () {
-
-                          },
-                        ),
-                        hintText: 'Search...',
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(
-                              width: 1.0, color: Colors.grey.shade400),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide:
-                              const BorderSide(width: 1.0, color: Colors.blue),
-                        ),
-                      ),
+                    const SearchField(),
+                    const SizedBox(
+                      height: 20.0,
                     ),
-                    const SizedBox(height: 20.0,),
                   ],
                 ),
               ),
               const SizedBox(
                 height: 20.0,
               ),
-              Container(
-                padding: const EdgeInsets.all(10.0),
-                decoration: kBoxDecoWhite,
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            child: TableCalendar(
-                              firstDay: DateTime.utc(2021, 11, 1),
-                              lastDay: DateTime.utc(2021, 11, 7),
-                              focusedDay: DateTime.now(),
-                              /*calendarController: _calendarController,*/
-                              calendarFormat: CalendarFormat.week,
-                              startingDayOfWeek: StartingDayOfWeek.monday,
-                              headerStyle: const HeaderStyle(
-                                titleCentered: true,
-                                formatButtonVisible: false,
-                                titleTextStyle: TextStyle(
-                                  color: Colors.black87,
-                                  fontSize: 18.0,
-                                ),
-                                leftChevronVisible: false,
-                                rightChevronVisible: false,
-                                headerPadding: EdgeInsets.all(20),
-                              ),
-                              calendarStyle: CalendarStyle(
-                                todayDecoration: BoxDecoration(
-                                    color: Colors.amber.shade600,
-                                    shape: BoxShape.circle),
-                                todayTextStyle: const TextStyle(color: Colors.white),
-                              ),
-                              daysOfWeekStyle: const DaysOfWeekStyle(
-                                weekendStyle: TextStyle(color: Colors.blue),
-                                weekdayStyle: TextStyle(color: Colors.black87),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
+              const HomeCalendar(),
               const SizedBox(
                 height: 20.0,
               ),
@@ -144,6 +81,89 @@ class HomeScreen extends StatelessWidget {
               )
             ]),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class HomeCalendar extends StatelessWidget {
+  const HomeCalendar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(10.0),
+      decoration: kBoxDecoWhite,
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: TableCalendar(
+                    firstDay: DateTime.utc(2021, 11, 1),
+                    lastDay: DateTime.utc(2021, 11, 7),
+                    focusedDay: DateTime.now(),
+                    /*calendarController: _calendarController,*/
+                    calendarFormat: CalendarFormat.week,
+                    startingDayOfWeek: StartingDayOfWeek.monday,
+                    headerStyle: const HeaderStyle(
+                      titleCentered: true,
+                      formatButtonVisible: false,
+                      titleTextStyle: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 18.0,
+                      ),
+                      leftChevronVisible: false,
+                      rightChevronVisible: false,
+                      headerPadding: EdgeInsets.all(20),
+                    ),
+                    calendarStyle: CalendarStyle(
+                      todayDecoration: BoxDecoration(
+                          color: Colors.amber.shade600, shape: BoxShape.circle),
+                      todayTextStyle: const TextStyle(color: Colors.white),
+                    ),
+                    daysOfWeekStyle: const DaysOfWeekStyle(
+                      weekendStyle: TextStyle(color: Colors.blue),
+                      weekdayStyle: TextStyle(color: Colors.black87),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class SearchField extends StatelessWidget {
+  const SearchField({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      decoration: InputDecoration(
+        prefixIcon: const Icon(Icons.search),
+        suffixIcon: IconButton(
+          icon: const Icon(Icons.clear),
+          onPressed: () {},
+        ),
+        hintText: 'Search...',
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(width: 1.0, color: Colors.grey.shade400),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: const BorderSide(width: 1.0, color: Colors.blue),
         ),
       ),
     );

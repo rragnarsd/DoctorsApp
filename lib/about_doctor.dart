@@ -55,7 +55,14 @@ class DoctorWidget extends StatelessWidget {
     final doctor = ModalRoute.of(context)!.settings.arguments as Doctors;
     return Container(
       padding: const EdgeInsets.all(15.0),
-      decoration: kBoxDecoWhite,
+      decoration: kBoxDecoWhite.copyWith(  boxShadow: [
+        BoxShadow(
+          color: Colors.indigo.withOpacity(0.02),
+          spreadRadius: 1,
+          blurRadius: 4,
+          offset: const Offset(0, 2),
+        ),
+      ],),
       child: Column(children: [
         const AboutTile(),
         const SizedBox(
@@ -71,7 +78,7 @@ class DoctorWidget extends StatelessWidget {
             doctorName: doctor.doctorName,
           ),
           btnText: 'Book Appointment',
-          btnColor: Colors.amber.shade600,
+          btnColor: Colors.blue.shade600,
           textColor: Colors.white,
         ),
        const SizedBox(
@@ -95,10 +102,12 @@ class DoctorPatientCard extends StatelessWidget {
       children: [
         DoctorCard(
           title: 'Patients',
+          color: Colors.amber.shade600,
           number: '${doctor.doctorPatients}',
         ),
         DoctorCard(
           title: 'Experience',
+          color: Colors.pink.shade600,
           number: '${doctor.doctorExperience}',
         ),
       ],
@@ -152,33 +161,44 @@ class UpcomingTile extends StatelessWidget {
         Container(
           width: 80,
           height: 100.0,
-          decoration: BoxDecoration(color: Colors.amber.shade600),
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Wed'.toUpperCase(),
-                  style: const TextStyle(
-                      fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.white),
-                ),
-                const SizedBox(
-                  height: 5.0,
-                ),
-                const Text(
-                  '11',
-                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.white),
-                ),
-              ]),
+          decoration: BoxDecoration(color: Colors.amber.shade600, borderRadius: BorderRadius.circular(10.0)),
+          child: const UpcomingDate(),
         ),
         const SizedBox(
           width: 15.0,
         ),
         const UpcomingTextTile(),
         const Spacer(),
-        const ReusableRawBtn(icon: Icons.phone, iconColor: Colors.pink,),
+        const ReusableRawBtn(icon: Icons.phone, iconColor: Colors.blue,),
       ]),
     );
+  }
+}
+
+class UpcomingDate extends StatelessWidget {
+  const UpcomingDate({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'Wed'.toUpperCase(),
+            style: const TextStyle(
+                fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.white),
+          ),
+          const SizedBox(
+            height: 5.0,
+          ),
+          const Text(
+            '11',
+            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.white),
+          ),
+        ]);
   }
 }
 
@@ -273,7 +293,8 @@ class NavGoBack extends StatelessWidget {
 class DoctorCard extends StatelessWidget {
   final String title;
   final String number;
-  const DoctorCard({Key? key, required this.title, required this.number})
+  final Color color;
+  const DoctorCard({Key? key, required this.title, required this.number, required this.color})
       : super(key: key);
 
   @override
@@ -295,10 +316,10 @@ class DoctorCard extends StatelessWidget {
           ),
           Text(
             '${number}+',
-            style: const TextStyle(
-                fontSize: 22.0,
+            style: TextStyle(
+                fontSize: 26.0,
                 fontWeight: FontWeight.w600,
-                color: Colors.pink),
+                color: color),
           )
         ],
       ),
