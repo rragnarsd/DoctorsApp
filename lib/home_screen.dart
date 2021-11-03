@@ -38,9 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: buildTableCalendar(),
                 ),
                 const SizedBox(height: 30.0),
-                const Text(
+                Text(
                   'Test',
-                  style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w600),
+                  style: kTextStyleBtnText.copyWith(fontSize: 24.0)
                 ),
                 const SizedBox(height: 20.0),
                 TimeGrid(bookingTime: bookingTime),
@@ -111,12 +111,7 @@ class TimeBookingBtn extends StatelessWidget {
         child: const Center(
           child: Text(
             'Book Appoinment',
-            style: TextStyle(
-              fontSize: 22.0,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-              letterSpacing: 1.0,
-            ),
+            style: kTextStyleBtnText
           ),
         ),
       ),
@@ -170,10 +165,7 @@ class TimeGrid extends StatelessWidget {
                     child: Center(
                       child: Text(
                         x,
-                        style: const TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w600,
-                        ),
+                        style: kTextStyleNormal
                       ),
                     ),
                   ),

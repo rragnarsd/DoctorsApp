@@ -36,12 +36,14 @@ class AppointmentScreen extends StatelessWidget {
                   ]),
               AppointmentsColumn(
                 list: novAppointments,
+                month: 'November',
               ),
               const SizedBox(
                 height: 20.0,
               ),
               AppointmentsColumn(
                 list: decAppointments,
+                month: 'December',
               ),
             ]),
           ),
@@ -53,9 +55,11 @@ class AppointmentScreen extends StatelessWidget {
 
 class AppointmentsColumn extends StatelessWidget {
   final List<AppointmentList> list;
+  final String month;
   const AppointmentsColumn({
     Key? key,
     required this.list,
+    required this.month,
   }) : super(key: key);
 
   @override
@@ -66,9 +70,9 @@ class AppointmentsColumn extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'November',
-            style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w600),
+          Text(
+            month,
+            style: const TextStyle(fontSize: 24.0, fontWeight: FontWeight.w600),
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.5,
@@ -157,7 +161,7 @@ class AppointmentTile extends StatelessWidget {
             ),
             Text(
               appointTime,
-              style: const TextStyle(fontSize: 16.0, color: Colors.black38),
+              style: kTextStyleNormal.copyWith(color: Colors.black38, fontWeight: FontWeight.normal)
             ),
           ],
         ),

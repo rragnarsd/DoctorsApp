@@ -1,6 +1,3 @@
-
-import 'dart:ui';
-
 class Doctors {
   String doctorName;
   String doctorType;

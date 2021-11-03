@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hairsaloon/about_doctor.dart';
 import 'package:hairsaloon/utils/doctor_lists.dart';
 
 import 'constants.dart';
@@ -96,40 +97,40 @@ class DoctorTile extends StatelessWidget {
               ),
               Text(
                 doctorName,
-                style: const TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w500,
-                  letterSpacing: 1.0,
-                ),
+                style: kTextStyleNormal,
               ),
               const SizedBox(
                 height: 5.0,
               ),
               Text(
                 doctorType,
-                style: TextStyle(fontSize: 14.0, letterSpacing: 1.0),
+                style: kTextStyleSmall
               ),
             ],
           ),
           const SizedBox(
             height: 20.0,
           ),
-          Container(
-            height: 40.0,
-            width: MediaQuery.of(context).size.width * 0.35,
-            decoration: BoxDecoration(
-              color: Colors.grey.shade200,
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            child: const Center(
-                child: Text(
-              'About',
-              style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.w500,
-                letterSpacing: 1.0,
+          InkWell(
+            child: Container(
+              height: 40.0,
+              width: MediaQuery.of(context).size.width * 0.35,
+              decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(10.0),
               ),
-            )),
+              child: const Center(
+                  child: Text(
+                'About',
+                style: kTextStyleNormal
+              )),
+            ),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const AboutDoctor(),
+              ),
+            ),
           ),
         ],
       ),
