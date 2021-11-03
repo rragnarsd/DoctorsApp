@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.indigo,
         ),
-        home: const AppointmentScreen(),
+        home: const DoctorScreen(),
     );
   }
 }

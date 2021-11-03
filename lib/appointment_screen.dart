@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hairsaloon/utils/appointment_lists.dart';
+import 'package:hairsaloon/widgets/reusable_raw_btn.dart';
 
+import 'about_doctor.dart';
 import 'constants.dart';
 import 'models/appointments.dart';
 
@@ -21,19 +23,9 @@ class AppointmentScreen extends StatelessWidget {
               const SizedBox(
                 height: 20.0,
               ),
-                  Row(children: [
-                    IconButton(
-                      icon: const Icon(Icons.arrow_back),
-                      onPressed: () => Navigator.pop(context),
-                    ),
-                    const SizedBox(
-                      width: 10.0,
-                    ),
-                    const Text(
-                      'Appointments',
-                      style: TextStyle(fontSize: 22.0),
-                    )
-                  ]),
+              const NavGoBack(
+                title: 'Appointments',
+              ),
               AppointmentsColumn(
                 list: novAppointments,
                 month: 'November',
@@ -159,25 +151,13 @@ class AppointmentTile extends StatelessWidget {
             const SizedBox(
               height: 10.0,
             ),
-            Text(
-              appointTime,
-              style: kTextStyleNormal.copyWith(color: Colors.black38, fontWeight: FontWeight.normal)
-            ),
+            Text(appointTime,
+                style: kTextStyleNormal.copyWith(
+                    color: Colors.black38, fontWeight: FontWeight.normal)),
           ],
         ),
         const Spacer(),
-        RawMaterialButton(
-          padding: const EdgeInsets.all(10.0),
-          shape: const CircleBorder(),
-          fillColor: Colors.white,
-          elevation: 3.0,
-          child: Icon(
-            Icons.phone,
-            size: 26.0,
-            color: iconColor,
-          ),
-          onPressed: () {},
-        ),
+        const ReusableRawBtn(),
       ],
     );
   }
