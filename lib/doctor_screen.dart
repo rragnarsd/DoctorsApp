@@ -37,102 +37,76 @@ class DoctorScreen extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.9,
                 child: GridView.count(
-                  childAspectRatio: 2 / 2.5,
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 20,
-                  crossAxisSpacing: 20,
-                  children: [
-                    for (var i in doctors)
-                      DoctorTile(
-                        doctorName: i.doctorName,
-                        doctorType: i.doctorType,
-                        doctorImage: i.doctorImage,
-                      )
-                  ],
+                    crossAxisCount: 2,
+                    childAspectRatio: 2 / 2.7,
+                    mainAxisSpacing: 20,
+                    crossAxisSpacing: 20,
+                    children: List.generate(
+                      doctors.length,
+                      (index) => Container(
+                        decoration: kBoxDecoWhite,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Hero(
+                              tag: 'doctorHero$index',
+                              child: CircleAvatar(
+                                radius: 40.0,
+                                backgroundImage:
+                                    NetworkImage(doctors[index].doctorImage),
+                              ),
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const SizedBox(
+                                  height: 10.0,
+                                ),
+                                Text(
+                                  doctors[index].doctorName,
+                                  style: kTextStyleNormal,
+                                ),
+                                const SizedBox(
+                                  height: 5.0,
+                                ),
+                                Text(doctors[index].doctorType,
+                                    style: kTextStyleSmall,
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 20.0,
+                            ),
+                            InkWell(
+                              child: Container(
+                                height: 40.0,
+                                width: MediaQuery.of(context).size.width * 0.35,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.shade200,
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                child: const Center(
+                                  child: Text('About', style: kTextStyleNormal),
+                                ),
+                              ),
+                              onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const AboutDoctor(),
+                                  settings:
+                                      RouteSettings(arguments: doctors[index]),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                 ),
               ),
             ]),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class DoctorTile extends StatelessWidget {
-  final String doctorName;
-  final String doctorType;
-  final String doctorImage;
-/*  final String doctorLocation;
-  final int doctorExperience;
-  final int doctorPatients;
-  final String doctorAbout;*/
-  const DoctorTile({
-    Key? key,
-    required this.doctorName,
-    required this.doctorType,
-    required this.doctorImage,
-/*    required this.doctorLocation,
-      required this.doctorExperience,
-      required this.doctorPatients,
-      required this.doctorAbout*/
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: kBoxDecoWhite,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CircleAvatar(
-            radius: 40.0,
-            backgroundImage: NetworkImage(doctorImage),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(
-                height: 10.0,
-              ),
-              Text(
-                doctorName,
-                style: kTextStyleNormal,
-              ),
-              const SizedBox(
-                height: 5.0,
-              ),
-              Text(
-                doctorType,
-                style: kTextStyleSmall
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 20.0,
-          ),
-          InkWell(
-            child: Container(
-              height: 40.0,
-              width: MediaQuery.of(context).size.width * 0.35,
-              decoration: BoxDecoration(
-                color: Colors.grey.shade200,
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: const Center(
-                  child: Text(
-                'About',
-                style: kTextStyleNormal
-              )),
-            ),
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const AboutDoctor(),
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hairsaloon/models/doctors.dart';
 import 'package:hairsaloon/widgets/reusable_raw_btn.dart';
 
 import 'constants.dart';
@@ -77,18 +78,21 @@ class ReusableHeaderText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
-        Text(
-          'Upcoming schedule',
-          style: TextStyle(fontSize: 20.0),
-        ),
-        SizedBox(
-          height: 20.0,
-        ),
-        UpcomingTile()
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(15.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          Text(
+            'Upcoming schedule',
+            style: TextStyle(fontSize: 20.0, letterSpacing: 1.0, fontWeight: FontWeight.w600),
+          ),
+          SizedBox(
+            height: 20.0,
+          ),
+          UpcomingTile()
+        ],
+      ),
     );
   }
 }
@@ -100,16 +104,17 @@ class DoctorPatientCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final doctor = ModalRoute.of(context)!.settings.arguments as Doctors;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: const [
+      children: [
         DoctorCard(
           title: 'Patients',
-          number: 500,
+          number: '${doctor.doctorPatients}',
         ),
         DoctorCard(
           title: 'Experience',
-          number: 10,
+          number: '${doctor.doctorExperience}',
         ),
       ],
     );
@@ -123,13 +128,16 @@ class AboutTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final doctor = ModalRoute.of(context)!.settings.arguments as Doctors;
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.95,
-      child: const ListTile(
+      child: ListTile(
         contentPadding: EdgeInsets.zero,
-        title: Text('Dr. Lida Gutierrez', style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w600, letterSpacing: 1.0),),
-        subtitle: Text('Heart Surgeonm, England', style: TextStyle(fontSize: 16.0),),
-        trailing: CircleAvatar(),
+        title: Text(doctor.doctorName, style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w600, letterSpacing: 1.0),),
+        subtitle: Text(doctor.doctorType, style: TextStyle(fontSize: 16.0),),
+        trailing: Hero(
+            tag: 'doctorHero',
+            child: CircleAvatar(backgroundImage: NetworkImage(doctor.doctorImage), radius: 25.0,)),
       ),
     );
   }
@@ -143,12 +151,11 @@ class UpcomingTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(15.0),
       decoration: kBoxDecoWhite,
       child: Row(children: [
         Container(
-          width: 60.0,
-          height: 80.0,
+          width: 80,
+          height: 100.0,
           decoration: const BoxDecoration(color: Colors.amber),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -212,24 +219,25 @@ class DoctorAbout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final doctor = ModalRoute.of(context)!.settings.arguments as Doctors;
     return Container(
       width: double.infinity,
-      height: MediaQuery.of(context).size.height * 0.25,
+      height: MediaQuery.of(context).size.height * 0.20,
       padding: const EdgeInsets.all(15.0),
       decoration: kBoxDecoWhite,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Text(
+        children: [
+         const Text(
             'About Doctor',
-            style: TextStyle(fontSize: 20.0),
+            style: TextStyle(fontSize: 20.0, letterSpacing: 1.0, fontWeight: FontWeight.w600),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5.0,
           ),
           Text(
-            'Lorem',
-            style: TextStyle(fontSize: 16.0),
+            doctor.doctorAbout,
+            style: const TextStyle(fontSize: 16.0, letterSpacing: 1.0, height: 1.5),
           ),
         ],
       ),
@@ -264,7 +272,7 @@ class NavGoBack extends StatelessWidget {
 
 class DoctorCard extends StatelessWidget {
   final String title;
-  final int number;
+  final String number;
   const DoctorCard({Key? key, required this.title, required this.number})
       : super(key: key);
 
