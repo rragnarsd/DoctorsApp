@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hairsaloon/contact_doctor_screen.dart';
 import 'package:hairsaloon/models/doctors.dart';
+import 'package:hairsaloon/utils/doctor_lists.dart';
+import 'package:hairsaloon/widgets/reusable_appointment_tile.dart';
 import 'package:hairsaloon/widgets/reusable_raw_btn.dart';
+import 'package:hairsaloon/widgets/reusable_time_btn.dart';
 
 import 'constants.dart';
 import 'home_screen.dart';
@@ -34,7 +38,7 @@ class AboutDoctor extends StatelessWidget {
                   SizedBox(
                     height: 20.0,
                   ),
-                  ReusableHeaderText()
+                  ReusableAppointmentTile()
                 ]),
           ),
         ),
@@ -53,7 +57,7 @@ class DoctorWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(15.0),
       decoration: kBoxDecoWhite,
-      child: Column(children: const [
+      child: Column(children: [
         AboutTile(),
         SizedBox(
           height: 20.0,
@@ -62,37 +66,11 @@ class DoctorWidget extends StatelessWidget {
         SizedBox(
           height: 30.0,
         ),
-        TimeBookingBtn(),
+        ReusableTimeBtn(widget: ContactDoctorScreen(), btnText: 'Book Appointment', btnColor: Colors.amber.shade600, textColor: Colors.white,),
         SizedBox(
           height: 20.0,
         ),
       ]),
-    );
-  }
-}
-
-class ReusableHeaderText extends StatelessWidget {
-  const ReusableHeaderText({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(15.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Text(
-            'Upcoming schedule',
-            style: TextStyle(fontSize: 20.0, letterSpacing: 1.0, fontWeight: FontWeight.w600),
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
-          UpcomingTile()
-        ],
-      ),
     );
   }
 }
@@ -137,7 +115,8 @@ class AboutTile extends StatelessWidget {
         subtitle: Text(doctor.doctorType, style: TextStyle(fontSize: 16.0),),
         trailing: Hero(
             tag: 'doctorHero',
-            child: CircleAvatar(backgroundImage: NetworkImage(doctor.doctorImage), radius: 25.0,)),
+            child: CircleAvatar(backgroundImage: NetworkImage(doctor.doctorImage), radius: 25.0,),
+        ),
       ),
     );
   }

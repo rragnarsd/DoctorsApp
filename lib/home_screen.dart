@@ -1,7 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:hairsaloon/about_doctor.dart';
 import 'package:hairsaloon/appointment_screen.dart';
+import 'package:hairsaloon/widgets/reusable_time_btn.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'constants.dart';
@@ -45,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(height: 20.0),
                 TimeGrid(bookingTime: bookingTime),
                 const SizedBox(height: 20.0),
-                const TimeBookingBtn()
+                ReusableTimeBtn(widget: AboutDoctor(), btnText: 'Book Appoinment', btnColor: Colors.amber.shade600, textColor: Colors.white,)
               ],
             ),
           ),
@@ -93,37 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class TimeBookingBtn extends StatelessWidget {
-  const TimeBookingBtn({
-    Key? key,
-  }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      child: Container(
-        height: 50.0,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          color: Colors.amber.shade600,
-        ),
-        child: const Center(
-          child: Text(
-            'Book Appoinment',
-            style: kTextStyleBtnText
-          ),
-        ),
-      ),
-      onTap: () => Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const AppointmentScreen(),
-        ),
-      ),
-    );
-  }
-}
 
 class TimeGrid extends StatelessWidget {
   const TimeGrid({
