@@ -1,7 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hairsaloon/new_chat_screen.dart';
 import 'package:hairsaloon/utils/avatar_list.dart';
 import 'package:hairsaloon/utils/chat_list.dart';
+import 'package:unicons/unicons.dart';
 
 import 'constants.dart';
 
@@ -40,15 +41,129 @@ class CircleAvatarChatRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        for (var i in avatars)
-          CircleAvatar(
-            backgroundImage: i.backgroundImage,
-            radius: i.radius,
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(right: 15.0, left: 15.0),
+            child: Column(
+              children: [
+                Container(
+                  width: 60.0,
+                  height: 60.0,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.grey.shade300,
+                  ),
+                  child: const Center(
+                    child: Icon(
+                      UniconsLine.plus,
+                      size: 30.0,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                const SizedBox(
+                  width: 75.0,
+                  child: Align(
+                    child: Text(
+                      'Your Story',
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Row(
+            children: List.generate(avatars.length, (index) {
+              return Padding(
+                padding: const EdgeInsets.only(right: 15.0),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      width: 60.0,
+                      height: 60.0,
+                      child: Stack(
+                        children: [
+                          avatars[index].hasStory
+                              ? Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      color: Colors.blue.shade600,
+                                      width: 2.0,
+                                    ),
+                                  ),
+                                  child: Container(
+                                    width: 75.0,
+                                    height: 75.0,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        image: NetworkImage(
+                                          avatars[index].doctorImage,
+                                        ),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : Container(
+                                  width: 70.0,
+                                  height: 70.0,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                      image: NetworkImage(
+                                        avatars[index].doctorImage,
+                                      ),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                          avatars[index].isOnline
+                              ? Positioned(
+                                  top: 40.0,
+                                  left: 42.0,
+                                  child: Container(
+                                    width: 20.0,
+                                    height: 20.0,
+                                    decoration: BoxDecoration(
+                                      color: Colors.green.shade600,
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 3.0,
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : Container()
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    SizedBox(
+                      width: 75.0,
+                      child: Align(
+                          child: Text(
+                        avatars[index].doctorName,
+                        overflow: TextOverflow.ellipsis,
+                      )),
+                    )
+                  ],
+                ),
+              );
+            }),
           )
-      ],
+        ],
+      ),
     );
   }
 }
@@ -60,40 +175,82 @@ class ChatRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.7,
-      child: ListView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemCount: chats.length,
-          itemBuilder: (context, index) {
-            return InkWell(
-              child: ListTile(
-                title: Text(
-                  chats[index].doctor,
-                  style: const TextStyle(fontWeight: FontWeight.w600),
+    return Column(
+      children: List.generate(chats.length, (index) {
+        return InkWell(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 5.0, bottom: 5.0),
+            child: Row(children: [
+              SizedBox(
+                width: 60.0,
+                height: 60.0,
+                child: Stack(
+                  children: [
+                    chats[index].hasStory
+                        ? Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Colors.blue.shade600,
+                                width: 2.0,
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(3.0),
+                              child: Container(
+                                width: 75.0,
+                                height: 75.0,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    image: NetworkImage(chats[index].image),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        : Container(
+                            width: 70.0,
+                            height: 70.0,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                  image: NetworkImage(chats[index].image),
+                                  fit: BoxFit.cover),
+                            ),
+                          ),
+                    chats[index].isOnline
+                        ? Positioned(
+                            top: 40.0,
+                            left: 42.0,
+                            child: Container(
+                              width: 20.0,
+                              height: 20.0,
+                              decoration: BoxDecoration(
+                                color: Colors.green.shade600,
+                                shape: BoxShape.circle,
+                                border:
+                                    Border.all(color: Colors.white, width: 3.0),
+                              ),
+                            ),
+                          )
+                        : Container()
+                  ],
                 ),
-                subtitle: Text(chats[index].message),
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage(chats[index].image),
-                  radius: 35.0,
-                ),
-                trailing: Text(chats[index].dateTime),
               ),
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => NewChatScreen(
-                    doctorName: chats[index].doctor,
-                    doctorImage: chats[index].image,
-                  ),
-                  settings: RouteSettings(
-                    arguments: chats[index],
-                  ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.78,
+                child: ListTile(
+                  title: Text(chats[index].doctor),
+                  subtitle: Text(chats[index].message),
+                  trailing: Text(chats[index].dateTime),
                 ),
-              ),
-            );
-          }),
+              )
+            ]),
+          ),
+        );
+      }),
     );
   }
 }
