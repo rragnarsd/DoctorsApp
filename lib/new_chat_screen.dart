@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hairsaloon/models/messages.dart';
 import 'package:hairsaloon/utils/chat_list.dart';
-import 'package:hairsaloon/utils/message_list.dart';
-
-import 'models/chat.dart';
 
 class NewChatScreen extends StatelessWidget {
   final String doctorName;

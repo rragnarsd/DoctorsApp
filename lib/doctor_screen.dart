@@ -48,16 +48,7 @@ class DoctorGridView extends StatelessWidget {
         children: List.generate(
           doctors.length,
           (index) => Container(
-            decoration: kBoxDecoWhite.copyWith(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.indigo.withOpacity(0.02),
-                  spreadRadius: 1,
-                  blurRadius: 4,
-                  offset: const Offset(0, 2),
-                ),
-              ],
-            ),
+            decoration: kBoxDecoWhite,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -76,14 +67,17 @@ class DoctorGridView extends StatelessWidget {
                     ),
                     Text(
                       doctors[index].doctorName,
-                      style: kTextStyleNormal,
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
                     const SizedBox(
                       height: 5.0,
                     ),
                     Text(
                       doctors[index].doctorType,
-                      style: kTextStyleSmall,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1!
+                          .copyWith(fontSize: 14.0, color: Colors.black38),
                     ),
                   ],
                 ),
@@ -106,8 +100,8 @@ class DoctorGridView extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: const Center(
-                      child: Text('About', style: kTextStyleNormal),
+                    child: Center(
+                      child: Text('About',style: Theme.of(context).textTheme.bodyText1,),
                     ),
                   ),
                   onTap: () => Navigator.push(

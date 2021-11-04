@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hairsaloon/appointment_screen.dart';
 import 'package:hairsaloon/booking_screen.dart';
 import 'package:hairsaloon/chat_screen.dart';
 import 'package:hairsaloon/constants.dart';
@@ -26,6 +27,7 @@ class _CustomNavBarState extends State<CustomNavBar> {
     HomeScreen(),
     ChatScreen(),
     DoctorScreen(),
+    AppointmentScreen(),
     BookingScreen()
   ];
 
@@ -55,6 +57,10 @@ class _CustomNavBarState extends State<CustomNavBar> {
             BottomNavigationBarItem(
               icon: Icon(UniconsLine.medical_square),
               label: 'Doctors',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(UniconsLine.heart),
+              label: 'Appointments',
             ),
             BottomNavigationBarItem(
               icon: Icon(UniconsLine.hospital),

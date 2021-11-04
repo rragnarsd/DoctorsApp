@@ -28,16 +28,7 @@ class ContactDoctorScreen extends StatelessWidget {
               children: [
                 Container(
                   height: MediaQuery.of(context).size.height * 0.5,
-                  decoration: kBoxDecoWhite.copyWith(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.indigo.withOpacity(0.02),
-                        spreadRadius: 1,
-                        blurRadius: 4,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
-                  ),
+                  decoration: kBoxDecoWhite,
                   child: ContactDoctor(image: image, doctorName: doctorName),
                 ),
                 const ReusableAppointmentTile()
@@ -77,7 +68,7 @@ class ContactDoctor extends StatelessWidget {
         ),
         Text(
           doctorName,
-          style: const TextStyle(fontSize: 20.0),
+          style: Theme.of(context).textTheme.headline5,
         ),
         const SizedBox(
           height: 20.0,

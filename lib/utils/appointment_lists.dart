@@ -5,7 +5,7 @@ import '../models/appointments.dart';
 List<AppointmentList> novAppointments = [
   AppointmentList(
       appointTime: '09:30 AM',
-      appointMonth: 'November',
+      appointMonth: 'Nov',
       textColor: Colors.white,
       color: Colors.pink,
       iconColor: Colors.pink,
@@ -13,7 +13,7 @@ List<AppointmentList> novAppointments = [
       appointDate: '10'),
   AppointmentList(
       appointTime: '11:30 AM',
-      appointMonth: 'November',
+      appointMonth: 'Nov',
       textColor: Colors.white,
       color: Colors.blue,
       iconColor: Colors.blue,
@@ -21,7 +21,7 @@ List<AppointmentList> novAppointments = [
       appointDate: '16'),
   AppointmentList(
       appointTime: '10:30 AM',
-      appointMonth: 'November',
+      appointMonth: 'Nov',
       textColor: Colors.white,
       color: Colors.amber,
       iconColor: Colors.amber,
@@ -32,7 +32,7 @@ List<AppointmentList> novAppointments = [
 List<AppointmentList> decAppointments = [
   AppointmentList(
       appointTime: '10:30 AM',
-      appointMonth: 'December',
+      appointMonth: 'Dec',
       textColor: Colors.black87,
       color: Colors.white,
       iconColor: Colors.black87,
@@ -40,7 +40,7 @@ List<AppointmentList> decAppointments = [
       appointDate: '12'),
   AppointmentList(
       appointTime: '11:30 AM',
-      appointMonth: 'December',
+      appointMonth: 'Dec',
       textColor: Colors.black87,
       color: Colors.white,
       iconColor: Colors.black87,
@@ -48,7 +48,7 @@ List<AppointmentList> decAppointments = [
       appointDate: '20'),
   AppointmentList(
       appointTime: '14:00 PM',
-      appointMonth: 'December',
+      appointMonth: 'Dec',
       textColor: Colors.black87,
       color: Colors.white,
       iconColor: Colors.black87,

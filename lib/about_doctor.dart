@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hairsaloon/contact_doctor_screen.dart';
 import 'package:hairsaloon/models/doctors.dart';
@@ -28,7 +29,7 @@ class AboutDoctor extends StatelessWidget {
                     height: 20.0,
                   ),
                   NavGoBack(
-                    title: 'About Doctor',
+                    title: '',
                   ),
                   DoctorWidget(),
                   SizedBox(
@@ -57,16 +58,7 @@ class DoctorWidget extends StatelessWidget {
     final doctor = ModalRoute.of(context)!.settings.arguments as Doctors;
     return Container(
       padding: const EdgeInsets.all(15.0),
-      decoration: kBoxDecoWhite.copyWith(
-        boxShadow: [
-          BoxShadow(
-            color: Colors.indigo.withOpacity(0.02),
-            spreadRadius: 1,
-            blurRadius: 4,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
+      decoration: kBoxDecoWhite,
       child: Column(children: [
         const AboutTile(),
         const SizedBox(
@@ -133,13 +125,13 @@ class AboutTile extends StatelessWidget {
         contentPadding: EdgeInsets.zero,
         title: Text(
           doctor.doctorName,
-          style: const TextStyle(
-              fontSize: 22.0, fontWeight: FontWeight.w600, letterSpacing: 1.0,),
+          style: Theme.of(context).textTheme.headline3,
         ),
-        subtitle: Text(
-          doctor.doctorType,
-          style: const TextStyle(fontSize: 16.0),
-        ),
+        subtitle: Text(doctor.doctorType,
+            style: Theme.of(context)
+                .textTheme
+                .bodyText1!
+                .copyWith(color: Colors.black38)),
         trailing: Hero(
           tag: 'doctorHero',
           child: CircleAvatar(
@@ -164,10 +156,10 @@ class UpcomingTile extends StatelessWidget {
       child: Row(children: [
         Container(
           width: 80,
-          height: 100.0,
+          height: 80.0,
           decoration: BoxDecoration(
-              color: Colors.amber.shade600,
-              borderRadius: BorderRadius.circular(10.0),
+            color: Colors.amber.shade600,
+            borderRadius: BorderRadius.circular(10.0),
           ),
           child: const UpcomingDate(),
         ),
@@ -198,22 +190,20 @@ class UpcomingDate extends StatelessWidget {
         children: [
           Text(
             'Wed'.toUpperCase(),
-            style: const TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-            ),
+            style: Theme.of(context)
+                .textTheme
+                .bodyText2!
+                .copyWith(color: Colors.white, fontWeight: FontWeight.w600),
           ),
           const SizedBox(
             height: 5.0,
           ),
-          const Text(
+          Text(
             '11',
-            style: TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-            ),
+            style: Theme.of(context)
+                .textTheme
+                .bodyText2!
+                .copyWith(color: Colors.white, fontWeight: FontWeight.w600),
           ),
         ]);
   }
@@ -228,20 +218,17 @@ class UpcomingTextTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
-        Text(
-          'Heart Surgeon',
-          style: TextStyle(
-            fontSize: 20.0,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        SizedBox(
+      children: [
+        Text('Heart Surgeon', style: Theme.of(context).textTheme.headline5),
+        const SizedBox(
           height: 5.0,
         ),
         Text(
           '09:00 AM',
-          style: TextStyle(fontSize: 16.0),
+          style: Theme.of(context)
+              .textTheme
+              .bodyText1!
+              .copyWith(color: Colors.black38),
         ),
       ],
     );
@@ -257,39 +244,25 @@ class DoctorAbout extends StatelessWidget {
   Widget build(BuildContext context) {
     final doctor = ModalRoute.of(context)!.settings.arguments as Doctors;
     return Container(
-      width: double.infinity,
       height: MediaQuery.of(context).size.height * 0.20,
       padding: const EdgeInsets.all(15.0),
       decoration: kBoxDecoWhite,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'About Doctor',
-            style: TextStyle(
-              fontSize: 20.0,
-              letterSpacing: 1.0,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
+          Text('About Doctor', style: Theme.of(context).textTheme.headline3),
           const SizedBox(
             height: 5.0,
           ),
           Text(
             doctor.doctorAbout,
-            style: const TextStyle(
-              fontSize: 16.0,
-              letterSpacing: 1.0,
-              height: 1.5,
-            ),
+            style: Theme.of(context).textTheme.bodyText1!.copyWith(height: 1.5),
           ),
         ],
       ),
     );
   }
 }
-
-
 
 class DoctorCard extends StatelessWidget {
   final String title;
@@ -312,20 +285,14 @@ class DoctorCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            title,
-            style: const TextStyle(fontSize: 18.0),
-          ),
+          Text(title, style: Theme.of(context).textTheme.headline3),
           const SizedBox(
             height: 10.0,
           ),
           Text(
             '${number}+',
-            style: TextStyle(
-              fontSize: 26.0,
-              fontWeight: FontWeight.w600,
-              color: color,
-            ),
+            style:
+                Theme.of(context).textTheme.headline1!.copyWith(color: color),
           )
         ],
       ),

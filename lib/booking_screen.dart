@@ -34,14 +34,7 @@ class _BookingScreenState extends State<BookingScreen> {
               const SizedBox(height: 20.0,),
               Container(
                 padding: const EdgeInsets.all(10.0),
-                decoration: kBoxDecoWhite.copyWith(  boxShadow: [
-                  BoxShadow(
-                    color: Colors.indigo.withOpacity(0.02),
-                    spreadRadius: 1,
-                    blurRadius: 4,
-                    offset: const Offset(0, 2),
-                  ),
-                ],),
+                decoration: kBoxDecoWhite,
                 child: buildTableCalendar(),
               ),
               const SizedBox(height: 30.0),
@@ -49,12 +42,12 @@ class _BookingScreenState extends State<BookingScreen> {
                 padding: const EdgeInsets.only(left: 10.0),
                 child: Text(
                   'Test',
-                  style: kTextStyleBtnText.copyWith(fontSize: 24.0, color: Colors.black87)
+                  style: Theme.of(context).textTheme.headline4,
                 ),
               ),
               TimeGrid(bookingTime: bookingTime),
               const SizedBox(height: 20.0),
-              ReusableTimeBtn(widget: const DoctorScreen(), btnText: 'Book Appoinment', btnColor: Colors.amber.shade600, textColor: Colors.white,),
+              ReusableTimeBtn(widget: const DoctorScreen(), btnText: 'Book Appointment', btnColor: Colors.amber.shade600, textColor: Colors.white,),
               const SizedBox(height: 10.0),
             ],
           ),
@@ -89,19 +82,19 @@ class _BookingScreenState extends State<BookingScreen> {
       ),
       calendarStyle: CalendarStyle(
         selectedDecoration:
-            const BoxDecoration(color: Colors.amber, shape: BoxShape.circle),
+             BoxDecoration(color: Colors.amber.shade600, shape: BoxShape.circle),
         todayDecoration:
             BoxDecoration(color: Colors.blue.shade600, shape: BoxShape.circle),
       ),
       daysOfWeekStyle: const DaysOfWeekStyle(
-        weekendStyle:
-        TextStyle(color: Colors.blue),
-        weekdayStyle:
-        TextStyle(color: Colors.black87),
+        weekendStyle: TextStyle(color: Colors.blue, fontSize: 16.0),
+        weekdayStyle: TextStyle(color: Colors.black87, fontSize: 16.0),
       ),
     );
   }
 }
+
+
 
 
 class TimeGrid extends StatelessWidget {
@@ -116,20 +109,13 @@ class TimeGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(10.0),
-      decoration: kBoxDecoWhite.copyWith(  boxShadow: [
-        BoxShadow(
-          color: Colors.grey.withOpacity(0.08),
-          spreadRadius: 2,
-          blurRadius: 4,
-          offset: const Offset(0, 2),
-        ),
-      ],),
+      decoration: kBoxDecoWhite,
       height: MediaQuery.of(context).size.height * 0.4,
       child: GridView.count(
           crossAxisCount: 2,
-          childAspectRatio: (3 / 1),
-          crossAxisSpacing: 15,
-          mainAxisSpacing: 15,
+          childAspectRatio: (3.5 / 1),
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,
           children: [
             for (var x in bookingTime)
               InkWell(
@@ -149,7 +135,7 @@ class TimeGrid extends StatelessWidget {
                     child: Center(
                       child: Text(
                         x,
-                        style: kTextStyleNormal
+                        style: Theme.of(context).textTheme.bodyText1,
                       ),
                     ),
                   ),

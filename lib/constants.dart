@@ -22,6 +22,14 @@ var kBoxDecoWhite = BoxDecoration(
     begin: Alignment.bottomRight,
     end: Alignment.topLeft,
   ),
+  boxShadow: [
+    BoxShadow(
+      color: Colors.indigo.withOpacity(0.02),
+      spreadRadius: 1,
+      blurRadius: 4,
+      offset: const Offset(0, 2),
+    ),
+  ],
 );
 
 var kBoxDecoWithBoxShadow = BoxDecoration(
@@ -40,15 +48,20 @@ var kBoxDecoWithBoxShadow = BoxDecoration(
 const kTextStyleSmall = TextStyle(fontSize: 14.0, letterSpacing: 1.0);
 
 const kTextStyleNormal = TextStyle(
-  fontSize: 16.0,
-  fontWeight: FontWeight.w500,
-  letterSpacing: 1.0,
-  color: Colors.black87
-);
+    fontSize: 16.0,
+    fontWeight: FontWeight.w500,
+    letterSpacing: 1.0,
+    color: Colors.black87);
 
 const kTextStyleBtnText = TextStyle(
-  fontSize: 22.0,
+  fontSize: 20.0,
   fontWeight: FontWeight.w600,
   color: Colors.white,
   letterSpacing: 1.0,
+);
+
+const kTextStyleUpcomingDate = TextStyle(
+  fontSize: 18.0,
+  fontWeight: FontWeight.w600,
+  color: Colors.white,
 );

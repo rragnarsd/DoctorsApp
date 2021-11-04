@@ -19,7 +19,7 @@ class ReusableTimeBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
-        height: 50.0,
+        height: 45.0,
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),

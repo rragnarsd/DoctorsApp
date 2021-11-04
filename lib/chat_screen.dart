@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hairsaloon/new_chat_screen.dart';
-import 'package:hairsaloon/utils/avatar_list.dart';
 import 'package:hairsaloon/utils/chat_list.dart';
-import 'package:hairsaloon/utils/message_list.dart';
 import 'package:unicons/unicons.dart';
 
 import 'constants.dart';
@@ -68,11 +66,12 @@ class CircleAvatarChatRow extends StatelessWidget {
                 const SizedBox(
                   height: 10.0,
                 ),
-                const SizedBox(
+                SizedBox(
                   width: 75.0,
                   child: Align(
                     child: Text(
-                      'Your Story',
+                      'Story',
+                      style: Theme.of(context).textTheme.bodyText1,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
@@ -157,7 +156,7 @@ class CircleAvatarChatRow extends StatelessWidget {
                       width: 75.0,
                       child: Align(
                           child: Text(
-                        avatars[index].doctorName,
+                        chats[index].doctor, style: Theme.of(context).textTheme.bodyText1,
                         overflow: TextOverflow.ellipsis,
                       )),
                     )
@@ -247,9 +246,22 @@ class ChatRow extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.78,
                 child: ListTile(
-                  title: Text(chats[index].doctor),
-                  subtitle: Text(chats[index].message),
-                  trailing: Text(chats[index].dateTime),
+                  title: Text(chats[index].doctor,
+                      style: Theme.of(context).textTheme.bodyText1),
+                  subtitle: Text(
+                    chats[index].message,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1!
+                        .copyWith(color: Colors.black38),
+                  ),
+                  trailing: Text(
+                    chats[index].dateTime,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1!
+                        .copyWith(color: Colors.black38, fontSize: 14.0),
+                  ),
                 ),
               )
             ]),
@@ -258,10 +270,9 @@ class ChatRow extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) => NewChatScreen(
-                doctorName: chats[index].doctor,
-                doctorImage: chats[index].image,
-                isOnline: chats[index].isOnline
-              ),
+                  doctorName: chats[index].doctor,
+                  doctorImage: chats[index].image,
+                  isOnline: chats[index].isOnline),
               settings: RouteSettings(arguments: chats[index]),
             ),
           ),

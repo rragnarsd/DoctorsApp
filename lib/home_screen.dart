@@ -28,20 +28,23 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(10.0),
                 decoration: kBoxDecoWhite,
                 child: Column(
-                  children: const [
+                  children: [
                     Text(
                       'Let\'s find your doctor',
-                      style: TextStyle(fontSize: 22.0),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline2!
+                          .copyWith(fontWeight: FontWeight.normal),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20.0,
                     ),
-                    RawBtnRow(),
-                    SizedBox(
+                    const RawBtnRow(),
+                    const SizedBox(
                       height: 20.0,
                     ),
-                    SearchField(),
-                    SizedBox(
+                    const SearchField(),
+                    const SizedBox(
                       height: 20.0,
                     ),
                   ],
@@ -141,8 +144,8 @@ class HomeCalendar extends StatelessWidget {
                       todayTextStyle: const TextStyle(color: Colors.white),
                     ),
                     daysOfWeekStyle: const DaysOfWeekStyle(
-                      weekendStyle: TextStyle(color: Colors.blue),
-                      weekdayStyle: TextStyle(color: Colors.black87),
+                      weekendStyle: TextStyle(color: Colors.blue, fontSize: 16.0),
+                      weekdayStyle: TextStyle(color: Colors.black87, fontSize: 16.0),
                     ),
                   ),
                 ),
@@ -180,15 +183,13 @@ class HomeDoctorTile extends StatelessWidget {
               contentPadding: EdgeInsets.zero,
               title: Text(
                 doctorName,
-                style: const TextStyle(
-                  fontSize: 22.0,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 1.0,
-                ),
+                style: Theme.of(context).textTheme.headline3,
               ),
-              subtitle: Text(
-                doctorType,
-                style: const TextStyle(fontSize: 16.0),
+              subtitle: Text(doctorType,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1!
+                      .copyWith(color: Colors.black38),
               ),
               trailing: Hero(
                 tag: 'doctorHero',
@@ -201,10 +202,8 @@ class HomeDoctorTile extends StatelessWidget {
           ),
           Row(
             children: [
-              const Text(
-                'Available for your need',
-                style: TextStyle(fontSize: 16.0),
-              ),
+              Text('Available for your need',
+                  style: Theme.of(context).textTheme.bodyText1),
               const Spacer(),
               OutlinedButton(
                 onPressed: () {},

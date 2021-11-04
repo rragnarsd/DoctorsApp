@@ -23,9 +23,6 @@ class AppointmentScreen extends StatelessWidget {
               const SizedBox(
                 height: 20.0,
               ),
-              const NavGoBack(
-                title: 'Appointments',
-              ),
               AppointmentsColumn(
                 list: novAppointments,
                 month: 'November',
@@ -62,10 +59,7 @@ class AppointmentsColumn extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            month,
-            style: const TextStyle(fontSize: 24.0, fontWeight: FontWeight.w600),
-          ),
+          Text(month, style: Theme.of(context).textTheme.headline2),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.5,
             child: ListView(
@@ -118,22 +112,25 @@ class AppointmentTile extends StatelessWidget {
         Container(
           height: 90.0,
           width: 90,
-          decoration: kBoxDecoWithBoxShadow
-              .copyWith(color: color, boxShadow: [BoxShadow(color: color)]),
+          decoration: kBoxDecoWithBoxShadow.copyWith(color: color, boxShadow: [
+            BoxShadow(color: color),
+          ]),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 appointDate,
-                style: TextStyle(
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.w600,
-                  color: textColor,
-                ),
+                style: Theme.of(context)
+                    .textTheme
+                    .headline4!
+                    .copyWith(color: textColor, fontWeight: FontWeight.w600),
               ),
               Text(
                 appointMonth,
-                style: TextStyle(fontSize: 16.0, color: textColor),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1!
+                    .copyWith(color: textColor, fontWeight: FontWeight.w600),
               ),
             ],
           ),
@@ -144,21 +141,24 @@ class AppointmentTile extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              doctorType,
-              style: const TextStyle(fontSize: 20.0),
-            ),
+            Text(doctorType, style: Theme.of(context).textTheme.bodyText2),
             const SizedBox(
               height: 10.0,
             ),
-            Text(appointTime,
-                style: kTextStyleNormal.copyWith(
-                    color: Colors.black38, fontWeight: FontWeight.normal),
+            Text(
+              appointTime,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText1!
+                  .copyWith(color: Colors.black38),
             ),
           ],
         ),
         const Spacer(),
-        const ReusableRawBtn(icon: Icons.phone, iconColor: Colors.pink,),
+         ReusableRawBtn(
+          icon: Icons.phone,
+          iconColor: iconColor,
+        ),
       ],
     );
   }
