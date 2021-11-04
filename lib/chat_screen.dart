@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hairsaloon/new_chat_screen.dart';
 import 'package:hairsaloon/utils/avatar_list.dart';
 import 'package:hairsaloon/utils/chat_list.dart';
 
 import 'constants.dart';
-import 'home_screen.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({Key? key}) : super(key: key);
@@ -18,20 +18,13 @@ class ChatScreen extends StatelessWidget {
           child: Column(
             children: const [
               SizedBox(
-                height: 50.0,
-              ),
-              Padding(
-                padding: EdgeInsets.all(15.0),
-                child: SearchField(),
-              ),
-              SizedBox(
-                height: 30.0,
+                height: 60.0,
               ),
               CircleAvatarChatRow(),
               SizedBox(
                 height: 10.0,
               ),
-              ChatRow()
+              ChatRow(),
             ],
           ),
         ),
@@ -74,17 +67,31 @@ class ChatRow extends StatelessWidget {
           shrinkWrap: true,
           itemCount: chats.length,
           itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(
-                chats[index].doctor,
-                style: const TextStyle(fontWeight: FontWeight.w600),
+            return InkWell(
+              child: ListTile(
+                title: Text(
+                  chats[index].doctor,
+                  style: const TextStyle(fontWeight: FontWeight.w600),
+                ),
+                subtitle: Text(chats[index].message),
+                leading: CircleAvatar(
+                  backgroundImage: NetworkImage(chats[index].image),
+                  radius: 35.0,
+                ),
+                trailing: Text(chats[index].dateTime),
               ),
-              subtitle: Text(chats[index].message),
-              leading: CircleAvatar(
-                backgroundImage: NetworkImage(chats[index].image),
-                radius: 35.0,
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NewChatScreen(
+                    doctorName: chats[index].doctor,
+                    doctorImage: chats[index].image,
+                  ),
+                  settings: RouteSettings(
+                    arguments: chats[index],
+                  ),
+                ),
               ),
-              trailing: Text(chats[index].dateTime),
             );
           }),
     );

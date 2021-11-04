@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hairsaloon/doctor_screen.dart';
+
+import 'custom_nav_bar.dart';
 
 
 void main() {
@@ -14,11 +15,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'Doctors',
         theme: ThemeData(
           primarySwatch: Colors.indigo,
         ),
-        home: const DoctorScreen(),
+        home: const CustomNavBar()
     );
   }
 }

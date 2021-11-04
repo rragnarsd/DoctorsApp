@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hairsaloon/utils/appointment_lists.dart';
+import 'package:hairsaloon/widgets/nav_go_back.dart';
 import 'package:hairsaloon/widgets/reusable_raw_btn.dart';
 
-import 'about_doctor.dart';
 import 'constants.dart';
 import 'models/appointments.dart';
 

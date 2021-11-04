@@ -6,3 +6,4 @@ class Chat {
 
   Chat({required this.message, required this.doctor, required this.dateTime, required this.image});
 }
+

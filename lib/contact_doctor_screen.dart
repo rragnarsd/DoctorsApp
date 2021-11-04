@@ -38,43 +38,7 @@ class ContactDoctorScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Hero(
-                        tag: 'doctorHero',
-                        child: CircleAvatar(
-                          radius: 40.0,
-                          backgroundImage: NetworkImage(image),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10.0,
-                      ),
-                      Text(
-                        doctorName,
-                        style: const TextStyle(fontSize: 20.0),
-                      ),
-                      const SizedBox(
-                        height: 20.0,
-                      ),
-                      ReusableTimeBtn(
-                        btnText: 'Start Conversation',
-                        btnColor: Colors.white70,
-                        textColor: Colors.black87,
-                        widget: const ChatScreen(),
-                      ),
-                      const SizedBox(
-                        height: 20.0,
-                      ),
-                      ReusableTimeBtn(
-                        btnText: 'Book Appointment',
-                        btnColor: Colors.blue,
-                        textColor: Colors.white,
-                        widget: const BookingScreen(),
-                      ),
-                    ],
-                  ),
+                  child: ContactDoctor(image: image, doctorName: doctorName),
                 ),
                 const ReusableAppointmentTile()
               ],
@@ -82,6 +46,58 @@ class ContactDoctorScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class ContactDoctor extends StatelessWidget {
+  const ContactDoctor({
+    Key? key,
+    required this.image,
+    required this.doctorName,
+  }) : super(key: key);
+
+  final String image;
+  final String doctorName;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Hero(
+          tag: 'doctorHero',
+          child: CircleAvatar(
+            radius: 40.0,
+            backgroundImage: NetworkImage(image),
+          ),
+        ),
+        const SizedBox(
+          height: 10.0,
+        ),
+        Text(
+          doctorName,
+          style: const TextStyle(fontSize: 20.0),
+        ),
+        const SizedBox(
+          height: 20.0,
+        ),
+        ReusableTimeBtn(
+          btnText: 'Start Conversation',
+          btnColor: Colors.white70,
+          textColor: Colors.black87,
+          widget: const ChatScreen(),
+        ),
+        const SizedBox(
+          height: 20.0,
+        ),
+        ReusableTimeBtn(
+          btnText: 'Book Appointment',
+          btnColor: Colors.blue,
+          textColor: Colors.white,
+          widget: const BookingScreen(),
+        ),
+      ],
     );
   }
 }

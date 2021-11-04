@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hairsaloon/contact_doctor_screen.dart';
 import 'package:hairsaloon/models/doctors.dart';
+import 'package:hairsaloon/widgets/nav_go_back.dart';
 import 'package:hairsaloon/widgets/reusable_appointment_tile.dart';
 import 'package:hairsaloon/widgets/reusable_raw_btn.dart';
 import 'package:hairsaloon/widgets/reusable_time_btn.dart';
+import 'package:unicons/unicons.dart';
 
 import 'constants.dart';
 
@@ -26,7 +28,7 @@ class AboutDoctor extends StatelessWidget {
                     height: 20.0,
                   ),
                   NavGoBack(
-                    title: 'Appointments',
+                    title: 'About Doctor',
                   ),
                   DoctorWidget(),
                   SizedBox(
@@ -55,21 +57,23 @@ class DoctorWidget extends StatelessWidget {
     final doctor = ModalRoute.of(context)!.settings.arguments as Doctors;
     return Container(
       padding: const EdgeInsets.all(15.0),
-      decoration: kBoxDecoWhite.copyWith(  boxShadow: [
-        BoxShadow(
-          color: Colors.indigo.withOpacity(0.02),
-          spreadRadius: 1,
-          blurRadius: 4,
-          offset: const Offset(0, 2),
-        ),
-      ],),
+      decoration: kBoxDecoWhite.copyWith(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.indigo.withOpacity(0.02),
+            spreadRadius: 1,
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
       child: Column(children: [
         const AboutTile(),
         const SizedBox(
           height: 20.0,
         ),
         const DoctorPatientCard(),
-       const SizedBox(
+        const SizedBox(
           height: 30.0,
         ),
         ReusableTimeBtn(
@@ -81,7 +85,7 @@ class DoctorWidget extends StatelessWidget {
           btnColor: Colors.blue.shade600,
           textColor: Colors.white,
         ),
-       const SizedBox(
+        const SizedBox(
           height: 20.0,
         ),
       ]),
@@ -130,7 +134,7 @@ class AboutTile extends StatelessWidget {
         title: Text(
           doctor.doctorName,
           style: const TextStyle(
-              fontSize: 22.0, fontWeight: FontWeight.w600, letterSpacing: 1.0),
+              fontSize: 22.0, fontWeight: FontWeight.w600, letterSpacing: 1.0,),
         ),
         subtitle: Text(
           doctor.doctorType,
@@ -161,7 +165,10 @@ class UpcomingTile extends StatelessWidget {
         Container(
           width: 80,
           height: 100.0,
-          decoration: BoxDecoration(color: Colors.amber.shade600, borderRadius: BorderRadius.circular(10.0)),
+          decoration: BoxDecoration(
+              color: Colors.amber.shade600,
+              borderRadius: BorderRadius.circular(10.0),
+          ),
           child: const UpcomingDate(),
         ),
         const SizedBox(
@@ -169,7 +176,10 @@ class UpcomingTile extends StatelessWidget {
         ),
         const UpcomingTextTile(),
         const Spacer(),
-        const ReusableRawBtn(icon: Icons.phone, iconColor: Colors.blue,),
+        const ReusableRawBtn(
+          icon: UniconsLine.phone,
+          iconColor: Colors.blue,
+        ),
       ]),
     );
   }
@@ -189,14 +199,21 @@ class UpcomingDate extends StatelessWidget {
           Text(
             'Wed'.toUpperCase(),
             style: const TextStyle(
-                fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.white),
+              fontSize: 18.0,
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
+            ),
           ),
           const SizedBox(
             height: 5.0,
           ),
           const Text(
             '11',
-            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.white),
+            style: TextStyle(
+              fontSize: 18.0,
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
+            ),
           ),
         ]);
   }
@@ -214,7 +231,10 @@ class UpcomingTextTile extends StatelessWidget {
       children: const [
         Text(
           'Heart Surgeon',
-          style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600),
+          style: TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.w600,
+          ),
         ),
         SizedBox(
           height: 5.0,
@@ -247,9 +267,10 @@ class DoctorAbout extends StatelessWidget {
           const Text(
             'About Doctor',
             style: TextStyle(
-                fontSize: 20.0,
-                letterSpacing: 1.0,
-                fontWeight: FontWeight.w600),
+              fontSize: 20.0,
+              letterSpacing: 1.0,
+              fontWeight: FontWeight.w600,
+            ),
           ),
           const SizedBox(
             height: 5.0,
@@ -257,7 +278,10 @@ class DoctorAbout extends StatelessWidget {
           Text(
             doctor.doctorAbout,
             style: const TextStyle(
-                fontSize: 16.0, letterSpacing: 1.0, height: 1.5),
+              fontSize: 16.0,
+              letterSpacing: 1.0,
+              height: 1.5,
+            ),
           ),
         ],
       ),
@@ -265,36 +289,17 @@ class DoctorAbout extends StatelessWidget {
   }
 }
 
-class NavGoBack extends StatelessWidget {
-  final String title;
-  const NavGoBack({
-    Key? key,
-    required this.title,
-  }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(children: [
-      IconButton(
-        icon: const Icon(Icons.arrow_back),
-        onPressed: () => Navigator.pop(context),
-      ),
-      const SizedBox(
-        width: 10.0,
-      ),
-      Text(
-        title,
-        style: const TextStyle(fontSize: 22.0),
-      )
-    ]);
-  }
-}
 
 class DoctorCard extends StatelessWidget {
   final String title;
   final String number;
   final Color color;
-  const DoctorCard({Key? key, required this.title, required this.number, required this.color})
+  const DoctorCard(
+      {Key? key,
+      required this.title,
+      required this.number,
+      required this.color})
       : super(key: key);
 
   @override
@@ -317,9 +322,10 @@ class DoctorCard extends StatelessWidget {
           Text(
             '${number}+',
             style: TextStyle(
-                fontSize: 26.0,
-                fontWeight: FontWeight.w600,
-                color: color),
+              fontSize: 26.0,
+              fontWeight: FontWeight.w600,
+              color: color,
+            ),
           )
         ],
       ),

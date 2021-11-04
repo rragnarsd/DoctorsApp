@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hairsaloon/widgets/reusable_raw_btn.dart';
+import 'package:hairsaloon/widgets/search_field.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'constants.dart';
@@ -8,7 +9,6 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({
     Key? key,
   }) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -28,39 +28,20 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(10.0),
                 decoration: kBoxDecoWhite,
                 child: Column(
-                  children: [
-                    const Text(
+                  children: const [
+                    Text(
                       'Let\'s find your doctor',
                       style: TextStyle(fontSize: 22.0),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 20.0,
                     ),
-                    Row(
-                      children: [
-                        ReusableRawBtn(
-                          icon: Icons.medication,
-                          iconColor: Colors.amber.shade600,
-                        ),
-                        const ReusableRawBtn(
-                          icon: Icons.medical_services,
-                          iconColor: Colors.pink,
-                        ),
-                        const ReusableRawBtn(
-                          icon: Icons.favorite,
-                          iconColor: Colors.blue,
-                        ),
-                        const ReusableRawBtn(
-                          icon: Icons.accessible,
-                          iconColor: Colors.green,
-                        ),
-                      ],
+                    RawBtnRow(),
+                    SizedBox(
+                      height: 20.0,
                     ),
-                    const SizedBox(
-                      height: 40.0,
-                    ),
-                    const SearchField(),
-                    const SizedBox(
+                    SearchField(),
+                    SizedBox(
                       height: 20.0,
                     ),
                   ],
@@ -87,6 +68,36 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
+class RawBtnRow extends StatelessWidget {
+  const RawBtnRow({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        ReusableRawBtn(
+          icon: Icons.medication,
+          iconColor: Colors.amber.shade600,
+        ),
+        const ReusableRawBtn(
+          icon: Icons.medical_services,
+          iconColor: Colors.pink,
+        ),
+        const ReusableRawBtn(
+          icon: Icons.favorite,
+          iconColor: Colors.blue,
+        ),
+        const ReusableRawBtn(
+          icon: Icons.accessible,
+          iconColor: Colors.green,
+        ),
+      ],
+    );
+  }
+}
+
 class HomeCalendar extends StatelessWidget {
   const HomeCalendar({
     Key? key,
@@ -108,23 +119,25 @@ class HomeCalendar extends StatelessWidget {
                     firstDay: DateTime.utc(2021, 11, 1),
                     lastDay: DateTime.utc(2021, 11, 7),
                     focusedDay: DateTime.now(),
-                    /*calendarController: _calendarController,*/
                     calendarFormat: CalendarFormat.week,
                     startingDayOfWeek: StartingDayOfWeek.monday,
                     headerStyle: const HeaderStyle(
                       titleCentered: true,
                       formatButtonVisible: false,
                       titleTextStyle: TextStyle(
-                        color: Colors.black87,
-                        fontSize: 18.0,
-                      ),
+                          color: Colors.black87,
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 1.0),
                       leftChevronVisible: false,
                       rightChevronVisible: false,
                       headerPadding: EdgeInsets.all(20),
                     ),
                     calendarStyle: CalendarStyle(
                       todayDecoration: BoxDecoration(
-                          color: Colors.amber.shade600, shape: BoxShape.circle),
+                        color: Colors.amber.shade600,
+                        shape: BoxShape.circle,
+                      ),
                       todayTextStyle: const TextStyle(color: Colors.white),
                     ),
                     daysOfWeekStyle: const DaysOfWeekStyle(
@@ -137,34 +150,6 @@ class HomeCalendar extends StatelessWidget {
             ],
           )
         ],
-      ),
-    );
-  }
-}
-
-class SearchField extends StatelessWidget {
-  const SearchField({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-        prefixIcon: const Icon(Icons.search),
-        suffixIcon: IconButton(
-          icon: const Icon(Icons.clear),
-          onPressed: () {},
-        ),
-        hintText: 'Search...',
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(width: 1.0, color: Colors.grey.shade400),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          borderSide: const BorderSide(width: 1.0, color: Colors.blue),
-        ),
       ),
     );
   }
@@ -196,9 +181,10 @@ class HomeDoctorTile extends StatelessWidget {
               title: Text(
                 doctorName,
                 style: const TextStyle(
-                    fontSize: 22.0,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 1.0),
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 1.0,
+                ),
               ),
               subtitle: Text(
                 doctorType,
@@ -220,7 +206,10 @@ class HomeDoctorTile extends StatelessWidget {
                 style: TextStyle(fontSize: 16.0),
               ),
               const Spacer(),
-              OutlinedButton(onPressed: () {}, child: const Text('Contact'))
+              OutlinedButton(
+                onPressed: () {},
+                child: const Text('Contact'),
+              )
             ],
           )
         ],
