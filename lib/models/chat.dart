@@ -5,6 +5,7 @@ class Chat {
   String image;
   bool isOnline;
   bool hasStory;
+  String messageType;
 
   Chat(
       {required this.message,
@@ -12,5 +13,6 @@ class Chat {
       required this.dateTime,
       required this.image,
       required this.isOnline,
-      required this.hasStory});
+      required this.hasStory,
+      required this.messageType});
 }

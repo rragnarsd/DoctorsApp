@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hairsaloon/new_chat_screen.dart';
 import 'package:hairsaloon/utils/avatar_list.dart';
 import 'package:hairsaloon/utils/chat_list.dart';
+import 'package:hairsaloon/utils/message_list.dart';
 import 'package:unicons/unicons.dart';
 
 import 'constants.dart';
@@ -23,7 +25,7 @@ class ChatScreen extends StatelessWidget {
               ),
               CircleAvatarChatRow(),
               SizedBox(
-                height: 10.0,
+                height: 20.0,
               ),
               ChatRow(),
             ],
@@ -79,7 +81,7 @@ class CircleAvatarChatRow extends StatelessWidget {
             ),
           ),
           Row(
-            children: List.generate(avatars.length, (index) {
+            children: List.generate(chats.length, (index) {
               return Padding(
                 padding: const EdgeInsets.only(right: 15.0),
                 child: Column(
@@ -89,7 +91,7 @@ class CircleAvatarChatRow extends StatelessWidget {
                       height: 60.0,
                       child: Stack(
                         children: [
-                          avatars[index].hasStory
+                          chats[index].hasStory
                               ? Container(
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
@@ -98,16 +100,18 @@ class CircleAvatarChatRow extends StatelessWidget {
                                       width: 2.0,
                                     ),
                                   ),
-                                  child: Container(
-                                    width: 75.0,
-                                    height: 75.0,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      image: DecorationImage(
-                                        image: NetworkImage(
-                                          avatars[index].doctorImage,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(3.0),
+                                    child: Container(
+                                      width: 75.0,
+                                      height: 75.0,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        image: DecorationImage(
+                                          image:
+                                              NetworkImage(chats[index].image),
+                                          fit: BoxFit.cover,
                                         ),
-                                        fit: BoxFit.cover,
                                       ),
                                     ),
                                   ),
@@ -119,13 +123,13 @@ class CircleAvatarChatRow extends StatelessWidget {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                       image: NetworkImage(
-                                        avatars[index].doctorImage,
+                                        chats[index].image,
                                       ),
                                       fit: BoxFit.cover,
                                     ),
                                   ),
                                 ),
-                          avatars[index].isOnline
+                          chats[index].isOnline
                               ? Positioned(
                                   top: 40.0,
                                   left: 42.0,
@@ -179,10 +183,11 @@ class ChatRow extends StatelessWidget {
       children: List.generate(chats.length, (index) {
         return InkWell(
           child: Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 5.0, bottom: 5.0),
+            padding: const EdgeInsets.only(
+                left: 15.0, right: 5.0, top: 5.0, bottom: 5.0),
             child: Row(children: [
               SizedBox(
-                width: 60.0,
+                width: 70.0,
                 height: 60.0,
                 child: Stack(
                   children: [
@@ -248,6 +253,17 @@ class ChatRow extends StatelessWidget {
                 ),
               )
             ]),
+          ),
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => NewChatScreen(
+                doctorName: chats[index].doctor,
+                doctorImage: chats[index].image,
+                isOnline: chats[index].isOnline
+              ),
+              settings: RouteSettings(arguments: chats[index]),
+            ),
           ),
         );
       }),

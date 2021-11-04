@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:hairsaloon/models/messages.dart';
+import 'package:hairsaloon/utils/chat_list.dart';
 import 'package:hairsaloon/utils/message_list.dart';
+
+import 'models/chat.dart';
 
 class NewChatScreen extends StatelessWidget {
   final String doctorName;
   final String doctorImage;
+  final bool isOnline;
   const NewChatScreen(
-      {Key? key, required this.doctorName, required this.doctorImage})
+      {Key? key,
+      required this.doctorName,
+      required this.doctorImage,
+      required this.isOnline})
       : super(key: key);
 
   @override
@@ -14,7 +22,7 @@ class NewChatScreen extends StatelessWidget {
       appBar: buildAppBar(context),
       body: Stack(
         children: const [
-           ChatListView(),
+          ChatListView(),
           ChatButtonBar(),
         ],
       ),
@@ -63,7 +71,7 @@ class NewChatScreen extends StatelessWidget {
                       height: 2.0,
                     ),
                     Text(
-                      "Online",
+                      isOnline == false ? 'Offline' : 'Online',
                       style: TextStyle(
                         color: Colors.grey.shade600,
                         fontSize: 14.0,
@@ -118,9 +126,9 @@ class ChatButtonBar extends StatelessWidget {
             const Expanded(
               child: TextField(
                 decoration: InputDecoration(
-                    hintText: "Write message...",
-                    hintStyle: TextStyle(color: Colors.black54),
-                    border: InputBorder.none,
+                  hintText: "Write message...",
+                  hintStyle: TextStyle(color: Colors.black54),
+                  border: InputBorder.none,
                 ),
               ),
             ),
@@ -152,26 +160,29 @@ class ChatListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: messages.length,
+        itemCount: chats.length,
         itemBuilder: (context, index) {
           return Container(
             padding: const EdgeInsets.only(
-                left: 15.0, right: 15.0, top: 10.0, bottom: 10.0,
+              left: 15.0,
+              right: 15.0,
+              top: 10.0,
+              bottom: 10.0,
             ),
             child: Align(
-              alignment: (messages[index].messageType == "receiver"
+              alignment: (chats[index].messageType == 'receiver'
                   ? Alignment.topLeft
                   : Alignment.topRight),
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
-                  color: (messages[index].messageType == "receiver"
+                  color: (chats[index].messageType == 'receiver'
                       ? Colors.grey.shade200
                       : Colors.blue.shade200),
                 ),
                 padding: const EdgeInsets.all(15.0),
                 child: Text(
-                  messages[index].message,
+                  chats[index].message,
                   style: const TextStyle(fontSize: 16.0),
                 ),
               ),
