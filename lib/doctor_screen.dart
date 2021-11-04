@@ -52,12 +52,9 @@ class DoctorGridView extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Hero(
-                  tag: 'doctorHero$index',
-                  child: CircleAvatar(
-                    radius: 40.0,
-                    backgroundImage: NetworkImage(doctors[index].doctorImage),
-                  ),
+                CircleAvatar(
+                  radius: 40.0,
+                  backgroundImage: NetworkImage(doctors[index].doctorImage),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,

@@ -26,7 +26,7 @@ class _BookingScreenState extends State<BookingScreen> {
         height: MediaQuery.of(context).size.height,
         decoration: kBoxDecoIndigo,
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(15.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,

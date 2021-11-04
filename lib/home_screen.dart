@@ -207,7 +207,7 @@ class HomeDoctorTile extends StatelessWidget {
               const Spacer(),
               OutlinedButton(
                 onPressed: () {},
-                child: const Text('Contact'),
+                child: Text('Contact', style: Theme.of(context).textTheme.bodyText1,),
               )
             ],
           )

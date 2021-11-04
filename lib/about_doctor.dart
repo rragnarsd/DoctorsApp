@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hairsaloon/contact_doctor_screen.dart';
+import 'package:hairsaloon/booking_screen.dart';
 import 'package:hairsaloon/models/doctors.dart';
-import 'package:hairsaloon/widgets/nav_go_back.dart';
-import 'package:hairsaloon/widgets/reusable_appointment_tile.dart';
+import 'package:hairsaloon/widgets/reusable_list_tile.dart';
 import 'package:hairsaloon/widgets/reusable_raw_btn.dart';
 import 'package:hairsaloon/widgets/reusable_time_btn.dart';
 import 'package:unicons/unicons.dart';
@@ -22,31 +21,29 @@ class AboutDoctor extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: SingleChildScrollView(
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  NavGoBack(
-                    title: '',
-                  ),
-                  DoctorWidget(),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  DoctorAbout(),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  ReusableAppointmentTile()
-                ]),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: const [
+              SizedBox(
+                height: 20.0,
+              ),
+              DoctorWidget(),
+              SizedBox(
+                height: 20,
+              ),
+              DoctorAbout(),
+              SizedBox(
+                height: 20.0,
+              ),
+              ReusableListTile()
+            ]),
           ),
         ),
       ),
     );
   }
 }
+
+
 
 class DoctorWidget extends StatelessWidget {
   const DoctorWidget({
@@ -55,7 +52,6 @@ class DoctorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final doctor = ModalRoute.of(context)!.settings.arguments as Doctors;
     return Container(
       padding: const EdgeInsets.all(15.0),
       decoration: kBoxDecoWhite,
@@ -69,10 +65,7 @@ class DoctorWidget extends StatelessWidget {
           height: 30.0,
         ),
         ReusableTimeBtn(
-          widget: ContactDoctorScreen(
-            image: doctor.doctorImage,
-            doctorName: doctor.doctorName,
-          ),
+          widget: const BookingScreen(),
           btnText: 'Book Appointment',
           btnColor: Colors.blue.shade600,
           textColor: Colors.white,
@@ -127,17 +120,16 @@ class AboutTile extends StatelessWidget {
           doctor.doctorName,
           style: Theme.of(context).textTheme.headline3,
         ),
-        subtitle: Text(doctor.doctorType,
-            style: Theme.of(context)
-                .textTheme
-                .bodyText1!
-                .copyWith(color: Colors.black38)),
-        trailing: Hero(
-          tag: 'doctorHero',
-          child: CircleAvatar(
-            backgroundImage: NetworkImage(doctor.doctorImage),
-            radius: 25.0,
-          ),
+        subtitle: Text(
+          doctor.doctorType,
+          style: Theme.of(context)
+              .textTheme
+              .bodyText1!
+              .copyWith(color: Colors.black38),
+        ),
+        trailing: CircleAvatar(
+          backgroundImage: NetworkImage(doctor.doctorImage),
+          radius: 25.0,
         ),
       ),
     );

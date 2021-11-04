@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
 
 class ReusableTimeBtn extends StatelessWidget {
   Widget? widget;
@@ -28,7 +27,7 @@ class ReusableTimeBtn extends StatelessWidget {
         child: Center(
           child: Text(
               btnText,
-              style: kTextStyleBtnText.copyWith(color: textColor)
+              style: Theme.of(context).textTheme.headline3!.copyWith(color: textColor)
           ),
         ),
       ),

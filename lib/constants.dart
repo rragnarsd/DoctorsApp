@@ -44,24 +44,3 @@ var kBoxDecoWithBoxShadow = BoxDecoration(
     ),
   ],
 );
-
-const kTextStyleSmall = TextStyle(fontSize: 14.0, letterSpacing: 1.0);
-
-const kTextStyleNormal = TextStyle(
-    fontSize: 16.0,
-    fontWeight: FontWeight.w500,
-    letterSpacing: 1.0,
-    color: Colors.black87);
-
-const kTextStyleBtnText = TextStyle(
-  fontSize: 20.0,
-  fontWeight: FontWeight.w600,
-  color: Colors.white,
-  letterSpacing: 1.0,
-);
-
-const kTextStyleUpcomingDate = TextStyle(
-  fontSize: 18.0,
-  fontWeight: FontWeight.w600,
-  color: Colors.white,
-);
