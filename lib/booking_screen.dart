@@ -1,8 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:hairsaloon/doctor_screen.dart';
-import 'package:hairsaloon/widgets/reusable_time_btn.dart';
+import 'package:hairsaloon/custom_nav_bar.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'constants.dart';
@@ -31,7 +30,9 @@ class _BookingScreenState extends State<BookingScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 20.0,),
+              const SizedBox(
+                height: 20.0,
+              ),
               Container(
                 padding: const EdgeInsets.all(10.0),
                 decoration: kBoxDecoWhite,
@@ -41,13 +42,73 @@ class _BookingScreenState extends State<BookingScreen> {
               Padding(
                 padding: const EdgeInsets.only(left: 10.0),
                 child: Text(
-                  'Test',
-                  style: Theme.of(context).textTheme.headline4,
+                  'Available Times',
+                  style: Theme.of(context).textTheme.headline3,
                 ),
               ),
               TimeGrid(bookingTime: bookingTime),
               const SizedBox(height: 20.0),
-              ReusableTimeBtn(widget: const DoctorScreen(), btnText: 'Book Appointment', btnColor: Colors.amber.shade600, textColor: Colors.white,),
+              InkWell(
+                  child: Container(
+                    height: 45.0,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Colors.amber.shade600,
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Book Appointment',
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline3!
+                            .copyWith(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  onTap: () {
+                    showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: const Text('Appointment Confirmed'),
+                            content: SingleChildScrollView(
+                              child: Column(children: [
+                                Image.asset(
+                                  'assets/confirm.gif',
+                                  height: 200.0,
+                                ),
+                                /*  ListBody(
+                                  children: [
+                                    const Text('Hello'),
+                                    Text(
+                                      'Date ${selectedDay.toString().substring(0, 10)}',
+                                    ),
+                                  ],
+                                ),*/
+                              ]),
+                            ),
+                            actions: [
+                              OutlinedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const CustomNavBar(),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  'Continue',
+                                  style: Theme.of(context).textTheme.bodyText1,
+                                ),
+                              )
+                            ],
+                          );
+                        });
+                  }),
               const SizedBox(height: 10.0),
             ],
           ),
@@ -82,7 +143,7 @@ class _BookingScreenState extends State<BookingScreen> {
       ),
       calendarStyle: CalendarStyle(
         selectedDecoration:
-             BoxDecoration(color: Colors.amber.shade600, shape: BoxShape.circle),
+            BoxDecoration(color: Colors.amber.shade600, shape: BoxShape.circle),
         todayDecoration:
             BoxDecoration(color: Colors.blue.shade600, shape: BoxShape.circle),
       ),
@@ -94,10 +155,7 @@ class _BookingScreenState extends State<BookingScreen> {
   }
 }
 
-
-
-
-class TimeGrid extends StatelessWidget {
+class TimeGrid extends StatefulWidget {
   const TimeGrid({
     Key? key,
     required this.bookingTime,
@@ -105,6 +163,11 @@ class TimeGrid extends StatelessWidget {
 
   final List<String> bookingTime;
 
+  @override
+  State<TimeGrid> createState() => _TimeGridState();
+}
+
+class _TimeGridState extends State<TimeGrid> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -117,29 +180,14 @@ class TimeGrid extends StatelessWidget {
           crossAxisSpacing: 20,
           mainAxisSpacing: 20,
           children: [
-            for (var x in bookingTime)
-              InkWell(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(10.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          spreadRadius: 1,
-                          blurRadius: 4,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
-                    ),
-                    child: Center(
-                      child: Text(
-                        x,
-                        style: Theme.of(context).textTheme.bodyText1,
-                      ),
-                    ),
-                  ),
-                  onTap: () => {})
+            for (var x in widget.bookingTime)
+              OutlinedButton(
+                onPressed: () {},
+                child: Text(
+                  x,
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+              )
           ]),
     );
   }

@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hairsaloon/booking_screen.dart';
 import 'package:hairsaloon/models/doctors.dart';
 import 'package:hairsaloon/widgets/reusable_list_tile.dart';
 import 'package:hairsaloon/widgets/reusable_raw_btn.dart';
-import 'package:hairsaloon/widgets/reusable_time_btn.dart';
 import 'package:unicons/unicons.dart';
 
 import 'constants.dart';
@@ -43,8 +41,6 @@ class AboutDoctor extends StatelessWidget {
   }
 }
 
-
-
 class DoctorWidget extends StatelessWidget {
   const DoctorWidget({
     Key? key,
@@ -61,15 +57,15 @@ class DoctorWidget extends StatelessWidget {
           height: 20.0,
         ),
         const DoctorPatientCard(),
-        const SizedBox(
+     /*   const SizedBox(
           height: 30.0,
         ),
         ReusableTimeBtn(
-          widget: const BookingScreen(),
+          widget: const CustomNavBar(),
           btnText: 'Book Appointment',
           btnColor: Colors.blue.shade600,
           textColor: Colors.white,
-        ),
+        ),*/
         const SizedBox(
           height: 20.0,
         ),

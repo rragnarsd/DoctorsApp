@@ -17,8 +17,8 @@ class ReusableListTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Upcoming schedule',
-            style: Theme.of(context).textTheme.headline2,
+            'Upcoming Schedule',
+            style: Theme.of(context).textTheme.headline3,
           ),
           const SizedBox(height: 20.0,),
           AppointmentTile(
@@ -35,3 +35,4 @@ class ReusableListTile extends StatelessWidget {
     );
   }
 }
+

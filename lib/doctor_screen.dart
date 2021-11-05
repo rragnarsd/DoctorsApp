@@ -81,34 +81,18 @@ class DoctorGridView extends StatelessWidget {
                 const SizedBox(
                   height: 20.0,
                 ),
-                InkWell(
-                  child: Container(
-                    height: 40.0,
-                    width: MediaQuery.of(context).size.width * 0.35,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(10.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          spreadRadius: 1,
-                          blurRadius: 4,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
-                    ),
-                    child: Center(
-                      child: Text('About',style: Theme.of(context).textTheme.bodyText1,),
-                    ),
-                  ),
-                  onTap: () => Navigator.push(
+                OutlinedButton(
+                  onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const AboutDoctor(),
                       settings: RouteSettings(arguments: doctors[index]),
-                    ),
+                    ),),
+                  child: Text(
+                    'About',
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
-                ),
+                )
               ],
             ),
           ),
