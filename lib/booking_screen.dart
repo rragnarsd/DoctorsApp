@@ -54,7 +54,7 @@ class _BookingScreenState extends State<BookingScreen> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
-                      color: Colors.amber.shade600,
+                      color: Colors.blue.shade600
                     ),
                     child: Center(
                       child: Text(
