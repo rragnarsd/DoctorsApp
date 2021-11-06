@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hairsaloon/widgets/reusable_raw_btn.dart';
 import 'package:hairsaloon/widgets/search_field.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -16,59 +17,79 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: kBoxDecoIndigo,
         height: MediaQuery.of(context).size.height,
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: SingleChildScrollView(
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              const SizedBox(
-                height: 60.0,
-              ),
-              Container(
-                padding: const EdgeInsets.all(10.0),
-                decoration: kBoxDecoWhite,
-                child: Column(
-                  children: [
-                    Text(
-                      'Let\'s find your doctor',
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline2!
-                          .copyWith(fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                    const RawBtnRow(),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                    const SearchField(),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
-              const HomeCalendar(),
-              const SizedBox(
-                height: 20.0,
-              ),
-              const HomeDoctorTile(
-                doctorName: 'Dr. ChatBot',
-                doctorImage:
-                    'https://images.pexels.com/photos/5733421/pexels-photo-5733421.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-                doctorType: 'Assistant',
-              )
-            ]),
-          ),
+        decoration: kBoxDecoIndigo,
+        child: const Padding(
+          padding: EdgeInsets.all(10.0),
+          child: HomeWidgets(),
         ),
+      ),
+    );
+  }
+}
+
+class HomeWidgets extends StatelessWidget {
+  const HomeWidgets({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child:
+          Column(crossAxisAlignment: CrossAxisAlignment.start, children: const [
+        SizedBox(
+          height: 50.0,
+        ),
+        HomeSearchBar(),
+        SizedBox(
+          height: 20.0,
+        ),
+        HomeCalendar(),
+        SizedBox(
+          height: 20.0,
+        ),
+        HomeDoctorTile(
+          doctorName: 'Dr. ChatBot',
+          doctorImage:
+              'https://images.pexels.com/photos/5733421/pexels-photo-5733421.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+          doctorType: 'Assistant',
+        )
+      ]),
+    );
+  }
+}
+
+class HomeSearchBar extends StatelessWidget {
+  const HomeSearchBar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(10.0),
+      decoration: kBoxDecoWhite,
+      child: Column(
+        children: [
+          Text(
+            'Let\'s find your doctor',
+            style: Theme.of(context).textTheme.headline4!.copyWith(
+                  fontWeight: FontWeight.normal,
+                ),
+          ),
+          const SizedBox(
+            height: 20.0,
+          ),
+          const RawBtnRow(),
+          const SizedBox(
+            height: 20.0,
+          ),
+          const SearchField(),
+          const SizedBox(
+            height: 20.0,
+          ),
+        ],
       ),
     );
   }
@@ -127,29 +148,31 @@ class HomeCalendar extends StatelessWidget {
                     focusedDay: DateTime.now(),
                     calendarFormat: CalendarFormat.week,
                     startingDayOfWeek: StartingDayOfWeek.monday,
-                    headerStyle: const HeaderStyle(
+                    headerStyle: HeaderStyle(
                       titleCentered: true,
                       formatButtonVisible: false,
-                      titleTextStyle: TextStyle(
-                          color: Colors.black87,
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 1.0,
+                      titleTextStyle:  GoogleFonts.yantramanav(
+                        color: Colors.black87,
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 1.0,
                       ),
                       leftChevronVisible: false,
                       rightChevronVisible: false,
-                      headerPadding: EdgeInsets.all(20),
+                      headerPadding: const EdgeInsets.all(20),
                     ),
                     calendarStyle: CalendarStyle(
                       todayDecoration: BoxDecoration(
                         color: Colors.blue.shade600,
                         shape: BoxShape.circle,
                       ),
-                      todayTextStyle: const TextStyle(color: Colors.white),
+                      todayTextStyle: GoogleFonts.yantramanav(color: Colors.white),
                     ),
-                    daysOfWeekStyle: const DaysOfWeekStyle(
-                      weekendStyle: TextStyle(color: Colors.blue, fontSize: 16.0),
-                      weekdayStyle: TextStyle(color: Colors.black87, fontSize: 16.0),
+                    daysOfWeekStyle: DaysOfWeekStyle(
+                      weekendStyle:
+                      GoogleFonts.yantramanav(color: Colors.blue, fontSize: 16.0),
+                      weekdayStyle:
+                      GoogleFonts.yantramanav(color: Colors.black87, fontSize: 16.0),
                     ),
                   ),
                 ),
@@ -189,11 +212,12 @@ class HomeDoctorTile extends StatelessWidget {
                 doctorName,
                 style: Theme.of(context).textTheme.headline3,
               ),
-              subtitle: Text(doctorType,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText1!
-                      .copyWith(color: Colors.black38),
+              subtitle: Text(
+                doctorType,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1!
+                    .copyWith(color: Colors.black38),
               ),
               trailing: Hero(
                 tag: 'doctorHero',
@@ -206,12 +230,18 @@ class HomeDoctorTile extends StatelessWidget {
           ),
           Row(
             children: [
-              Text('Available for your need',
-                  style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.blue.shade600, fontWeight: FontWeight.w600)),
+              Text(
+                'Available for your need',
+                style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                    color: Colors.blue.shade600),
+              ),
               const Spacer(),
               OutlinedButton(
                 onPressed: () {},
-                child: Text('Contact', style: Theme.of(context).textTheme.bodyText1,),
+                child: Text(
+                  'Contact',
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
               )
             ],
           )

@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hairsaloon/custom_nav_bar.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -39,13 +40,6 @@ class _BookingScreenState extends State<BookingScreen> {
                 child: buildTableCalendar(),
               ),
               const SizedBox(height: 30.0),
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Text(
-                  'Available Times',
-                  style: Theme.of(context).textTheme.headline3,
-                ),
-              ),
               TimeGrid(bookingTime: bookingTime),
               const SizedBox(height: 20.0),
               InkWell(
@@ -53,8 +47,8 @@ class _BookingScreenState extends State<BookingScreen> {
                     height: 45.0,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      color: Colors.blue.shade600
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Colors.blue.shade600,
                     ),
                     child: Center(
                       child: Text(
@@ -133,13 +127,13 @@ class _BookingScreenState extends State<BookingScreen> {
       selectedDayPredicate: (DateTime date) {
         return isSameDay(selectedDay, date);
       },
-      headerStyle: const HeaderStyle(
+      headerStyle: HeaderStyle(
         formatButtonVisible: false,
         titleCentered: true,
         leftChevronVisible: false,
         rightChevronVisible: false,
-        headerPadding: EdgeInsets.all(20),
-        titleTextStyle: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w600),
+        headerPadding: const EdgeInsets.all(20),
+        titleTextStyle: GoogleFonts.yantramanav(fontSize: 24.0, fontWeight: FontWeight.w600),
       ),
       calendarStyle: CalendarStyle(
         selectedDecoration:
@@ -147,9 +141,9 @@ class _BookingScreenState extends State<BookingScreen> {
         todayDecoration:
             BoxDecoration(color: Colors.blue.shade600, shape: BoxShape.circle),
       ),
-      daysOfWeekStyle: const DaysOfWeekStyle(
-        weekendStyle: TextStyle(color: Colors.blue, fontSize: 16.0),
-        weekdayStyle: TextStyle(color: Colors.black87, fontSize: 16.0),
+      daysOfWeekStyle: DaysOfWeekStyle(
+        weekendStyle:  GoogleFonts.yantramanav(color: Colors.blue, fontSize: 16.0),
+        weekdayStyle:  GoogleFonts.yantramanav(color: Colors.black87, fontSize: 16.0),
       ),
     );
   }
@@ -173,22 +167,33 @@ class _TimeGridState extends State<TimeGrid> {
     return Container(
       padding: const EdgeInsets.all(10.0),
       decoration: kBoxDecoWhite,
-      height: MediaQuery.of(context).size.height * 0.4,
-      child: GridView.count(
-          crossAxisCount: 2,
-          childAspectRatio: (3.5 / 1),
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
-          children: [
-            for (var x in widget.bookingTime)
-              OutlinedButton(
-                onPressed: () {},
-                child: Text(
-                  x,
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
-              )
-          ]),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: Text(
+            'Available Times',
+            style: Theme.of(context).textTheme.headline3,
+          ),
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.35,
+          child: GridView.count(
+              crossAxisCount: 2,
+              childAspectRatio: (3.5 / 1),
+              crossAxisSpacing: 20,
+              mainAxisSpacing: 20,
+              children: [
+                for (var x in widget.bookingTime)
+                  OutlinedButton(
+                    onPressed: () {},
+                    child: Text(
+                      x,
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                  )
+              ]),
+        ),
+      ]),
     );
   }
 }

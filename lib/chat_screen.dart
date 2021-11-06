@@ -56,10 +56,11 @@ class CircleAvatarChatRow extends StatelessWidget {
                     shape: BoxShape.circle,
                     color: Colors.grey.shade300,
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Icon(
                       UniconsLine.plus,
                       size: 30.0,
+                      color: Colors.black87
                     ),
                   ),
                 ),

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import 'custom_nav_bar.dart';
 
 void main() {
@@ -17,38 +17,38 @@ class MyApp extends StatelessWidget {
       title: 'Doctors',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        textTheme: const TextTheme(
-          headline1: TextStyle(
+        textTheme: TextTheme(
+          headline1: GoogleFonts.yantramanav(
             fontSize: 26.0,
             fontWeight: FontWeight.w600,
             letterSpacing: 1.0,
             color: Colors.black87,
           ),
-          headline4: TextStyle(
+          headline4: GoogleFonts.yantramanav(
             fontSize: 24.0,
             fontWeight: FontWeight.w600,
             letterSpacing: 1.0,
             color: Colors.black87,
           ),
-          headline3: TextStyle(
+          headline3: GoogleFonts.yantramanav(
             fontSize: 20.0,
             fontWeight: FontWeight.w600,
             letterSpacing: 1.0,
             color: Colors.black87,
           ),
-          headline2: TextStyle(
+          headline2: GoogleFonts.yantramanav(
             fontSize: 22.0,
             fontWeight: FontWeight.w600,
             letterSpacing: 1.0,
             color: Colors.black87,
           ),
-          bodyText1: TextStyle(
+          bodyText1: GoogleFonts.yantramanav(
             fontSize: 16.0,
             letterSpacing: 1.0,
             fontWeight: FontWeight.w400,
           ),
-          bodyText2: TextStyle(fontSize: 18.0, letterSpacing: 1.0),
-          headline5: TextStyle(fontSize: 20.0, letterSpacing: 1.0),
+          bodyText2: GoogleFonts.yantramanav(fontSize: 18.0, letterSpacing: 1.0),
+          headline5: GoogleFonts.yantramanav(fontSize: 20.0, letterSpacing: 1.0),
         ),
       ),
       home: const CustomNavBar(),

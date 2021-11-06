@@ -12,11 +12,10 @@ dependencies:
   flutter:
     sdk: flutter
 
-
-
   cupertino_icons: ^1.0.2
   table_calendar: ^3.0.3
   unicons: ^2.0.2
+  google_fonts: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -31,8 +30,6 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/confirm.gif
-    - assets/bg.jpg
-    - assets/bg3.jpg
     - assets/noisy-background.jpg
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

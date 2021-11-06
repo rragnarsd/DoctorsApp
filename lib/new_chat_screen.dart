@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hairsaloon/constants.dart';
 import 'package:hairsaloon/utils/chat_list.dart';
 import 'package:unicons/unicons.dart';
 
@@ -33,6 +34,7 @@ class NewChatScreen extends StatelessWidget {
       backgroundColor: Colors.transparent,
       flexibleSpace: SafeArea(
         child: Container(
+          decoration: kBoxDecoIndigo,
           padding: const EdgeInsets.only(right: 15.0, top: 5.0),
           child: Row(
             children: [
@@ -96,11 +98,11 @@ class ChatButtonBar extends StatelessWidget {
       alignment: Alignment.bottomLeft,
       child: Container(
         padding: const EdgeInsets.all(10.0),
+        decoration: kBoxDecoIndigo,
         height: 60,
         width: double.infinity,
-        color: Colors.white,
         child: Row(
-          children: <Widget>[
+          children: [
             InkWell(
               onTap: () {},
               child: Icon(
@@ -152,11 +154,12 @@ class ChatListView extends StatelessWidget {
         itemCount: chats.length,
         itemBuilder: (context, index) {
           return Container(
+            decoration: kBoxDecoIndigo,
             padding: const EdgeInsets.only(
               left: 15.0,
               right: 15.0,
               top: 10.0,
-              bottom: 10.0,
+              bottom: 15.0,
             ),
             child: Align(
               alignment: (chats[index].messageType == 'receiver'

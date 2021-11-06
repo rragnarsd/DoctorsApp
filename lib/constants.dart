@@ -3,30 +3,27 @@ import 'package:flutter/material.dart';
 var kBoxDecoIndigo = BoxDecoration(
   gradient: LinearGradient(
     colors: [
-/*      Colors.grey.shade300,
-     Colors.grey.shade100,*/
-
-      Colors.indigo.withOpacity(0.20),
-      Colors.white.withOpacity(0.10),
+      Colors.white.withOpacity(0.30),
+      Colors.indigo.withOpacity(0.10),
     ],
     begin: Alignment.topRight,
     end: Alignment.bottomCenter,
+    stops: const [0.0, 1.0],
   ),
+
 );
 
 var kBoxDecoWhite = BoxDecoration(
   borderRadius: BorderRadius.circular(10.0),
   border: Border.all(color: Colors.white.withOpacity(0.08)),
   gradient: LinearGradient(
-    colors: [
-           Colors.white.withOpacity(0.5),
-      Colors.white.withOpacity(0.2),
- /*     Colors.white.withOpacity(0.6),
-      Colors.white.withOpacity(0.05),*/
-    ],
-    begin: Alignment.bottomRight,
-    end: Alignment.topLeft,
-    stops: [0.0, 1.0]
+      colors: [
+        Colors.white.withOpacity(0.5),
+        Colors.white.withOpacity(0.2),
+      ],
+      begin: Alignment.bottomRight,
+      end: Alignment.topLeft,
+      stops: const [0.0, 1.0],
   ),
   boxShadow: [
     BoxShadow(
