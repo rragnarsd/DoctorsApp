@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:hairsaloon/widgets/reusable_raw_btn.dart';
 import 'package:hairsaloon/widgets/search_field.dart';
@@ -34,7 +36,8 @@ class HomeScreen extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .headline2!
-                          .copyWith(fontWeight: FontWeight.normal),
+                          .copyWith(fontWeight: FontWeight.normal,
+                      ),
                     ),
                     const SizedBox(
                       height: 20.0,
@@ -131,14 +134,15 @@ class HomeCalendar extends StatelessWidget {
                           color: Colors.black87,
                           fontSize: 18.0,
                           fontWeight: FontWeight.w600,
-                          letterSpacing: 1.0),
+                          letterSpacing: 1.0,
+                      ),
                       leftChevronVisible: false,
                       rightChevronVisible: false,
                       headerPadding: EdgeInsets.all(20),
                     ),
                     calendarStyle: CalendarStyle(
                       todayDecoration: BoxDecoration(
-                        color: Colors.amber.shade600,
+                        color: Colors.blue.shade600,
                         shape: BoxShape.circle,
                       ),
                       todayTextStyle: const TextStyle(color: Colors.white),
@@ -203,7 +207,7 @@ class HomeDoctorTile extends StatelessWidget {
           Row(
             children: [
               Text('Available for your need',
-                  style: Theme.of(context).textTheme.bodyText1),
+                  style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.blue.shade600, fontWeight: FontWeight.w600)),
               const Spacer(),
               OutlinedButton(
                 onPressed: () {},

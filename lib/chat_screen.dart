@@ -156,7 +156,8 @@ class CircleAvatarChatRow extends StatelessWidget {
                       width: 75.0,
                       child: Align(
                           child: Text(
-                        chats[index].doctor, style: Theme.of(context).textTheme.bodyText1,
+                        chats[index].doctor,
+                        style: Theme.of(context).textTheme.bodyText1,
                         overflow: TextOverflow.ellipsis,
                       )),
                     )
@@ -183,7 +184,8 @@ class ChatRow extends StatelessWidget {
         return InkWell(
           child: Padding(
             padding: const EdgeInsets.only(
-                left: 15.0, right: 5.0, top: 5.0, bottom: 5.0),
+                left: 15.0, right: 5.0, top: 5.0, bottom: 5.0,
+            ),
             child: Row(children: [
               SizedBox(
                 width: 70.0,
@@ -220,8 +222,9 @@ class ChatRow extends StatelessWidget {
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
-                                  image: NetworkImage(chats[index].image),
-                                  fit: BoxFit.cover),
+                                image: NetworkImage(chats[index].image),
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                     chats[index].isOnline
@@ -246,8 +249,10 @@ class ChatRow extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.78,
                 child: ListTile(
-                  title: Text(chats[index].doctor,
-                      style: Theme.of(context).textTheme.bodyText1),
+                  title: Text(
+                    chats[index].doctor,
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
                   subtitle: Text(
                     chats[index].message,
                     style: Theme.of(context)
@@ -257,10 +262,10 @@ class ChatRow extends StatelessWidget {
                   ),
                   trailing: Text(
                     chats[index].dateTime,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText1!
-                        .copyWith(color: Colors.black38, fontSize: 14.0),
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                          color: Colors.black38,
+                          fontSize: 14.0,
+                        ),
                   ),
                 ),
               )
@@ -272,7 +277,8 @@ class ChatRow extends StatelessWidget {
               builder: (context) => NewChatScreen(
                   doctorName: chats[index].doctor,
                   doctorImage: chats[index].image,
-                  isOnline: chats[index].isOnline),
+                  isOnline: chats[index].isOnline,
+              ),
               settings: RouteSettings(arguments: chats[index]),
             ),
           ),

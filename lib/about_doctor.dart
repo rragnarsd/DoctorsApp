@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hairsaloon/models/doctors.dart';
 import 'package:hairsaloon/widgets/reusable_list_tile.dart';
 import 'package:hairsaloon/widgets/reusable_raw_btn.dart';
+import 'package:hairsaloon/widgets/reusable_time_btn.dart';
 import 'package:unicons/unicons.dart';
 
 import 'constants.dart';
@@ -17,7 +18,7 @@ class AboutDoctor extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         decoration: kBoxDecoIndigo,
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: EdgeInsets.all(10.0),
           child: SingleChildScrollView(
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: const [
@@ -57,15 +58,15 @@ class DoctorWidget extends StatelessWidget {
           height: 20.0,
         ),
         const DoctorPatientCard(),
-     /*   const SizedBox(
+        const SizedBox(
           height: 30.0,
         ),
+        //ATH
         ReusableTimeBtn(
-          widget: const CustomNavBar(),
           btnText: 'Book Appointment',
           btnColor: Colors.blue.shade600,
           textColor: Colors.white,
-        ),*/
+        ),
         const SizedBox(
           height: 20.0,
         ),

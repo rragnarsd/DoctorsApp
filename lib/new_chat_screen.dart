@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hairsaloon/utils/chat_list.dart';
+import 'package:unicons/unicons.dart';
 
 class NewChatScreen extends StatelessWidget {
   final String doctorName;
@@ -102,18 +103,10 @@ class ChatButtonBar extends StatelessWidget {
           children: <Widget>[
             InkWell(
               onTap: () {},
-              child: Container(
-                height: 30,
-                width: 30,
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade600,
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
-                child: const Icon(
-                  Icons.add,
-                  color: Colors.white,
-                  size: 20.0,
-                ),
+              child: Icon(
+                UniconsLine.paperclip,
+                color: Colors.grey.shade400,
+                size: 30.0,
               ),
             ),
             const SizedBox(
@@ -134,7 +127,7 @@ class ChatButtonBar extends StatelessWidget {
             FloatingActionButton(
               onPressed: () {},
               child: const Icon(
-                Icons.send,
+                UniconsLine.message,
                 color: Colors.white,
                 size: 18,
               ),
