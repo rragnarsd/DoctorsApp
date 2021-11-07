@@ -1,9 +1,11 @@
 import 'dart:ui';
 
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:doctors_app/widgets/cached_image.dart';
+import 'package:doctors_app/widgets/reusable_raw_btn.dart';
+import 'package:doctors_app/widgets/search_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hairsaloon/widgets/reusable_raw_btn.dart';
-import 'package:hairsaloon/widgets/search_field.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'constants.dart';
@@ -103,22 +105,27 @@ class RawBtnRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         ReusableRawBtn(
           icon: Icons.medication,
           iconColor: Colors.amber.shade600,
+          size: 26.0,
         ),
-        const ReusableRawBtn(
+        ReusableRawBtn(
           icon: Icons.medical_services,
           iconColor: Colors.pink,
+          size: 26.0,
         ),
-        const ReusableRawBtn(
+        ReusableRawBtn(
           icon: Icons.favorite,
           iconColor: Colors.blue,
+          size: 26.0,
         ),
-        const ReusableRawBtn(
+        ReusableRawBtn(
           icon: Icons.accessible,
           iconColor: Colors.green,
+          size: 26.0,
         ),
       ],
     );
@@ -151,9 +158,9 @@ class HomeCalendar extends StatelessWidget {
                     headerStyle: HeaderStyle(
                       titleCentered: true,
                       formatButtonVisible: false,
-                      titleTextStyle:  GoogleFonts.yantramanav(
+                      titleTextStyle: GoogleFonts.yantramanav(
                         color: Colors.black87,
-                        fontSize: 20.0,
+                        fontSize: 22.0,
                         fontWeight: FontWeight.w600,
                         letterSpacing: 1.0,
                       ),
@@ -166,13 +173,14 @@ class HomeCalendar extends StatelessWidget {
                         color: Colors.blue.shade600,
                         shape: BoxShape.circle,
                       ),
-                      todayTextStyle: GoogleFonts.yantramanav(color: Colors.white),
+                      todayTextStyle:
+                          GoogleFonts.yantramanav(color: Colors.white),
                     ),
                     daysOfWeekStyle: DaysOfWeekStyle(
-                      weekendStyle:
-                      GoogleFonts.yantramanav(color: Colors.blue, fontSize: 16.0),
-                      weekdayStyle:
-                      GoogleFonts.yantramanav(color: Colors.black87, fontSize: 16.0),
+                      weekendStyle: GoogleFonts.yantramanav(
+                          color: Colors.blue, fontSize: 16.0),
+                      weekdayStyle: GoogleFonts.yantramanav(
+                          color: Colors.black87, fontSize: 16.0),
                     ),
                   ),
                 ),
@@ -219,28 +227,27 @@ class HomeDoctorTile extends StatelessWidget {
                     .bodyText1!
                     .copyWith(color: Colors.black38),
               ),
-              trailing: Hero(
-                tag: 'doctorHero',
-                child: CircleAvatar(
-                  backgroundImage: NetworkImage(doctorImage),
-                  radius: 30.0,
-                ),
-              ),
+              trailing: CachedImage(doctorImage: doctorImage, height: 70.0, width: 70.0,),
             ),
           ),
           Row(
             children: [
               Text(
                 'Available for your need',
-                style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                    color: Colors.blue.shade600),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText2!
+                    .copyWith(color: Colors.blue.shade600),
               ),
               const Spacer(),
-              OutlinedButton(
-                onPressed: () {},
-                child: Text(
-                  'Contact',
-                  style: Theme.of(context).textTheme.bodyText1,
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.30,
+                child: OutlinedButton(
+                  onPressed: () => {},
+                  child: Text(
+                    'Contact',
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
                 ),
               )
             ],
@@ -250,3 +257,5 @@ class HomeDoctorTile extends StatelessWidget {
     );
   }
 }
+
+

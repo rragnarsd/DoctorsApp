@@ -25,7 +25,7 @@ List<AppointmentList> novAppointments = [
       textColor: Colors.white,
       color: Colors.amber,
       iconColor: Colors.amber,
-      doctorType: 'Medicine Doctor',
+      doctorType: 'Radiologist',
       appointDate: '25'),
 ];
 

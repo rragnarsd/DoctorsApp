@@ -1,7 +1,7 @@
+import 'package:doctors_app/utils/appointment_lists.dart';
+import 'package:doctors_app/widgets/reusable_raw_btn.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hairsaloon/utils/appointment_lists.dart';
-import 'package:hairsaloon/widgets/reusable_raw_btn.dart';
 
 import 'constants.dart';
 import 'models/appointments.dart';
@@ -58,7 +58,7 @@ class AppointmentsColumn extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(month, style: Theme.of(context).textTheme.headline2),
+          Text(month, style: Theme.of(context).textTheme.headline4),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.5,
             child: ListView(
@@ -110,7 +110,7 @@ class AppointmentTile extends StatelessWidget {
       children: [
         Container(
           height: 90.0,
-          width: 90,
+          width: MediaQuery.of(context).size.width * 0.23,
           decoration: kBoxDecoWithBoxShadow.copyWith(color: color, boxShadow: [
             BoxShadow(color: color),
           ]),
@@ -142,7 +142,7 @@ class AppointmentTile extends StatelessWidget {
           children: [
             Text(doctorType, style: Theme.of(context).textTheme.bodyText2),
             const SizedBox(
-              height: 10.0,
+              height: 5.0,
             ),
             Text(
               appointTime,
@@ -154,9 +154,10 @@ class AppointmentTile extends StatelessWidget {
           ],
         ),
         const Spacer(),
-         ReusableRawBtn(
+        ReusableRawBtn(
           icon: Icons.phone,
           iconColor: iconColor,
+          size: 26.0,
         ),
       ],
     );

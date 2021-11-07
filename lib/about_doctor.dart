@@ -1,12 +1,11 @@
+import 'package:doctors_app/widgets/cached_image.dart';
+import 'package:doctors_app/widgets/reusable_list_tile.dart';
+import 'package:doctors_app/widgets/reusable_time_btn.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hairsaloon/models/doctors.dart';
-import 'package:hairsaloon/widgets/reusable_list_tile.dart';
-import 'package:hairsaloon/widgets/reusable_raw_btn.dart';
-import 'package:hairsaloon/widgets/reusable_time_btn.dart';
-import 'package:unicons/unicons.dart';
 
 import 'constants.dart';
+import 'models/doctors.dart';
 
 class AboutDoctor extends StatelessWidget {
   const AboutDoctor({Key? key}) : super(key: key);
@@ -18,23 +17,24 @@ class AboutDoctor extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         decoration: kBoxDecoIndigo,
         child: Padding(
-          padding: EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(10.0),
           child: SingleChildScrollView(
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: const [
-              SizedBox(
-                height: 20.0,
-              ),
-              DoctorWidget(),
-              SizedBox(
-                height: 20,
-              ),
-              DoctorAbout(),
-              SizedBox(
-                height: 20.0,
-              ),
-              ReusableListTile()
-            ]),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  DoctorWidget(),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  DoctorAbout(),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  ReusableListTile()
+                ]),
           ),
         ),
       ),
@@ -115,53 +115,17 @@ class AboutTile extends StatelessWidget {
         contentPadding: EdgeInsets.zero,
         title: Text(
           doctor.doctorName,
-          style: Theme.of(context).textTheme.headline3,
+          style: Theme.of(context).textTheme.headline2,
         ),
         subtitle: Text(
           doctor.doctorType,
           style: Theme.of(context)
               .textTheme
-              .bodyText1!
+              .bodyText2!
               .copyWith(color: Colors.black38),
         ),
-        trailing: CircleAvatar(
-          backgroundImage: NetworkImage(doctor.doctorImage),
-          radius: 25.0,
-        ),
+        trailing: CachedImage(doctorImage: doctor.doctorImage, height: 60.0, width: 60.0,),
       ),
-    );
-  }
-}
-
-class UpcomingTile extends StatelessWidget {
-  const UpcomingTile({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: kBoxDecoWhite,
-      child: Row(children: [
-        Container(
-          width: 80,
-          height: 80.0,
-          decoration: BoxDecoration(
-            color: Colors.amber.shade600,
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          child: const UpcomingDate(),
-        ),
-        const SizedBox(
-          width: 15.0,
-        ),
-        const UpcomingTextTile(),
-        const Spacer(),
-        const ReusableRawBtn(
-          icon: UniconsLine.phone,
-          iconColor: Colors.blue,
-        ),
-      ]),
     );
   }
 }
@@ -198,7 +162,7 @@ class UpcomingDate extends StatelessWidget {
   }
 }
 
-class UpcomingTextTile extends StatelessWidget {
+/*class UpcomingTextTile extends StatelessWidget {
   const UpcomingTextTile({
     Key? key,
   }) : super(key: key);
@@ -209,9 +173,6 @@ class UpcomingTextTile extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text('Heart Surgeon', style: Theme.of(context).textTheme.headline5),
-        const SizedBox(
-          height: 5.0,
-        ),
         Text(
           '09:00 AM',
           style: Theme.of(context)
@@ -222,7 +183,7 @@ class UpcomingTextTile extends StatelessWidget {
       ],
     );
   }
-}
+}*/
 
 class DoctorAbout extends StatelessWidget {
   const DoctorAbout({
@@ -233,19 +194,23 @@ class DoctorAbout extends StatelessWidget {
   Widget build(BuildContext context) {
     final doctor = ModalRoute.of(context)!.settings.arguments as Doctors;
     return Container(
-      height: MediaQuery.of(context).size.height * 0.20,
+      height: MediaQuery.of(context).size.height * 0.18,
       padding: const EdgeInsets.all(15.0),
       decoration: kBoxDecoWhite,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('About Doctor', style: Theme.of(context).textTheme.headline3),
+          Text('About ${doctor.doctorName}',
+              style: Theme.of(context).textTheme.headline2,
+          ),
           const SizedBox(
             height: 5.0,
           ),
           Text(
             doctor.doctorAbout,
-            style: Theme.of(context).textTheme.bodyText1!.copyWith(height: 1.5),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context).textTheme.bodyText2!.copyWith(height: 1.4),
           ),
         ],
       ),

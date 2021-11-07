@@ -1,10 +1,11 @@
+import 'package:doctors_app/utils/chat_list.dart';
+import 'package:doctors_app/widgets/cached_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hairsaloon/new_chat_screen.dart';
-import 'package:hairsaloon/utils/chat_list.dart';
 import 'package:unicons/unicons.dart';
 
 import 'constants.dart';
+import 'new_chat_screen.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({Key? key}) : super(key: key);
@@ -56,12 +57,9 @@ class CircleAvatarChatRow extends StatelessWidget {
                     shape: BoxShape.circle,
                     color: Colors.grey.shade300,
                   ),
-                  child: Center(
-                    child: Icon(
-                      UniconsLine.plus,
-                      size: 30.0,
-                      color: Colors.black87
-                    ),
+                  child: const Center(
+                    child: Icon(UniconsLine.plus,
+                        size: 30.0, color: Colors.black87),
                   ),
                 ),
                 const SizedBox(
@@ -102,32 +100,17 @@ class CircleAvatarChatRow extends StatelessWidget {
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(3.0),
-                                    child: Container(
-                                      width: 75.0,
+                                    child: CachedImage(
+                                      doctorImage: chats[index].image,
                                       height: 75.0,
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        image: DecorationImage(
-                                          image:
-                                              NetworkImage(chats[index].image),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
+                                      width: 75.0,
                                     ),
                                   ),
                                 )
-                              : Container(
-                                  width: 70.0,
+                              : CachedImage(
+                                  doctorImage: chats[index].image,
                                   height: 70.0,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                      image: NetworkImage(
-                                        chats[index].image,
-                                      ),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
+                                  width: 70.0,
                                 ),
                           chats[index].isOnline
                               ? Positioned(
@@ -141,7 +124,7 @@ class CircleAvatarChatRow extends StatelessWidget {
                                       shape: BoxShape.circle,
                                       border: Border.all(
                                         color: Colors.white,
-                                        width: 3.0,
+                                        width: 2.0,
                                       ),
                                     ),
                                   ),
@@ -185,7 +168,10 @@ class ChatRow extends StatelessWidget {
         return InkWell(
           child: Padding(
             padding: const EdgeInsets.only(
-                left: 15.0, right: 5.0, top: 5.0, bottom: 5.0,
+              left: 15.0,
+              right: 5.0,
+              top: 5.0,
+              bottom: 5.0,
             ),
             child: Row(children: [
               SizedBox(
@@ -204,29 +190,17 @@ class ChatRow extends StatelessWidget {
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(3.0),
-                              child: Container(
-                                width: 75.0,
+                              child: CachedImage(
+                                doctorImage: chats[index].image,
                                 height: 75.0,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                    image: NetworkImage(chats[index].image),
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
+                                width: 75.0,
                               ),
                             ),
                           )
-                        : Container(
-                            width: 70.0,
+                        : CachedImage(
+                            doctorImage: chats[index].image,
                             height: 70.0,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                image: NetworkImage(chats[index].image),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
+                            width: 70.0,
                           ),
                     chats[index].isOnline
                         ? Positioned(
@@ -239,7 +213,7 @@ class ChatRow extends StatelessWidget {
                                 color: Colors.green.shade600,
                                 shape: BoxShape.circle,
                                 border:
-                                    Border.all(color: Colors.white, width: 3.0),
+                                    Border.all(color: Colors.white, width: 2.0),
                               ),
                             ),
                           )
@@ -248,7 +222,7 @@ class ChatRow extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.78,
+                width: MediaQuery.of(context).size.width * 0.75,
                 child: ListTile(
                   title: Text(
                     chats[index].doctor,
@@ -276,9 +250,9 @@ class ChatRow extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) => NewChatScreen(
-                  doctorName: chats[index].doctor,
-                  doctorImage: chats[index].image,
-                  isOnline: chats[index].isOnline,
+                doctorName: chats[index].doctor,
+                doctorImage: chats[index].image,
+                isOnline: chats[index].isOnline,
               ),
               settings: RouteSettings(arguments: chats[index]),
             ),

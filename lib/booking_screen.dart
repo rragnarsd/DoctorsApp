@@ -2,10 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hairsaloon/custom_nav_bar.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'constants.dart';
+import 'custom_nav_bar.dart';
 import 'utils/appointment_lists.dart';
 
 class BookingScreen extends StatefulWidget {

@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class ReusableRawBtn extends StatelessWidget {
   final IconData icon;
   final Color iconColor;
-  const ReusableRawBtn({
+  double? size;
+   ReusableRawBtn({
     Key? key,
     required this.icon,
-    required this.iconColor
+    required this.iconColor,
+    this.size,
   }) : super(key: key);
 
   @override
@@ -18,7 +20,7 @@ class ReusableRawBtn extends StatelessWidget {
       elevation: 3.0,
       child: Icon(
         icon,
-        size: 26.0,
+        size: size,
         color: iconColor,
       ),
       onPressed: () {},

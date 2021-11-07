@@ -1,7 +1,10 @@
+import 'package:doctors_app/utils/chat_list.dart';
+import 'package:doctors_app/widgets/cached_image.dart';
 import 'package:flutter/material.dart';
-import 'package:hairsaloon/constants.dart';
-import 'package:hairsaloon/utils/chat_list.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:unicons/unicons.dart';
+
+import 'constants.dart';
 
 class NewChatScreen extends StatelessWidget {
   final String doctorName;
@@ -47,9 +50,10 @@ class NewChatScreen extends StatelessWidget {
                   color: Colors.black87,
                 ),
               ),
-              CircleAvatar(
-                backgroundImage: NetworkImage(doctorImage),
-                maxRadius: 20,
+              CachedImage(
+                doctorImage: doctorImage,
+                height: 40.0,
+                width: 40.0,
               ),
               const SizedBox(
                 width: 15.0,
@@ -61,19 +65,16 @@ class NewChatScreen extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       doctorName,
-                      style: const TextStyle(
-                        fontSize: 16.0,
+                      style:  GoogleFonts.yantramanav(
+                        fontSize: 20.0,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    const SizedBox(
-                      height: 2.0,
-                    ),
                     Text(
                       isOnline == false ? 'Offline' : 'Online',
-                      style: TextStyle(
+                      style:  GoogleFonts.yantramanav(
                         color: Colors.grey.shade600,
-                        fontSize: 14.0,
+                        fontSize: 16.0,
                       ),
                     ),
                   ],
@@ -98,7 +99,7 @@ class ChatButtonBar extends StatelessWidget {
       alignment: Alignment.bottomLeft,
       child: Container(
         padding: const EdgeInsets.all(10.0),
-        decoration: kBoxDecoIndigo,
+        color: Colors.white,
         height: 60,
         width: double.infinity,
         child: Row(
@@ -114,11 +115,13 @@ class ChatButtonBar extends StatelessWidget {
             const SizedBox(
               width: 15,
             ),
-            const Expanded(
+            Expanded(
               child: TextField(
                 decoration: InputDecoration(
+                  isDense: true,
                   hintText: "Write message...",
-                  hintStyle: TextStyle(color: Colors.black54),
+                  hintStyle: GoogleFonts.yantramanav(
+                      color: Colors.black54, fontSize: 20.0),
                   border: InputBorder.none,
                 ),
               ),
@@ -131,7 +134,7 @@ class ChatButtonBar extends StatelessWidget {
               child: const Icon(
                 UniconsLine.message,
                 color: Colors.white,
-                size: 18,
+                size: 20,
               ),
               backgroundColor: Colors.blue,
               elevation: 0,
@@ -155,6 +158,7 @@ class ChatListView extends StatelessWidget {
         itemBuilder: (context, index) {
           return Container(
             decoration: kBoxDecoIndigo,
+            height: MediaQuery.of(context).size.height / 8.8,
             padding: const EdgeInsets.only(
               left: 15.0,
               right: 15.0,
@@ -169,7 +173,7 @@ class ChatListView extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
                   color: (chats[index].messageType == 'receiver'
-                      ? Colors.grey.shade200
+                      ? Colors.white.withOpacity(0.5)
                       : Colors.blue.shade200),
                 ),
                 padding: const EdgeInsets.all(15.0),

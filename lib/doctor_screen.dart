@@ -1,8 +1,9 @@
+import 'package:doctors_app/utils/doctor_lists.dart';
+import 'package:doctors_app/widgets/cached_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hairsaloon/about_doctor.dart';
-import 'package:hairsaloon/utils/doctor_lists.dart';
 
+import 'about_doctor.dart';
 import 'constants.dart';
 
 class DoctorScreen extends StatelessWidget {
@@ -39,7 +40,7 @@ class DoctorGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.9,
+      height: MediaQuery.of(context).size.height * 0.87,
       child: GridView.count(
         crossAxisCount: 2,
         childAspectRatio: 2 / 2.7,
@@ -52,10 +53,7 @@ class DoctorGridView extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircleAvatar(
-                  radius: 40.0,
-                  backgroundImage: NetworkImage(doctors[index].doctorImage),
-                ),
+                CachedImage(doctorImage: doctors[index].doctorImage, height: 70.0, width: 70.0,),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -64,7 +62,7 @@ class DoctorGridView extends StatelessWidget {
                     ),
                     Text(
                       doctors[index].doctorName,
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context).textTheme.bodyText2,
                     ),
                     const SizedBox(
                       height: 5.0,
@@ -74,23 +72,27 @@ class DoctorGridView extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .bodyText1!
-                          .copyWith(fontSize: 14.0, color: Colors.black38),
+                          .copyWith(color: Colors.black38),
                     ),
                   ],
                 ),
                 const SizedBox(
                   height: 20.0,
                 ),
-                OutlinedButton(
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const AboutDoctor(),
-                      settings: RouteSettings(arguments: doctors[index]),
-                    ),),
-                  child: Text(
-                    'About',
-                    style: Theme.of(context).textTheme.bodyText1,
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.35,
+                  child: OutlinedButton(
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AboutDoctor(),
+                        settings: RouteSettings(arguments: doctors[index]),
+                      ),
+                    ),
+                    child: Text(
+                      'About',
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
                   ),
                 )
               ],

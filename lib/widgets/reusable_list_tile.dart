@@ -18,7 +18,7 @@ class ReusableListTile extends StatelessWidget {
         children: [
           Text(
             'Upcoming Schedule',
-            style: Theme.of(context).textTheme.headline3,
+            style: Theme.of(context).textTheme.headline2,
           ),
           const SizedBox(height: 20.0,),
           AppointmentTile(

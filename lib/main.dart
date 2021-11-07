@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'custom_nav_bar.dart';
 
 void main() {
@@ -13,6 +14,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+     /* builder: (context, widget) => ResponsiveWrapper.builder(
+        widget,
+        maxWidth: 800,
+        minWidth: 480,
+        defaultScale: true,
+        breakpoints: const [
+          ResponsiveBreakpoint.resize(480, name: MOBILE),
+          ResponsiveBreakpoint.autoScale(800, name: TABLET),
+          ResponsiveBreakpoint.resize(1000, name: DESKTOP),
+        ],
+      ),*/
       debugShowCheckedModeBanner: false,
       title: 'Doctors',
       theme: ThemeData(
@@ -47,8 +59,10 @@ class MyApp extends StatelessWidget {
             letterSpacing: 1.0,
             fontWeight: FontWeight.w400,
           ),
-          bodyText2: GoogleFonts.yantramanav(fontSize: 18.0, letterSpacing: 1.0),
-          headline5: GoogleFonts.yantramanav(fontSize: 20.0, letterSpacing: 1.0),
+          bodyText2:
+              GoogleFonts.yantramanav(fontSize: 18.0, letterSpacing: 1.0),
+          headline5:
+              GoogleFonts.yantramanav(fontSize: 20.0, letterSpacing: 1.0),
         ),
       ),
       home: const CustomNavBar(),
