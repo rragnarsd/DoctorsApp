@@ -1,4 +1,4 @@
-# Doctors Mobile App
+# Doctors Mobile App :hospital:
 
 ## Packages
 - Sizer - https://pub.dev/packages/sizer
@@ -15,17 +15,20 @@
 - https://dribbble.com/shots/14277407-Medical-Mobile-App
 
 ## Design
+- Font Family: Yantramanav
 - Images are from:
   - www.unsplash.com
   - www.pexels.com
+
+## Challenges
+- Making sure that the contrast ratio between background and text is good :boom:
+- Deciding which color combination to use for the Scaffold (background-color) :boom:
 
 ## Screenshot
 <img width="1920" alt="DoctorApp" src="https://user-images.githubusercontent.com/44742460/140801921-3144c61c-406a-4439-ac29-abc215ba2643.png">
 
 ## Live preview
-
 https://user-images.githubusercontent.com/44742460/140803113-e929d03a-2241-4bdb-be38-683b92b9118d.mp4
-
 
 ## Getting Started
 
