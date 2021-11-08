@@ -48,7 +48,7 @@ class _BookingScreenState extends State<BookingScreen> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
-                        color: Colors.blue.shade600,
+                      color: const Color(0xff1651DA),
                     ),
                     child: Center(
                       child: Text(
@@ -56,7 +56,7 @@ class _BookingScreenState extends State<BookingScreen> {
                         style: Theme.of(context)
                             .textTheme
                             .headline3!
-                            .copyWith(color: Colors.white),
+                            .copyWith(color: Color(0xFFFFFFFF)),
                       ),
                     ),
                   ),
@@ -114,8 +114,8 @@ class _BookingScreenState extends State<BookingScreen> {
   TableCalendar<dynamic> buildTableCalendar() {
     return TableCalendar(
       focusedDay: selectedDay,
-      firstDay: DateTime.utc(2021, 11, 1),
-      lastDay: DateTime.utc(2021, 11, 9),
+      firstDay: DateTime.utc(2021, 11, 7),
+      lastDay: DateTime.utc(2021, 11, 14),
       calendarFormat: CalendarFormat.week,
       startingDayOfWeek: StartingDayOfWeek.monday,
       onDaySelected: (DateTime selectDay, DateTime focusDay) {
@@ -135,14 +135,14 @@ class _BookingScreenState extends State<BookingScreen> {
         headerPadding: const EdgeInsets.all(20),
         titleTextStyle: GoogleFonts.yantramanav(fontSize: 24.0, fontWeight: FontWeight.w600),
       ),
-      calendarStyle: CalendarStyle(
+      calendarStyle: const CalendarStyle(
         selectedDecoration:
-            BoxDecoration(color: Colors.amber.shade600, shape: BoxShape.circle),
+            BoxDecoration(color: Color(0xffff6f00), shape: BoxShape.circle),
         todayDecoration:
-            BoxDecoration(color: Colors.blue.shade600, shape: BoxShape.circle),
+            BoxDecoration(color: Color(0xff1651DA), shape: BoxShape.circle),
       ),
       daysOfWeekStyle: DaysOfWeekStyle(
-        weekendStyle:  GoogleFonts.yantramanav(color: Colors.blue, fontSize: 16.0),
+        weekendStyle:  GoogleFonts.yantramanav(color: const Color(0xff1651DA), fontSize: 16.0, fontWeight: FontWeight.w600),
         weekdayStyle:  GoogleFonts.yantramanav(color: Colors.black87, fontSize: 16.0),
       ),
     );

@@ -64,6 +64,7 @@ class MyApp extends StatelessWidget {
           headline5:
               GoogleFonts.yantramanav(fontSize: 20.0, letterSpacing: 1.0),
         ),
+
       ),
       home: const CustomNavBar(),
     );

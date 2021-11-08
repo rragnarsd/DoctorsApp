@@ -109,22 +109,22 @@ class RawBtnRow extends StatelessWidget {
       children: [
         ReusableRawBtn(
           icon: Icons.medication,
-          iconColor: Colors.amber.shade600,
+          iconColor: const Color(0xffff6f00),
           size: 26.0,
         ),
         ReusableRawBtn(
           icon: Icons.medical_services,
-          iconColor: Colors.pink,
+          iconColor: const Color(0xffDA165E),
           size: 26.0,
         ),
         ReusableRawBtn(
           icon: Icons.favorite,
-          iconColor: Colors.blue,
+          iconColor: const Color(0xff1565C0),
           size: 26.0,
         ),
         ReusableRawBtn(
           icon: Icons.accessible,
-          iconColor: Colors.green,
+          iconColor: const Color(0xff0E7723),
           size: 26.0,
         ),
       ],
@@ -150,8 +150,8 @@ class HomeCalendar extends StatelessWidget {
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: TableCalendar(
-                    firstDay: DateTime.utc(2021, 11, 1),
-                    lastDay: DateTime.utc(2021, 11, 7),
+                    firstDay: DateTime.utc(2021, 11, 7),
+                    lastDay: DateTime.utc(2021, 11, 14),
                     focusedDay: DateTime.now(),
                     calendarFormat: CalendarFormat.week,
                     startingDayOfWeek: StartingDayOfWeek.monday,
@@ -170,7 +170,7 @@ class HomeCalendar extends StatelessWidget {
                     ),
                     calendarStyle: CalendarStyle(
                       todayDecoration: BoxDecoration(
-                        color: Colors.blue.shade600,
+                        color: const Color(0xff1651DA),
                         shape: BoxShape.circle,
                       ),
                       todayTextStyle:
@@ -178,7 +178,7 @@ class HomeCalendar extends StatelessWidget {
                     ),
                     daysOfWeekStyle: DaysOfWeekStyle(
                       weekendStyle: GoogleFonts.yantramanav(
-                          color: Colors.blue, fontSize: 16.0),
+                          color: const Color(0xff1651DA), fontSize: 16.0, fontWeight: FontWeight.w600),
                       weekdayStyle: GoogleFonts.yantramanav(
                           color: Colors.black87, fontSize: 16.0),
                     ),
@@ -237,7 +237,7 @@ class HomeDoctorTile extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .bodyText2!
-                    .copyWith(color: Colors.blue.shade600),
+                    .copyWith(color: const Color(0xff1651DA),),
               ),
               const Spacer(),
               SizedBox(

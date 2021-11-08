@@ -136,7 +136,7 @@ class ChatButtonBar extends StatelessWidget {
                 color: Colors.white,
                 size: 20,
               ),
-              backgroundColor: Colors.blue,
+              backgroundColor: const Color(0xff1651DA),
               elevation: 0,
             ),
           ],

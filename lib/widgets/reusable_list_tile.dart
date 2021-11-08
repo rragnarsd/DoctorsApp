@@ -22,10 +22,10 @@ class ReusableListTile extends StatelessWidget {
           ),
           const SizedBox(height: 20.0,),
           AppointmentTile(
-            color: Colors.amber.shade600,
+            color: const Color(0xffff6f00),
             appointDate: '11',
             doctorType: 'Heart Surgeon',
-            iconColor: Colors.amber.shade600,
+            iconColor: const Color(0xffff6f00),
             textColor: Colors.white,
             appointTime: '09:00 AM',
             appointMonth: 'Dec',

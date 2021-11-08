@@ -94,7 +94,7 @@ class CircleAvatarChatRow extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     border: Border.all(
-                                      color: Colors.blue.shade600,
+                                      color: const Color(0xff1651DA),
                                       width: 2.0,
                                     ),
                                   ),
@@ -120,7 +120,7 @@ class CircleAvatarChatRow extends StatelessWidget {
                                     width: 20.0,
                                     height: 20.0,
                                     decoration: BoxDecoration(
-                                      color: Colors.green.shade600,
+                                      color: const Color(0xff0E7723),
                                       shape: BoxShape.circle,
                                       border: Border.all(
                                         color: Colors.white,
@@ -184,7 +184,7 @@ class ChatRow extends StatelessWidget {
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(
-                                color: Colors.blue.shade600,
+                                color: const Color(0xff1651DA),
                                 width: 2.0,
                               ),
                             ),
@@ -210,7 +210,7 @@ class ChatRow extends StatelessWidget {
                               width: 20.0,
                               height: 20.0,
                               decoration: BoxDecoration(
-                                color: Colors.green.shade600,
+                                color: const Color(0xff0E7723),
                                 shape: BoxShape.circle,
                                 border:
                                     Border.all(color: Colors.white, width: 2.0),

@@ -64,7 +64,7 @@ class DoctorWidget extends StatelessWidget {
         //ATH
         ReusableTimeBtn(
           btnText: 'Book Appointment',
-          btnColor: Colors.blue.shade600,
+          btnColor: const Color(0xff1651DA),
           textColor: Colors.white,
         ),
         const SizedBox(
@@ -88,12 +88,12 @@ class DoctorPatientCard extends StatelessWidget {
       children: [
         DoctorCard(
           title: 'Patients',
-          color: Colors.amber.shade600,
+          color: const Color(0xffff6f00),
           number: '${doctor.doctorPatients}',
         ),
         DoctorCard(
           title: 'Experience',
-          color: Colors.pink.shade600,
+          color: const Color(0xffDA165E),
           number: '${doctor.doctorExperience}',
         ),
       ],
