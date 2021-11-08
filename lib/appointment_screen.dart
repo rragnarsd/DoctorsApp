@@ -16,19 +16,19 @@ class AppointmentScreen extends StatelessWidget {
       body: Container(
         decoration: kBoxDecoIndigo,
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: EdgeInsets.all(2.h),
           child: SingleChildScrollView(
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              const SizedBox(
-                height: 20.0,
+               SizedBox(
+                height: 2.h,
               ),
               AppointmentsColumn(
                 list: novAppointments,
                 month: 'November',
               ),
-              const SizedBox(
-                height: 20.0,
+               SizedBox(
+                height: 2.h,
               ),
               AppointmentsColumn(
                 list: decAppointments,
@@ -54,20 +54,19 @@ class AppointmentsColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10.0),
+      padding: EdgeInsets.all(2.0.h),
       decoration: kBoxDecoWhite,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(month, style: Theme.of(context).textTheme.headline4),
           SizedBox(
-            height: 50.h,
-           /* height: MediaQuery.of(context).size.height * 0.5,*/
+            height: 46.h,
             child: ListView(
               children: [
                 for (var i in list)
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 15.0),
+                    padding: EdgeInsets.only(bottom: 1.5.h),
                     child: AppointmentTile(
                       appointDate: i.appointDate,
                       appointMonth: i.appointMonth,
@@ -111,7 +110,7 @@ class AppointmentTile extends StatelessWidget {
     return Row(
       children: [
         Container(
-          height: 90.0,
+          height: 13.h,
           width: MediaQuery.of(context).size.width * 0.23,
           decoration: kBoxDecoWithBoxShadow.copyWith(color: color,),
           child: Column(
@@ -134,15 +133,15 @@ class AppointmentTile extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(
-          width: 15.0,
+        SizedBox(
+          width: 1.5.h
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(doctorType, style: Theme.of(context).textTheme.bodyText2),
-            const SizedBox(
-              height: 5.0,
+             SizedBox(
+              height: 0.5.h,
             ),
             Text(
               appointTime,

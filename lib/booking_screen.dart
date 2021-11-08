@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:doctors_app/widgets/reusable_material_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
@@ -24,31 +23,30 @@ class _BookingScreenState extends State<BookingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        height: MediaQuery.of(context).size.height,
+        height: MediaQuery.of(context).size.height * 1,
         decoration: kBoxDecoIndigo,
         child: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: EdgeInsets.all(2.h),
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 20.0,
+                SizedBox(
+                  height: 1.5.h,
                 ),
                 Container(
-                  height: 25.h,
-                  padding: const EdgeInsets.all(10.0),
+                  height: 34.h,
+                  padding: EdgeInsets.all(2.h),
                   decoration: kBoxDecoWhite,
                   child: buildTableCalendar(),
                 ),
-                const SizedBox(height: 30.0),
+                SizedBox(height: 2.0.h),
                 const TimeGrid(),
-                const SizedBox(height: 20.0),
+                SizedBox(height: 2.0.h),
                 InkWell(
                     child: Container(
-                      height: 8.0.h,
-                   /*   height: 45.0,*/
+                      height: 7.0.h,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5.0),
@@ -72,7 +70,7 @@ class _BookingScreenState extends State<BookingScreen> {
                             return const CustomDialog();
                           });
                     }),
-                const SizedBox(height: 10.0),
+                SizedBox(height: 2.0.h),
               ],
             ),
           ),
@@ -86,7 +84,7 @@ class _BookingScreenState extends State<BookingScreen> {
       focusedDay: selectedDay,
       firstDay: DateTime.utc(2021, 11, 7),
       lastDay: DateTime.utc(2021, 11, 14),
-      calendarFormat: CalendarFormat.week,
+      calendarFormat: CalendarFormat.twoWeeks,
       startingDayOfWeek: StartingDayOfWeek.monday,
       onDaySelected: (DateTime selectDay, DateTime focusDay) {
         setState(() {
@@ -102,7 +100,7 @@ class _BookingScreenState extends State<BookingScreen> {
         titleCentered: true,
         leftChevronVisible: false,
         rightChevronVisible: false,
-        headerPadding: const EdgeInsets.all(20),
+        headerPadding: EdgeInsets.all(2.0.h),
         titleTextStyle: GoogleFonts.yantramanav(
             fontSize: 18.0.sp, fontWeight: FontWeight.w600),
       ),
@@ -154,7 +152,7 @@ class CustomDialog extends StatelessWidget {
               child: SizedBox(
                 child: Center(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(2.h),
                     child: Text(
                       'Continue',
                       style: Theme.of(context).textTheme.bodyText2!.copyWith(
@@ -203,26 +201,26 @@ class _TimeGridState extends State<TimeGrid> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 44.h,
-      padding: const EdgeInsets.all(10.0),
+      height: 45.h,
+      padding: EdgeInsets.all(2.0.h),
       decoration: kBoxDecoWhite,
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Padding(
-          padding: const EdgeInsets.only(top: 10.0),
+          padding: EdgeInsets.only(top: 2.0.h),
           child: Text(
             'Available Times',
             style: Theme.of(context).textTheme.headline3,
           ),
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.35,
+          height: 32.h,
           child: GridView.builder(
               itemCount: bookingTime.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                crossAxisSpacing: 20.0,
-                mainAxisSpacing: 20.0,
-                childAspectRatio: (3.5 / 1),
+                crossAxisSpacing: 15.0,
+                mainAxisSpacing: 15.0,
+                childAspectRatio: (3.0 / 1),
               ),
               itemBuilder: (context, index) {
                 bool hasBeenClicked = index == clickedIndex;
@@ -236,7 +234,7 @@ class _TimeGridState extends State<TimeGrid> {
                       width: MediaQuery.of(context).size.width,
                       child: Center(
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(2.0.h),
                           child: Text(
                             bookingTime[index],
                             style: hasBeenClicked ? Theme.of(context).textTheme.bodyText2!.copyWith(
@@ -252,18 +250,6 @@ class _TimeGridState extends State<TimeGrid> {
                     })
                   ),
                 );
-
-                /*ReusableMaterialBtn(
-                  text: bookingTime[index],
-                  width: double.infinity,
-                  color:
-                      hasBeenClicked ? const Color(0xffff6f00) : Colors.white,
-                  function: () {
-                    setState(() {
-                      clickedIndex = index;
-                    });
-                  },
-                );*/
               }),
         ),
       ]),

@@ -1,8 +1,8 @@
 import 'package:doctors_app/utils/doctor_lists.dart';
 import 'package:doctors_app/widgets/cached_image.dart';
 import 'package:doctors_app/widgets/reusable_material_btn.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 import 'about_doctor.dart';
 import 'constants.dart';
@@ -14,6 +14,7 @@ class DoctorScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        height: 100.h,
         decoration: kBoxDecoIndigo,
         child: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -84,7 +85,7 @@ class DoctorGridView extends StatelessWidget {
                 const SizedBox(
                   height: 20.0,
                 ),
-                ReusableMaterialBtn(text: 'Contact', width: 0.35, color: Colors.white, function: () {
+                ReusableMaterialBtn(text: 'Contact', width: 0.25, color: Colors.white, function: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(

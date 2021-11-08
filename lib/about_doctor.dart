@@ -174,7 +174,6 @@ class DoctorAbout extends StatelessWidget {
     final doctor = ModalRoute.of(context)!.settings.arguments as Doctors;
     return Container(
       height: 20.h,
-      /*height: MediaQuery.of(context).size.height * 0.18,*/
       padding: const EdgeInsets.all(15.0),
       decoration: kBoxDecoWhite,
       child: Column(

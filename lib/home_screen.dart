@@ -22,9 +22,9 @@ class HomeScreen extends StatelessWidget {
       body: Container(
         height: MediaQuery.of(context).size.height,
         decoration: kBoxDecoIndigo,
-        child: const Padding(
-          padding: EdgeInsets.all(10.0),
-          child: HomeWidgets(),
+        child: Padding(
+          padding: EdgeInsets.all(2.0.h),
+          child: const HomeWidgets(),
         ),
       ),
     );
@@ -40,19 +40,19 @@ class HomeWidgets extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child:
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: const [
+          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         SizedBox(
-          height: 50.0,
+          height: 5.0.h,
         ),
-        HomeSearchBar(),
+        const HomeSearchBar(),
         SizedBox(
-          height: 20.0,
+          height: 2.0.h,
         ),
-        HomeCalendar(),
+        const HomeCalendar(),
         SizedBox(
-          height: 20.0,
+          height: 2.0.h,
         ),
-        HomeDoctorTile(
+        const HomeDoctorTile(
           doctorName: 'Dr. ChatBot',
           doctorImage:
               'https://images.pexels.com/photos/5733421/pexels-photo-5733421.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
@@ -72,7 +72,8 @@ class HomeSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 100.w,
-      padding: const EdgeInsets.all(10.0),
+      height: 32.h,
+      padding: EdgeInsets.all(1.0.h),
       decoration: kBoxDecoWhite,
       child: Column(
         children: [
@@ -82,16 +83,16 @@ class HomeSearchBar extends StatelessWidget {
                   fontWeight: FontWeight.normal,
                 ),
           ),
-          const SizedBox(
-            height: 20.0,
+           SizedBox(
+            height: 3.0.h,
           ),
           const RawBtnRow(),
-          const SizedBox(
-            height: 20.0,
+           SizedBox(
+            height: 3.0.h,
           ),
           const SearchField(),
-          const SizedBox(
-            height: 20.0,
+           SizedBox(
+            height: 3.0.h,
           ),
         ],
       ),
@@ -123,20 +124,20 @@ class RawBtnRow extends StatelessWidget {
             size: 24.0.sp,
           ),
         ),
-          Expanded(
-            child: ReusableRawBtn(
+        Expanded(
+          child: ReusableRawBtn(
             icon: Icons.favorite,
             iconColor: const Color(0xff1565C0),
             size: 24.0.sp,
-        ),
           ),
-          Expanded(
-            child: ReusableRawBtn(
+        ),
+        Expanded(
+          child: ReusableRawBtn(
             icon: Icons.accessible,
             iconColor: const Color(0xff0E7723),
             size: 24.0.sp,
-        ),
           ),
+        ),
       ],
     );
   }
@@ -150,7 +151,8 @@ class HomeCalendar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10.0),
+      height: 25.h,
+      padding: EdgeInsets.all(2.0.h),
       decoration: kBoxDecoWhite,
       child: Column(
         children: [
@@ -176,15 +178,17 @@ class HomeCalendar extends StatelessWidget {
                       ),
                       leftChevronVisible: false,
                       rightChevronVisible: false,
-                      headerPadding: const EdgeInsets.all(20),
+                      headerPadding: EdgeInsets.all(2.0.h),
                     ),
                     calendarStyle: CalendarStyle(
                       todayDecoration: const BoxDecoration(
                         color: Color(0xff1651DA),
                         shape: BoxShape.circle,
                       ),
-                      todayTextStyle:
-                          GoogleFonts.yantramanav(color: Colors.white, fontSize: 14.0.sp,),
+                      todayTextStyle: GoogleFonts.yantramanav(
+                        color: Colors.white,
+                        fontSize: 14.0.sp,
+                      ),
                     ),
                     daysOfWeekStyle: DaysOfWeekStyle(
                       weekendStyle: GoogleFonts.yantramanav(
@@ -220,8 +224,9 @@ class HomeDoctorTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+/*      height: 15.h,*/
       decoration: kBoxDecoWhite,
-      padding: const EdgeInsets.all(10.0),
+      padding: EdgeInsets.all(2.0.h),
       child: Column(
         children: [
           SizedBox(
@@ -246,8 +251,9 @@ class HomeDoctorTile extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
-            height: 10.0,
+          SizedBox(
+            /*height: 10.0,*/
+            height: 2.0.h,
           ),
           Row(
             children: [
@@ -258,7 +264,12 @@ class HomeDoctorTile extends StatelessWidget {
                     ),
               ),
               const Spacer(),
-             ReusableMaterialBtn(text: 'Contact', width: 0.25, color: Colors.white,  function: (){},),
+              ReusableMaterialBtn(
+                text: 'Contact',
+                width: 0.25,
+                color: Colors.white,
+                function: () {},
+              ),
             ],
           )
         ],
@@ -266,5 +277,3 @@ class HomeDoctorTile extends StatelessWidget {
     );
   }
 }
-
-

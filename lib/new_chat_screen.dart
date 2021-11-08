@@ -25,7 +25,7 @@ class NewChatScreen extends StatelessWidget {
       body: Stack(
         children: [
           SizedBox(
-            height: 80.h,
+            height: 81.h,
             child: const ChatListView(),
           ),
           const ChatButtonBar(),
@@ -42,7 +42,7 @@ class NewChatScreen extends StatelessWidget {
       flexibleSpace: SafeArea(
         child: Container(
           decoration: kBoxDecoIndigo,
-          padding: const EdgeInsets.only(right: 15.0, top: 5.0),
+          padding: EdgeInsets.only(right: 1.5.h, top: 0.5.h),
           child: Row(
             children: [
               IconButton(
@@ -59,8 +59,8 @@ class NewChatScreen extends StatelessWidget {
                 height: 40.0,
                 width: 40.0,
               ),
-              const SizedBox(
-                width: 15.0,
+              SizedBox(
+                width: 1.5.h,
               ),
               Expanded(
                 child: Column(
@@ -102,9 +102,9 @@ class ChatButtonBar extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomLeft,
       child: Container(
-        padding: const EdgeInsets.all(10.0),
+        padding: EdgeInsets.all(1.0.h),
         color: Colors.white,
-        height: 60,
+        height: 8.0.h,
         width: double.infinity,
         child: Row(
           children: [
@@ -116,8 +116,8 @@ class ChatButtonBar extends StatelessWidget {
                 size: 30.0,
               ),
             ),
-            const SizedBox(
-              width: 15,
+            SizedBox(
+              width: 1.5.h,
             ),
             Expanded(
               child: TextField(
@@ -130,8 +130,8 @@ class ChatButtonBar extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(
-              width: 15,
+            SizedBox(
+              width: 1.5.h,
             ),
             FloatingActionButton(
               onPressed: () {},
@@ -182,7 +182,7 @@ class ChatListView extends StatelessWidget {
                       ? Colors.white.withOpacity(0.5)
                       : Colors.blue.shade200),
                 ),
-                padding: const EdgeInsets.all(15.0),
+                padding: EdgeInsets.all(2.0.h),
                 child: Text(
                   chats[index].message,
                   style: TextStyle(fontSize: 12.0.sp),
