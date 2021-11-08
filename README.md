@@ -1,4 +1,4 @@
-# Doctors App
+# Doctors Mobile App
 
 ## Packages
 - Sizer - https://pub.dev/packages/sizer
