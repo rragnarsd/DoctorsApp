@@ -1,10 +1,8 @@
-import 'package:doctors_app/utils/chat_list.dart';
-import 'package:doctors_app/widgets/cached_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:unicons/unicons.dart';
+import 'package:doctors_app/utils/utils.dart';
+import 'package:doctors_app/widgets/widgets.dart';
 
-import 'constants.dart';
 import 'new_chat_screen.dart';
 
 class ChatScreen extends StatelessWidget {

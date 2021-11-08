@@ -1,11 +1,12 @@
-import 'package:doctors_app/utils/chat_list.dart';
-import 'package:doctors_app/widgets/cached_image.dart';
 import 'package:flutter/material.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 import 'package:unicons/unicons.dart';
 
-import 'constants.dart';
+import 'package:doctors_app/utils/utils.dart';
+import 'package:doctors_app/widgets/widgets.dart';
+
 
 class NewChatScreen extends StatelessWidget {
   final String doctorName;
@@ -125,7 +126,8 @@ class ChatButtonBar extends StatelessWidget {
                   isDense: true,
                   hintText: "Write message...",
                   hintStyle: GoogleFonts.yantramanav(
-                      color: Colors.black54, fontSize: 20.0),
+                      color: Colors.black54, fontSize: 16.0.sp,
+                  ),
                   border: InputBorder.none,
                 ),
               ),
@@ -164,7 +166,6 @@ class ChatListView extends StatelessWidget {
           return Container(
             decoration: kBoxDecoIndigo,
             height: 12.h,
-            /* height: MediaQuery.of(context).size.height / 8.8,*/
             padding: const EdgeInsets.only(
               left: 15.0,
               right: 15.0,

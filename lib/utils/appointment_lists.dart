@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/appointments.dart';
+import 'package:doctors_app/models/models.dart';
 
 List<AppointmentList> novAppointments = [
   AppointmentList(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unicons/unicons.dart';
 
 class SearchField extends StatelessWidget {
   const SearchField({
@@ -15,9 +16,9 @@ class SearchField extends StatelessWidget {
           filled: true,
           fillColor: Colors.white,
           isDense: true,
-          prefixIcon: const Icon(Icons.search),
+          prefixIcon: const Icon(UniconsLine.search),
           suffixIcon: IconButton(
-            icon: const Icon(Icons.clear),
+            icon: const Icon(UniconsLine.multiply),
             onPressed: () {},
           ),
           hintText: 'Search...',
@@ -27,7 +28,10 @@ class SearchField extends StatelessWidget {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.0),
-            borderSide: const BorderSide(width: 1.0, color: Color(0xff1651DA),),
+            borderSide: const BorderSide(
+              width: 1.0,
+              color: Color(0xff1651DA),
+            ),
           ),
         ),
       ),

@@ -1,15 +1,13 @@
 import 'dart:ui';
-
-import 'package:doctors_app/widgets/cached_image.dart';
-import 'package:doctors_app/widgets/reusable_material_btn.dart';
-import 'package:doctors_app/widgets/reusable_raw_btn.dart';
-import 'package:doctors_app/widgets/search_field.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:sizer/sizer.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import 'constants.dart';
+import 'package:doctors_app/widgets/widgets.dart';
+import 'package:doctors_app/utils/utils.dart';
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
@@ -39,8 +37,7 @@ class HomeWidgets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child:
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         SizedBox(
           height: 5.0.h,
         ),
@@ -83,15 +80,15 @@ class HomeSearchBar extends StatelessWidget {
                   fontWeight: FontWeight.normal,
                 ),
           ),
-           SizedBox(
+          SizedBox(
             height: 3.0.h,
           ),
           const RawBtnRow(),
-           SizedBox(
+          SizedBox(
             height: 3.0.h,
           ),
           const SearchField(),
-           SizedBox(
+          SizedBox(
             height: 3.0.h,
           ),
         ],
@@ -104,6 +101,7 @@ class RawBtnRow extends StatelessWidget {
   const RawBtnRow({
     Key? key,
   }) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -224,7 +222,6 @@ class HomeDoctorTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-/*      height: 15.h,*/
       decoration: kBoxDecoWhite,
       padding: EdgeInsets.all(2.0.h),
       child: Column(

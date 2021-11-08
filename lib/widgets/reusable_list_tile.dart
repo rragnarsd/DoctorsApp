@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
-import '../appointment_screen.dart';
-import '../constants.dart';
+import 'package:doctors_app/screens/screens.dart';
+import 'package:doctors_app/utils/utils.dart';
 
 class ReusableListTile extends StatelessWidget {
   const ReusableListTile({
@@ -12,7 +13,7 @@ class ReusableListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: kBoxDecoWhite,
-      padding: const EdgeInsets.all(15.0),
+      padding: EdgeInsets.all(2.0.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

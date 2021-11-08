@@ -1,11 +1,9 @@
-import 'package:doctors_app/utils/appointment_lists.dart';
-import 'package:doctors_app/widgets/reusable_raw_btn.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:doctors_app/utils/utils.dart';
+import 'package:doctors_app/widgets/widgets.dart';
 
-import 'constants.dart';
-import 'models/appointments.dart';
+import 'package:doctors_app/models/models.dart';
 
 class AppointmentScreen extends StatelessWidget {
   const AppointmentScreen({Key? key}) : super(key: key);

@@ -1,5 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:unicons/unicons.dart';
 
 class CachedImage extends StatelessWidget {
   final String doctorImage;
@@ -29,7 +30,7 @@ class CachedImage extends StatelessWidget {
         ),
       ),
       placeholder: (context, url) => const CircularProgressIndicator(strokeWidth: 0.5,),
-      errorWidget: (context, url, error) => const Icon(Icons.error),
+      errorWidget: (context, url, error) => const Icon(UniconsLine.exclamation),
     );
   }
 }

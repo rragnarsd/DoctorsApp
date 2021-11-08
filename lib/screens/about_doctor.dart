@@ -1,12 +1,9 @@
-import 'package:doctors_app/widgets/cached_image.dart';
-import 'package:doctors_app/widgets/reusable_list_tile.dart';
-import 'package:doctors_app/widgets/reusable_time_btn.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:doctors_app/widgets/widgets.dart';
 
-import 'constants.dart';
-import 'models/doctors.dart';
+import 'package:doctors_app/utils/utils.dart';
+import 'package:doctors_app/models/models.dart';
 
 class AboutDoctor extends StatelessWidget {
   const AboutDoctor({Key? key}) : super(key: key);
@@ -112,7 +109,6 @@ class AboutTile extends StatelessWidget {
     final doctor = ModalRoute.of(context)!.settings.arguments as Doctors;
     return SizedBox(
       width: 95.w,
-   /*   width: MediaQuery.of(context).size.width * 0.95,*/
       child: ListTile(
         contentPadding: EdgeInsets.zero,
         title: Text(
@@ -126,7 +122,11 @@ class AboutTile extends StatelessWidget {
               .bodyText2!
               .copyWith(color: Colors.black38),
         ),
-        trailing: CachedImage(doctorImage: doctor.doctorImage, height: 60.0, width: 60.0,),
+        trailing: CachedImage(
+          doctorImage: doctor.doctorImage,
+          height: 60.0,
+          width: 60.0,
+        ),
       ),
     );
   }
@@ -179,8 +179,9 @@ class DoctorAbout extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('About ${doctor.doctorName}',
-              style: Theme.of(context).textTheme.headline2,
+          Text(
+            'About ${doctor.doctorName}',
+            style: Theme.of(context).textTheme.headline2,
           ),
           const SizedBox(
             height: 5.0,

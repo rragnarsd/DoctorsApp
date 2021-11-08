@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:sizer/sizer.dart';
 
 class ReusableTimeBtn extends StatelessWidget {
   Widget? widget;
@@ -18,7 +18,7 @@ class ReusableTimeBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
-        height: 45.0,
+        height: 7.5.h,
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5.0),

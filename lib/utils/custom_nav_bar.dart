@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:unicons/unicons.dart';
 
-import 'appointment_screen.dart';
-import 'booking_screen.dart';
-import 'chat_screen.dart';
+import 'package:doctors_app/screens/screens.dart';
 import 'constants.dart';
-import 'doctor_screen.dart';
-import 'home_screen.dart';
+
 
 class CustomNavBar extends StatefulWidget {
   const CustomNavBar({Key? key}) : super(key: key);
