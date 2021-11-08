@@ -2,7 +2,7 @@
 
 ## Packages
 - Sizer - https://pub.dev/packages/sizer
-- Table_Calendar - hhttps://pub.dev/packages/table_calendar
+- Table_Calendar - https://pub.dev/packages/table_calendar
 - Unicons - https://pub.dev/packages/unicons
 - Google_Fonts - https://pub.dev/packages/google_fonts
 - Cached_Network_Image - https://pub.dev/packages/cached_network_image
