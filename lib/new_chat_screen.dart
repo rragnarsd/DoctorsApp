@@ -2,6 +2,7 @@ import 'package:doctors_app/utils/chat_list.dart';
 import 'package:doctors_app/widgets/cached_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
 import 'package:unicons/unicons.dart';
 
 import 'constants.dart';
@@ -22,9 +23,12 @@ class NewChatScreen extends StatelessWidget {
     return Scaffold(
       appBar: buildAppBar(context),
       body: Stack(
-        children: const [
-          ChatListView(),
-          ChatButtonBar(),
+        children: [
+          SizedBox(
+            height: 80.h,
+            child: const ChatListView(),
+          ),
+          const ChatButtonBar(),
         ],
       ),
     );
@@ -65,16 +69,16 @@ class NewChatScreen extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       doctorName,
-                      style:  GoogleFonts.yantramanav(
-                        fontSize: 20.0,
+                      style: GoogleFonts.yantramanav(
+                        fontSize: 14.0.sp,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                     Text(
                       isOnline == false ? 'Offline' : 'Online',
-                      style:  GoogleFonts.yantramanav(
+                      style: GoogleFonts.yantramanav(
                         color: Colors.grey.shade600,
-                        fontSize: 16.0,
+                        fontSize: 12.0.sp,
                       ),
                     ),
                   ],
@@ -154,11 +158,13 @@ class ChatListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+        physics: const AlwaysScrollableScrollPhysics(),
         itemCount: chats.length,
         itemBuilder: (context, index) {
           return Container(
             decoration: kBoxDecoIndigo,
-            height: MediaQuery.of(context).size.height / 8.8,
+            height: 12.h,
+            /* height: MediaQuery.of(context).size.height / 8.8,*/
             padding: const EdgeInsets.only(
               left: 15.0,
               right: 15.0,
@@ -179,7 +185,7 @@ class ChatListView extends StatelessWidget {
                 padding: const EdgeInsets.all(15.0),
                 child: Text(
                   chats[index].message,
-                  style: const TextStyle(fontSize: 16.0),
+                  style: TextStyle(fontSize: 12.0.sp),
                 ),
               ),
             ),

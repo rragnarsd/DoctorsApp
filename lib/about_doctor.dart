@@ -3,6 +3,7 @@ import 'package:doctors_app/widgets/reusable_list_tile.dart';
 import 'package:doctors_app/widgets/reusable_time_btn.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 import 'constants.dart';
 import 'models/doctors.dart';
@@ -110,7 +111,8 @@ class AboutTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final doctor = ModalRoute.of(context)!.settings.arguments as Doctors;
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.95,
+      width: 95.w,
+   /*   width: MediaQuery.of(context).size.width * 0.95,*/
       child: ListTile(
         contentPadding: EdgeInsets.zero,
         title: Text(
@@ -162,29 +164,6 @@ class UpcomingDate extends StatelessWidget {
   }
 }
 
-/*class UpcomingTextTile extends StatelessWidget {
-  const UpcomingTextTile({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text('Heart Surgeon', style: Theme.of(context).textTheme.headline5),
-        Text(
-          '09:00 AM',
-          style: Theme.of(context)
-              .textTheme
-              .bodyText1!
-              .copyWith(color: Colors.black38),
-        ),
-      ],
-    );
-  }
-}*/
-
 class DoctorAbout extends StatelessWidget {
   const DoctorAbout({
     Key? key,
@@ -194,7 +173,8 @@ class DoctorAbout extends StatelessWidget {
   Widget build(BuildContext context) {
     final doctor = ModalRoute.of(context)!.settings.arguments as Doctors;
     return Container(
-      height: MediaQuery.of(context).size.height * 0.18,
+      height: 20.h,
+      /*height: MediaQuery.of(context).size.height * 0.18,*/
       padding: const EdgeInsets.all(15.0),
       decoration: kBoxDecoWhite,
       child: Column(

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:doctors_app/widgets/reusable_material_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'constants.dart';
@@ -27,49 +28,53 @@ class _BookingScreenState extends State<BookingScreen> {
         decoration: kBoxDecoIndigo,
         child: Padding(
           padding: const EdgeInsets.all(15.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 20.0,
-              ),
-              Container(
-                padding: const EdgeInsets.all(10.0),
-                decoration: kBoxDecoWhite,
-                child: buildTableCalendar(),
-              ),
-              const SizedBox(height: 30.0),
-              const TimeGrid(),
-              const SizedBox(height: 20.0),
-              InkWell(
-                  child: Container(
-                    height: 45.0,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.0),
-                      color: const Color(0xff1651DA),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Book Appointment',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline3!
-                            .copyWith(color: const Color(0xFFFFFFFF)),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: 20.0,
+                ),
+                Container(
+                  height: 25.h,
+                  padding: const EdgeInsets.all(10.0),
+                  decoration: kBoxDecoWhite,
+                  child: buildTableCalendar(),
+                ),
+                const SizedBox(height: 30.0),
+                const TimeGrid(),
+                const SizedBox(height: 20.0),
+                InkWell(
+                    child: Container(
+                      height: 8.0.h,
+                   /*   height: 45.0,*/
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5.0),
+                        color: const Color(0xff1651DA),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Book Appointment',
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline3!
+                              .copyWith(color: const Color(0xFFFFFFFF)),
+                        ),
                       ),
                     ),
-                  ),
-                  onTap: () {
-                    showDialog(
-                        context: context,
-                        barrierDismissible: false,
-                        builder: (context) {
-                          return const CustomDialog();
-                        });
-                  }),
-              const SizedBox(height: 10.0),
-            ],
+                    onTap: () {
+                      showDialog(
+                          context: context,
+                          barrierDismissible: false,
+                          builder: (context) {
+                            return const CustomDialog();
+                          });
+                    }),
+                const SizedBox(height: 10.0),
+              ],
+            ),
           ),
         ),
       ),
@@ -99,7 +104,7 @@ class _BookingScreenState extends State<BookingScreen> {
         rightChevronVisible: false,
         headerPadding: const EdgeInsets.all(20),
         titleTextStyle: GoogleFonts.yantramanav(
-            fontSize: 24.0, fontWeight: FontWeight.w600),
+            fontSize: 18.0.sp, fontWeight: FontWeight.w600),
       ),
       calendarStyle: const CalendarStyle(
         selectedDecoration:
@@ -110,10 +115,10 @@ class _BookingScreenState extends State<BookingScreen> {
       daysOfWeekStyle: DaysOfWeekStyle(
         weekendStyle: GoogleFonts.yantramanav(
             color: const Color(0xff1651DA),
-            fontSize: 16.0,
+            fontSize: 12.0.sp,
             fontWeight: FontWeight.w600),
         weekdayStyle:
-            GoogleFonts.yantramanav(color: Colors.black87, fontSize: 16.0),
+            GoogleFonts.yantramanav(color: Colors.black87, fontSize: 12.0.sp),
       ),
     );
   }
@@ -198,6 +203,7 @@ class _TimeGridState extends State<TimeGrid> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 44.h,
       padding: const EdgeInsets.all(10.0),
       decoration: kBoxDecoWhite,
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

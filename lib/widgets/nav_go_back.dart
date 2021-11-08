@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class NavGoBack extends StatelessWidget {
   final String title;
@@ -19,7 +20,7 @@ class NavGoBack extends StatelessWidget {
       ),
       Text(
         title,
-        style: const TextStyle(fontSize: 20.0),
+        style: GoogleFonts.yantramanav(fontSize: 20.0),
       )
     ]);
   }

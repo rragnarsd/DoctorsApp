@@ -2,6 +2,7 @@ import 'package:doctors_app/utils/appointment_lists.dart';
 import 'package:doctors_app/widgets/reusable_raw_btn.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 import 'constants.dart';
 import 'models/appointments.dart';
@@ -60,7 +61,8 @@ class AppointmentsColumn extends StatelessWidget {
         children: [
           Text(month, style: Theme.of(context).textTheme.headline4),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.5,
+            height: 50.h,
+           /* height: MediaQuery.of(context).size.height * 0.5,*/
             child: ListView(
               children: [
                 for (var i in list)

@@ -6,6 +6,7 @@ import 'package:doctors_app/widgets/reusable_raw_btn.dart';
 import 'package:doctors_app/widgets/search_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'constants.dart';
@@ -70,6 +71,7 @@ class HomeSearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 100.w,
       padding: const EdgeInsets.all(10.0),
       decoration: kBoxDecoWhite,
       child: Column(
@@ -107,26 +109,34 @@ class RawBtnRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        ReusableRawBtn(
-          icon: Icons.medication,
-          iconColor: const Color(0xffff6f00),
-          size: 26.0,
+        Expanded(
+          child: ReusableRawBtn(
+            icon: Icons.medication,
+            iconColor: const Color(0xffff6f00),
+            size: 24.0.sp,
+          ),
         ),
-        ReusableRawBtn(
-          icon: Icons.medical_services,
-          iconColor: const Color(0xffDA165E),
-          size: 26.0,
+        Expanded(
+          child: ReusableRawBtn(
+            icon: Icons.medical_services,
+            iconColor: const Color(0xffDA165E),
+            size: 24.0.sp,
+          ),
         ),
-        ReusableRawBtn(
-          icon: Icons.favorite,
-          iconColor: const Color(0xff1565C0),
-          size: 26.0,
+          Expanded(
+            child: ReusableRawBtn(
+            icon: Icons.favorite,
+            iconColor: const Color(0xff1565C0),
+            size: 24.0.sp,
         ),
-        ReusableRawBtn(
-          icon: Icons.accessible,
-          iconColor: const Color(0xff0E7723),
-          size: 26.0,
+          ),
+          Expanded(
+            child: ReusableRawBtn(
+            icon: Icons.accessible,
+            iconColor: const Color(0xff0E7723),
+            size: 24.0.sp,
         ),
+          ),
       ],
     );
   }
@@ -160,7 +170,7 @@ class HomeCalendar extends StatelessWidget {
                       formatButtonVisible: false,
                       titleTextStyle: GoogleFonts.yantramanav(
                         color: Colors.black87,
-                        fontSize: 22.0,
+                        fontSize: 16.0.sp,
                         fontWeight: FontWeight.w600,
                         letterSpacing: 1.0,
                       ),
@@ -174,15 +184,15 @@ class HomeCalendar extends StatelessWidget {
                         shape: BoxShape.circle,
                       ),
                       todayTextStyle:
-                          GoogleFonts.yantramanav(color: Colors.white),
+                          GoogleFonts.yantramanav(color: Colors.white, fontSize: 14.0.sp,),
                     ),
                     daysOfWeekStyle: DaysOfWeekStyle(
                       weekendStyle: GoogleFonts.yantramanav(
                           color: const Color(0xff1651DA),
-                          fontSize: 16.0,
+                          fontSize: 12.0.sp,
                           fontWeight: FontWeight.w600),
                       weekdayStyle: GoogleFonts.yantramanav(
-                          color: Colors.black87, fontSize: 16.0),
+                          color: Colors.black87, fontSize: 12.0.sp),
                     ),
                   ),
                 ),
