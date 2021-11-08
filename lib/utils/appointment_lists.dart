@@ -56,11 +56,4 @@ List<AppointmentList> decAppointments = [
       appointDate: '29'),
 ];
 
-List<String> bookingTime = [
-  '09:00 AM',
-  '09:30 AM',
-  '10:00 AM',
-  '10:30 AM',
-  '11:00 AM',
-  '11:30 AM',
-];
+

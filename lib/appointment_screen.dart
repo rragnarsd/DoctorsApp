@@ -111,9 +111,7 @@ class AppointmentTile extends StatelessWidget {
         Container(
           height: 90.0,
           width: MediaQuery.of(context).size.width * 0.23,
-          decoration: kBoxDecoWithBoxShadow.copyWith(color: color, boxShadow: [
-            BoxShadow(color: color),
-          ]),
+          decoration: kBoxDecoWithBoxShadow.copyWith(color: color,),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

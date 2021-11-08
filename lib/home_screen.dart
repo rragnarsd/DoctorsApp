@@ -1,7 +1,7 @@
 import 'dart:ui';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:doctors_app/widgets/cached_image.dart';
+import 'package:doctors_app/widgets/reusable_material_btn.dart';
 import 'package:doctors_app/widgets/reusable_raw_btn.dart';
 import 'package:doctors_app/widgets/search_field.dart';
 import 'package:flutter/material.dart';
@@ -169,8 +169,8 @@ class HomeCalendar extends StatelessWidget {
                       headerPadding: const EdgeInsets.all(20),
                     ),
                     calendarStyle: CalendarStyle(
-                      todayDecoration: BoxDecoration(
-                        color: const Color(0xff1651DA),
+                      todayDecoration: const BoxDecoration(
+                        color: Color(0xff1651DA),
                         shape: BoxShape.circle,
                       ),
                       todayTextStyle:
@@ -178,7 +178,9 @@ class HomeCalendar extends StatelessWidget {
                     ),
                     daysOfWeekStyle: DaysOfWeekStyle(
                       weekendStyle: GoogleFonts.yantramanav(
-                          color: const Color(0xff1651DA), fontSize: 16.0, fontWeight: FontWeight.w600),
+                          color: const Color(0xff1651DA),
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w600),
                       weekdayStyle: GoogleFonts.yantramanav(
                           color: Colors.black87, fontSize: 16.0),
                     ),
@@ -227,29 +229,26 @@ class HomeDoctorTile extends StatelessWidget {
                     .bodyText1!
                     .copyWith(color: Colors.black38),
               ),
-              trailing: CachedImage(doctorImage: doctorImage, height: 70.0, width: 70.0,),
+              trailing: CachedImage(
+                doctorImage: doctorImage,
+                height: 70.0,
+                width: 70.0,
+              ),
             ),
+          ),
+          const SizedBox(
+            height: 10.0,
           ),
           Row(
             children: [
               Text(
                 'Available for your need',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText2!
-                    .copyWith(color: const Color(0xff1651DA),),
+                style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                      color: const Color(0xff1651DA),
+                    ),
               ),
               const Spacer(),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.30,
-                child: OutlinedButton(
-                  onPressed: () => {},
-                  child: Text(
-                    'Contact',
-                    style: Theme.of(context).textTheme.bodyText2,
-                  ),
-                ),
-              )
+             ReusableMaterialBtn(text: 'Contact', width: 0.25, color: Colors.white,  function: (){},),
             ],
           )
         ],

@@ -21,11 +21,11 @@ class ReusableListTile extends StatelessWidget {
             style: Theme.of(context).textTheme.headline2,
           ),
           const SizedBox(height: 20.0,),
-          AppointmentTile(
-            color: const Color(0xffff6f00),
+          const AppointmentTile(
+            color: Color(0xffff6f00),
             appointDate: '11',
             doctorType: 'Heart Surgeon',
-            iconColor: const Color(0xffff6f00),
+            iconColor: Color(0xffff6f00),
             textColor: Colors.white,
             appointTime: '09:00 AM',
             appointMonth: 'Dec',

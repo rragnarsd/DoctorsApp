@@ -1,12 +1,12 @@
 import 'dart:ui';
 
+import 'package:doctors_app/widgets/reusable_material_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'constants.dart';
 import 'custom_nav_bar.dart';
-import 'utils/appointment_lists.dart';
 
 class BookingScreen extends StatefulWidget {
   const BookingScreen({Key? key}) : super(key: key);
@@ -40,14 +40,14 @@ class _BookingScreenState extends State<BookingScreen> {
                 child: buildTableCalendar(),
               ),
               const SizedBox(height: 30.0),
-              TimeGrid(bookingTime: bookingTime),
+              const TimeGrid(),
               const SizedBox(height: 20.0),
               InkWell(
                   child: Container(
                     height: 45.0,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
+                      borderRadius: BorderRadius.circular(5.0),
                       color: const Color(0xff1651DA),
                     ),
                     child: Center(
@@ -56,7 +56,7 @@ class _BookingScreenState extends State<BookingScreen> {
                         style: Theme.of(context)
                             .textTheme
                             .headline3!
-                            .copyWith(color: Color(0xFFFFFFFF)),
+                            .copyWith(color: const Color(0xFFFFFFFF)),
                       ),
                     ),
                   ),
@@ -65,42 +65,7 @@ class _BookingScreenState extends State<BookingScreen> {
                         context: context,
                         barrierDismissible: false,
                         builder: (context) {
-                          return AlertDialog(
-                            title: const Text('Appointment Confirmed'),
-                            content: SingleChildScrollView(
-                              child: Column(children: [
-                                Image.asset(
-                                  'assets/confirm.gif',
-                                  height: 200.0,
-                                ),
-                                /*  ListBody(
-                                  children: [
-                                    const Text('Hello'),
-                                    Text(
-                                      'Date ${selectedDay.toString().substring(0, 10)}',
-                                    ),
-                                  ],
-                                ),*/
-                              ]),
-                            ),
-                            actions: [
-                              OutlinedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const CustomNavBar(),
-                                    ),
-                                  );
-                                },
-                                child: Text(
-                                  'Continue',
-                                  style: Theme.of(context).textTheme.bodyText1,
-                                ),
-                              )
-                            ],
-                          );
+                          return const CustomDialog();
                         });
                   }),
               const SizedBox(height: 10.0),
@@ -133,7 +98,8 @@ class _BookingScreenState extends State<BookingScreen> {
         leftChevronVisible: false,
         rightChevronVisible: false,
         headerPadding: const EdgeInsets.all(20),
-        titleTextStyle: GoogleFonts.yantramanav(fontSize: 24.0, fontWeight: FontWeight.w600),
+        titleTextStyle: GoogleFonts.yantramanav(
+            fontSize: 24.0, fontWeight: FontWeight.w600),
       ),
       calendarStyle: const CalendarStyle(
         selectedDecoration:
@@ -142,9 +108,67 @@ class _BookingScreenState extends State<BookingScreen> {
             BoxDecoration(color: Color(0xff1651DA), shape: BoxShape.circle),
       ),
       daysOfWeekStyle: DaysOfWeekStyle(
-        weekendStyle:  GoogleFonts.yantramanav(color: const Color(0xff1651DA), fontSize: 16.0, fontWeight: FontWeight.w600),
-        weekdayStyle:  GoogleFonts.yantramanav(color: Colors.black87, fontSize: 16.0),
+        weekendStyle: GoogleFonts.yantramanav(
+            color: const Color(0xff1651DA),
+            fontSize: 16.0,
+            fontWeight: FontWeight.w600),
+        weekdayStyle:
+            GoogleFonts.yantramanav(color: Colors.black87, fontSize: 16.0),
       ),
+    );
+  }
+}
+
+class CustomDialog extends StatelessWidget {
+  const CustomDialog({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text(
+        'Appointment Confirmed',
+        style: Theme.of(context).textTheme.headline2,
+      ),
+      content: SingleChildScrollView(
+        child: Column(children: [
+          Image.asset(
+            'assets/confirm.gif',
+            height: 200.0,
+          ),
+        ]),
+      ),
+      actions: [
+        Material(
+          elevation: 2.0,
+          borderRadius: BorderRadius.circular(5.0),
+          color: const Color(0xff1651DA),
+          child: InkWell(
+              borderRadius: BorderRadius.circular(5.0),
+              child: SizedBox(
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Continue',
+                      style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                            color: Colors.white,
+                          ),
+                    ),
+                  ),
+                ),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CustomNavBar(),
+                  ),
+                );
+              }),
+        )
+      ],
     );
   }
 }
@@ -152,16 +176,25 @@ class _BookingScreenState extends State<BookingScreen> {
 class TimeGrid extends StatefulWidget {
   const TimeGrid({
     Key? key,
-    required this.bookingTime,
   }) : super(key: key);
-
-  final List<String> bookingTime;
 
   @override
   State<TimeGrid> createState() => _TimeGridState();
 }
 
 class _TimeGridState extends State<TimeGrid> {
+  bool hasBeenClicked = false;
+  int clickedIndex = 0;
+
+  List bookingTime = [
+    '09:00 AM',
+    '09:30 AM',
+    '10:00 AM',
+    '10:30 AM',
+    '11:00 AM',
+    '11:30 AM',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -177,21 +210,55 @@ class _TimeGridState extends State<TimeGrid> {
         ),
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.35,
-          child: GridView.count(
-              crossAxisCount: 2,
-              childAspectRatio: (3.5 / 1),
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 20,
-              children: [
-                for (var x in widget.bookingTime)
-                  OutlinedButton(
-                    onPressed: () {},
-                    child: Text(
-                      x,
-                      style: Theme.of(context).textTheme.bodyText1,
+          child: GridView.builder(
+              itemCount: bookingTime.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 20.0,
+                mainAxisSpacing: 20.0,
+                childAspectRatio: (3.5 / 1),
+              ),
+              itemBuilder: (context, index) {
+                bool hasBeenClicked = index == clickedIndex;
+                return Material(
+                  elevation: 2.0,
+                  borderRadius: BorderRadius.circular(5.0),
+                  color: hasBeenClicked ? const Color(0xffff6f00) : Colors.white,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(5.0),
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            bookingTime[index],
+                            style: hasBeenClicked ? Theme.of(context).textTheme.bodyText2!.copyWith(
+                              color: Colors.white) : Theme.of(context).textTheme.bodyText2!.copyWith(
+                              color: Colors.black87
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
-                  )
-              ]),
+                    onTap: () => setState(() {
+                      clickedIndex = index;
+                    })
+                  ),
+                );
+
+                /*ReusableMaterialBtn(
+                  text: bookingTime[index],
+                  width: double.infinity,
+                  color:
+                      hasBeenClicked ? const Color(0xffff6f00) : Colors.white,
+                  function: () {
+                    setState(() {
+                      clickedIndex = index;
+                    });
+                  },
+                );*/
+              }),
         ),
       ]),
     );

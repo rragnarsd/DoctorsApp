@@ -21,7 +21,7 @@ class ReusableTimeBtn extends StatelessWidget {
         height: 45.0,
         width: double.infinity,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(5.0),
           color: btnColor,
         ),
         child: Center(

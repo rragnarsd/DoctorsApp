@@ -46,37 +46,9 @@ class CircleAvatarChatRow extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(right: 15.0, left: 15.0),
-            child: Column(
-              children: [
-                Container(
-                  width: 60.0,
-                  height: 60.0,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.grey.shade300,
-                  ),
-                  child: const Center(
-                    child: Icon(UniconsLine.plus,
-                        size: 30.0, color: Colors.black87),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                SizedBox(
-                  width: 75.0,
-                  child: Align(
-                    child: Text(
-                      'Story',
-                      style: Theme.of(context).textTheme.bodyText1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                )
-              ],
-            ),
+          const Padding(
+            padding: EdgeInsets.only(right: 15.0, left: 15.0),
+            child: ChatStory(),
           ),
           Row(
             children: List.generate(chats.length, (index) {
@@ -90,45 +62,14 @@ class CircleAvatarChatRow extends StatelessWidget {
                       child: Stack(
                         children: [
                           chats[index].hasStory
-                              ? Container(
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                      color: const Color(0xff1651DA),
-                                      width: 2.0,
-                                    ),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(3.0),
-                                    child: CachedImage(
-                                      doctorImage: chats[index].image,
-                                      height: 75.0,
-                                      width: 75.0,
-                                    ),
-                                  ),
-                                )
+                              ? ChatContainer(index: index)
                               : CachedImage(
                                   doctorImage: chats[index].image,
                                   height: 70.0,
                                   width: 70.0,
                                 ),
                           chats[index].isOnline
-                              ? Positioned(
-                                  top: 40.0,
-                                  left: 42.0,
-                                  child: Container(
-                                    width: 20.0,
-                                    height: 20.0,
-                                    decoration: BoxDecoration(
-                                      color: const Color(0xff0E7723),
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
-                                        color: Colors.white,
-                                        width: 2.0,
-                                      ),
-                                    ),
-                                  ),
-                                )
+                              ? const ChatPositioned()
                               : Container()
                         ],
                       ),
@@ -156,6 +97,101 @@ class CircleAvatarChatRow extends StatelessWidget {
   }
 }
 
+class ChatStory extends StatelessWidget {
+  const ChatStory({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          width: 60.0,
+          height: 60.0,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.grey.shade300,
+          ),
+          child: const Center(
+            child: Icon(UniconsLine.plus,
+                size: 30.0, color: Colors.black87,
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: 10.0,
+        ),
+        SizedBox(
+          width: 75.0,
+          child: Align(
+            child: Text(
+              'Story',
+              style: Theme.of(context).textTheme.bodyText1,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class ChatPositioned extends StatelessWidget {
+  const ChatPositioned({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+        top: 40.0,
+        left: 42.0,
+        child: Container(
+          width: 20.0,
+          height: 20.0,
+          decoration: BoxDecoration(
+            color: const Color(0xff0E7723),
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: Colors.white,
+              width: 2.0,
+            ),
+          ),
+        ),
+      );
+  }
+}
+
+class ChatContainer extends StatelessWidget {
+  final int index;
+  const ChatContainer({
+    Key? key,
+    required this.index,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: const Color(0xff1651DA),
+            width: 2.0,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(3.0),
+          child: CachedImage(
+            doctorImage: chats[index].image,
+            height: 75.0,
+            width: 75.0,
+          ),
+        ),
+      );
+  }
+}
+
 class ChatRow extends StatelessWidget {
   const ChatRow({
     Key? key,
@@ -180,43 +216,14 @@ class ChatRow extends StatelessWidget {
                 child: Stack(
                   children: [
                     chats[index].hasStory
-                        ? Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: const Color(0xff1651DA),
-                                width: 2.0,
-                              ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: CachedImage(
-                                doctorImage: chats[index].image,
-                                height: 75.0,
-                                width: 75.0,
-                              ),
-                            ),
-                          )
+                        ? ChatContainer(index: index)
                         : CachedImage(
                             doctorImage: chats[index].image,
                             height: 70.0,
                             width: 70.0,
                           ),
                     chats[index].isOnline
-                        ? Positioned(
-                            top: 40.0,
-                            left: 42.0,
-                            child: Container(
-                              width: 20.0,
-                              height: 20.0,
-                              decoration: BoxDecoration(
-                                color: const Color(0xff0E7723),
-                                shape: BoxShape.circle,
-                                border:
-                                    Border.all(color: Colors.white, width: 2.0),
-                              ),
-                            ),
-                          )
+                        ? const ChatPositioned()
                         : Container()
                   ],
                 ),

@@ -1,5 +1,6 @@
 import 'package:doctors_app/utils/doctor_lists.dart';
 import 'package:doctors_app/widgets/cached_image.dart';
+import 'package:doctors_app/widgets/reusable_material_btn.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -53,7 +54,11 @@ class DoctorGridView extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CachedImage(doctorImage: doctors[index].doctorImage, height: 70.0, width: 70.0,),
+                CachedImage(
+                  doctorImage: doctors[index].doctorImage,
+                  height: 70.0,
+                  width: 70.0,
+                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -79,22 +84,15 @@ class DoctorGridView extends StatelessWidget {
                 const SizedBox(
                   height: 20.0,
                 ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.35,
-                  child: OutlinedButton(
-                    onPressed: () => Navigator.push(
+                ReusableMaterialBtn(text: 'Contact', width: 0.35, color: Colors.white, function: () {
+                  Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const AboutDoctor(),
-                        settings: RouteSettings(arguments: doctors[index]),
-                      ),
-                    ),
-                    child: Text(
-                      'About',
-                      style: Theme.of(context).textTheme.bodyText2,
-                    ),
-                  ),
-                )
+                      builder: (context) => const AboutDoctor(),
+                  settings: RouteSettings(arguments: doctors[index]),
+                  ));
+                },),
+
               ],
             ),
           ),
