@@ -61,6 +61,7 @@ class AppointmentsColumn extends StatelessWidget {
           SizedBox(
             height: 46.h,
             child: ListView(
+              physics: const NeverScrollableScrollPhysics(),
               children: [
                 for (var i in list)
                   Padding(

@@ -160,8 +160,8 @@ class HomeCalendar extends StatelessWidget {
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: TableCalendar(
-                    firstDay: DateTime.utc(2021, 11, 7),
-                    lastDay: DateTime.utc(2021, 11, 14),
+                    firstDay: DateTime.utc(2022, 01, 17),
+                    lastDay: DateTime.utc(2022, 01, 25),
                     focusedDay: DateTime.now(),
                     calendarFormat: CalendarFormat.week,
                     startingDayOfWeek: StartingDayOfWeek.monday,
