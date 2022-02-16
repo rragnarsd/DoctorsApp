@@ -29,7 +29,7 @@ class CachedImage extends StatelessWidget {
           ),
         ),
       ),
-      placeholder: (context, url) => const CircularProgressIndicator(strokeWidth: 0.5,),
+      placeholder: (context, url) => const Center(child: CircularProgressIndicator(strokeWidth: 0.5,)),
       errorWidget: (context, url, error) => const Icon(UniconsLine.exclamation),
     );
   }
