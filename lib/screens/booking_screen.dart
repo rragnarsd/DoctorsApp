@@ -81,13 +81,8 @@ class _BookingScreenState extends State<BookingScreen> {
   TableCalendar<dynamic> buildTableCalendar() {
     return TableCalendar(
       focusedDay: selectedDay,
-<<<<<<< HEAD
-      firstDay: DateTime.utc(2022, 01, 17),
-      lastDay: DateTime.utc(2022, 01, 25),
-=======
       firstDay: DateTime.now(),
       lastDay: DateTime.now().add(const Duration(days: 100)),
->>>>>>> 2f7c1c0f8fba8a4c393edbff02521eb9fd6fa0be
       calendarFormat: CalendarFormat.twoWeeks,
       startingDayOfWeek: StartingDayOfWeek.monday,
       onDaySelected: (DateTime selectDay, DateTime focusDay) {
